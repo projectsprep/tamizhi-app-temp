@@ -1,6 +1,15 @@
+// Color code
+// primary: #9188E5
+// prime: #9188E5
+// primaryDark: #786FCE
+// secondary: #84CDF6
+// white: #FEFFFE
+// black: #07070E
+
+
 const light = Object.freeze({
-  primary: "#ffeb99",
-  light: "#d1bd6b",
+  primary: "#d690ee",
+  light: "#d690ee",
   primaryDark: "#c78344",
   white: "white",
   black: "black",
