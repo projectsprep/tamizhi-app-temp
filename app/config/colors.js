@@ -6,14 +6,16 @@
 // white: #FEFFFE
 // black: #07070E
 
-
 const light = Object.freeze({
-  primary: "#d690ee",
-  light: "#d690ee",
-  primaryDark: "#c78344",
+  primary: "#faf619",
+  primaryText: "black",
+  light: "#fffc5e",
+  primaryDark: "#d9d500",
+  primaryDarkText: "white",
   white: "white",
   black: "black",
   secondary: "tomato",
+  background: "black",
 });
 
 const dark = Object.freeze({

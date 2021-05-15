@@ -1,12 +1,15 @@
 import React from "react";
+import { StatusBar } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
-
-import AuthNavigator from "./app/routes/AuthNavigator";
+import WelcomeNavigator from "./app/routes/WelcomeNavigator";
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <AuthNavigator />
-    </NavigationContainer>
+    <>
+      <StatusBar hidden={true} />
+      <NavigationContainer>
+        <WelcomeNavigator />
+      </NavigationContainer>
+    </>
   );
 }
