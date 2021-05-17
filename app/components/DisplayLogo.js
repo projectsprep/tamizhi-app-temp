@@ -27,3 +27,5 @@ const styles = StyleSheet.create({
 });
 
 export default DisplayLogo;
+
+// Tamil

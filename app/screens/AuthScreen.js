@@ -1,17 +1,16 @@
 import React, { useState } from "react";
 
-import LoadingScreen from "../components/utils/LoadingScreen";
-
 import { StyleSheet, Image, ToastAndroid } from "react-native";
 import * as Yup from "yup";
 
+import LoadingScreen from "./utils/LoadingScreen";
 import Screen from "../components/Screen";
 import { Form, FormField, SubmitButton } from "../components/forms";
 import routes from "../routes/routes";
 import authApi from "../api/authApi";
 import AppText from "../components/AppText";
 import defaultStyle from "../config/defaultStyles";
-import icons from "../utils/icons";
+import icons from "../config/icons";
 
 const validationSchema = Yup.object().shape({
   mobile: Yup.string().required().label("Mobile Number"),
@@ -98,3 +97,5 @@ const styles = StyleSheet.create({
 });
 
 export default AuthScreen;
+
+// Tamil

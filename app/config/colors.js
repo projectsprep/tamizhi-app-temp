@@ -9,13 +9,15 @@
 const light = Object.freeze({
   primary: "#faf619",
   primaryText: "black",
-  light: "#fffc5e",
   primaryDark: "#d9d500",
   primaryDarkText: "white",
+  secondary: "tomato",
+  light: "#fffc5e",
+  background: "black",
+  success: "#24a629",
+  danger: "#bd3131",
   white: "white",
   black: "black",
-  secondary: "tomato",
-  background: "black",
 });
 
 const dark = Object.freeze({
@@ -29,3 +31,5 @@ const dark = Object.freeze({
 const colors = light;
 
 export default colors;
+
+// Tamil

@@ -20,7 +20,7 @@ function AppButton({ title, onPress, color = "primary", style, textStyle }) {
 const styles = StyleSheet.create({
   button: {
     backgroundColor: defaultStyles.colors.primary,
-    borderRadius: 15,
+    borderRadius: 10,
     justifyContent: "center",
     alignItems: "center",
     padding: 15,
@@ -36,3 +36,5 @@ const styles = StyleSheet.create({
 });
 
 export default AppButton;
+
+// Tamil

@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { StyleSheet, View, Image, Text } from "react-native";
 
 import routes from "../routes/routes";
-import icons from "../utils/icons";
+import icons from "../config/icons";
 
 function WelcomeScreen({ navigation }) {
   useEffect(() => {
@@ -31,3 +31,5 @@ const styles = StyleSheet.create({
 });
 
 export default WelcomeScreen;
+
+// Tamil

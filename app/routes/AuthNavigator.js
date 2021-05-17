@@ -19,3 +19,5 @@ const AuthNavigator = (props) => (
 );
 
 export default AuthNavigator;
+
+// Tamil

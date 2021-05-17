@@ -1,13 +1,10 @@
 import React from "react";
 
-import Replace from "../routes/links/Replace";
-
 import { StyleSheet } from "react-native";
 import * as Yup from "yup";
 
 import Screen from "../components/Screen";
 import { Form, FormField, SubmitButton } from "../components/forms";
-import routes from "../routes/routes";
 import defaultStyles from "../config/defaultStyles";
 
 const validationSchema = Yup.object().shape({
@@ -78,3 +75,5 @@ const styles = StyleSheet.create({
 });
 
 export default EditUserDetails;
+
+// Tamil

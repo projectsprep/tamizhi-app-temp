@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { StyleSheet, View, ToastAndroid } from "react-native";
 import * as Yup from "yup";
 
@@ -7,7 +7,7 @@ import { Form, SubmitButton } from "../components/forms";
 import routes from "../routes/routes";
 import authApi from "../api/authApi";
 import AppText from "./../components/AppText";
-import LoadingView from "../components/utils/LoadingScreen";
+import LoadingView from "./utils/LoadingScreen";
 import defaultStyle from "../config/defaultStyles";
 import FormOtpInput from "../components/forms/FormOtpInput";
 
@@ -104,3 +104,5 @@ const styles = StyleSheet.create({
 });
 
 export default PhoneVerification;
+
+// Tamil

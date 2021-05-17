@@ -4,6 +4,7 @@ const routes = {
   WELCOME_LOCATION: "Welcome-Location",
   MAIN: "Main",
   HOME: "Home",
+  ORDERS: "Orders",
   AUTH: "Auth",
   LOGIN: "Login",
   OTP_VERIFICATION: "OTP verification",
@@ -11,3 +12,5 @@ const routes = {
 };
 
 export default Object.freeze(routes);
+
+// Tamil

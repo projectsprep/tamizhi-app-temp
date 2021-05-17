@@ -25,3 +25,5 @@ const WelcomeNavigator = (props) => (
 );
 
 export default WelcomeNavigator;
+
+// Tamil
