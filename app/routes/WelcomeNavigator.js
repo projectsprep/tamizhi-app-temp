@@ -5,7 +5,7 @@ import routes from "./routes";
 import WelcomeScreen from "../screens/WelcomeScreen";
 import WelcomeOptions from "../screens/WelcomeOptions";
 import EditLocation from "./../screens/EditLocation";
-import MainNavigator from "./MainNavigator";
+import AppNavigator from "./AppNavigator";
 import AuthNavigator from "./AuthNavigator";
 
 const Stack = createStackNavigator();
@@ -20,7 +20,7 @@ const WelcomeNavigator = (props) => (
       options={{ title: "Choose Delivery Location", headerShown: true }}
     />
     <Stack.Screen name={routes.AUTH} component={AuthNavigator} />
-    <Stack.Screen name={routes.MAIN} component={MainNavigator} />
+    <Stack.Screen name={routes.MAIN} component={AppNavigator} />
   </Stack.Navigator>
 );
 

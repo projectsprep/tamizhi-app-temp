@@ -13,6 +13,7 @@ const light = Object.freeze({
   primaryDarkText: "white",
   secondary: "tomato",
   light: "#fffc5e",
+  listItem: "#ebebeb",
   background: "black",
   success: "#24a629",
   danger: "#bd3131",

@@ -11,6 +11,8 @@ function AppFormPicker({
   PickerItemComponent,
   placeholder,
   width,
+  style,
+  throwError,
 }) {
   const { errors, setFieldValue, touched, values } = useFormikContext();
 
@@ -24,8 +26,11 @@ function AppFormPicker({
         placeholder={placeholder}
         selectedItem={values[name]}
         width={width}
+        style={style}
       />
-      <ErrorMessage error={errors[name]} visible={touched[name]} />
+      {throwError && (
+        <ErrorMessage error={errors[name]} visible={touched[name]} />
+      )}
     </>
   );
 }

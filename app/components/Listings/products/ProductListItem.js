@@ -2,9 +2,13 @@ import React from "react";
 import { StyleSheet, View, Image, TouchableOpacity } from "react-native";
 import { Rating } from "react-native-ratings";
 
-import AppText from "./AppText";
+import defaultStyles from "../../../config/defaultStyles";
+import AppText from "../../AppText";
 
-function ListItem({
+const itemColor = defaultStyles.colors.listItem;
+
+function ProductListItem({
+  id,
   imageUri,
   title,
   rating = 2.35,
@@ -19,10 +23,11 @@ function ListItem({
         <Image style={styles.image} source={{ uri: imageUri }} />
         <View style={styles.details}>
           <AppText style={styles.title} numberOfLines={3}>
-            {title}
+            {`${title}-${id}`}
           </AppText>
           <View style={styles.ratingBox}>
             <Rating
+              tintColor={itemColor}
               type="star"
               ratingCount={5}
               startingValue={rating}
@@ -40,7 +45,7 @@ function ListItem({
           </AppText>
         </View>
       </TouchableOpacity>
-      <ActionBar />
+      {ActionBar && <ActionBar />}
     </View>
   );
 }
@@ -51,6 +56,9 @@ const styles = StyleSheet.create({
     borderColor: "#d1d1d1",
     backgroundColor: "#fff",
     paddingVertical: 5,
+    borderRadius: 15,
+    backgroundColor: itemColor,
+    marginVertical: 5,
   },
 
   item: {
@@ -58,6 +66,8 @@ const styles = StyleSheet.create({
     borderColor: "#d1d1d1",
     backgroundColor: "#fff",
     paddingVertical: 5,
+    borderRadius: 15,
+    backgroundColor: itemColor,
   },
 
   image: {
@@ -103,6 +113,6 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ListItem;
+export default ProductListItem;
 
 // Tamil

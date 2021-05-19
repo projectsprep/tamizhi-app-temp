@@ -11,7 +11,8 @@ function CategoryPickerItem({ item, onPress }) {
         <Icon
           backgroundColor={item.backgroundColor}
           name={item.icon}
-          size={80}
+          size={100}
+          radius={10}
         />
       </TouchableOpacity>
       <AppText style={styles.label}>{item.label}</AppText>
@@ -24,6 +25,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 30,
     paddingVertical: 15,
     alignItems: "center",
+    // justifyContent: "space-evenly",
     width: "33%",
   },
   label: {

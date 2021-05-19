@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Image } from "react-native";
+import { StyleSheet, Image, View, useWindowDimensions } from "react-native";
 import Screen from "../../components/Screen";
 import AppText from "../../components/AppText";
 import AppButton from "../../components/AppButton";
@@ -11,31 +11,38 @@ function InfoScreen({
   buttonColor = "primaryDark",
   buttonTitle,
   action,
-  loading,
+  visible,
 }) {
-  if (loading) return null;
+  const { height } = useWindowDimensions();
+
+  if (!visible) return null;
   return (
-    <Screen style={styles.container}>
-      {image && <Image source={image} style={styles.image} />}
-      <AppText style={styles.title}>{title}</AppText>
-      {description && <AppText style={styles.desc}>{description}</AppText>}
-      {buttonTitle && (
-        <AppButton
-          title={buttonTitle}
-          color={buttonColor}
-          style={styles.button}
-          onPress={action}
-        />
-      )}
+    <Screen style={{ ...styles.container, height: height / 1.15 }}>
+      <View style={styles.info}>
+        {image && <Image source={image} style={styles.image} />}
+        <AppText style={styles.title}>{title}</AppText>
+        {description && <AppText style={styles.desc}>{description}</AppText>}
+        {buttonTitle && (
+          <AppButton
+            title={buttonTitle}
+            color={buttonColor}
+            style={styles.button}
+            onPress={action}
+          />
+        )}
+      </View>
     </Screen>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  container: {},
+
+  info: {
+    flex: 1,
+    // position: "absolute",
     justifyContent: "center",
     alignItems: "center",
-    flex: 1,
   },
 
   image: {

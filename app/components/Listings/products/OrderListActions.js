@@ -1,36 +1,32 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import AppButton from "./AppButton";
-import AppText from "./AppText";
+import AppButton from "../../AppButton";
+import ItemCounter from "../../ItemCounter";
 
 function OrderListActions({ quantity, setQuantity }) {
   return (
     <View style={styles.container}>
-      <View style={styles.counter}>
+      {quantity && quantity > 0 ? (
+        <ItemCounter quantity={quantity} setQuantity={setQuantity} />
+      ) : (
         <AppButton
           color="primaryDark"
-          title="-"
-          onPress={() => setQuantity(quantity > 1 ? "dec" : "remove")}
-          style={styles.button}
-          textStyle={styles.butonText}
-        />
-        <AppText style={styles.quantity}>{quantity}</AppText>
-        <AppButton
-          color="primaryDark"
-          title="+"
-          onPress={() => setQuantity("inc")}
-          style={styles.button}
-          textStyle={styles.butonText}
-        />
-      </View>
-      <View style={styles.otherActions}>
-        <AppButton
-          color="primaryDark"
-          title="remove"
-          onPress={() => setQuantity("remove")}
+          title="Add to Cart"
+          onPress={() => setQuantity("add")}
           style={styles.remove}
           textStyle={styles.removeText}
         />
+      )}
+      <View style={styles.otherActions}>
+        {quantity ? (
+          <AppButton
+            color="primaryDark"
+            title="remove"
+            onPress={() => setQuantity("remove")}
+            style={styles.remove}
+            textStyle={styles.removeText}
+          />
+        ) : null}
         <AppButton
           color="primaryDark"
           title="Save for Later"
@@ -47,25 +43,6 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
     justifyContent: "space-between",
-  },
-
-  counter: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-around",
-    borderColor: "#e3e3e3",
-    width: 130,
-  },
-
-  button: {
-    width: 45,
-    height: 35,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-
-  butonText: {
-    fontSize: 18,
   },
 
   otherActions: {
