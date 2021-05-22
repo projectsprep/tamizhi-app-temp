@@ -13,7 +13,9 @@ const routes = {
   // APP
   HOME: "Home",
   CATEGORIES: "Categories",
-  SUB_CATEGORIES: "Sub Category",
+  HOME_SEARCH: "Home Search",
+  HOME_PRODUCT_DETAILS: "Home Product Details",
+  SUB_CATEGORIES: "Sub Categories",
   PRODUCTS: "products",
   PROFILE: "Profile",
 
@@ -21,16 +23,25 @@ const routes = {
   PROFILE_OPTIONS: "Profile Options",
   PROFILE_DETAILS: "Profile Details",
   ACCOUNT: "Account",
-  PROFILE_EDIT_DETAILS: "Profile Edit Details",
+  EDIT_USER_DETAILS: "Profile Edit Details",
   ADDRESSES: "Addresses",
   LIST_ADDRESSES: "Addresses",
   EDIT_ADDRESSES: "Edit Addresses",
   HELP: "Help",
   FEEDBACK: "Feedback",
 
-  // ORDERS
+  // Cart
+  CART: "My Cart",
+  CART_PRODUCT_DETAILS: "Cart Product Details",
+
+  // Order Flow
+  CHECK_OUT: "CheckOut",
+  CONFIRM_ORDER: "Confirm Order",
+  ORDER_PROCESSED: "Order Processed",
+
+  // TODO: implementation
   ORDERS: "Orders",
-  ORDERS_DETAILS: "Order Details",
+  ORDER_DETAILS: "Order Details",
 
   // SEARCH PRODUCTS
   SEARCH: "Search",

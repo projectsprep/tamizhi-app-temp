@@ -11,9 +11,11 @@ function InfoScreen({
   buttonColor = "primaryDark",
   buttonTitle,
   action,
-  visible,
+  visible = true,
 }) {
-  const { height, width } = useWindowDimensions();
+  const { height } = useWindowDimensions();
+
+  console.log("loading", visible);
 
   if (!visible) return null;
   return (

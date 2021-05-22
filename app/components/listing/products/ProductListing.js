@@ -2,13 +2,11 @@ import React from "react";
 import { FlatList } from "react-native";
 import _ from "lodash";
 
-import routes from "../../../routes/routes";
 import ProductListItem from "./ProductListItem";
 
-function ProductListing({
+function CartListing({
   products,
-  navigation,
-  detailsPage = routes.PRODUCT_DETAILS,
+  onSelect,
   actions = () => null,
   header = () => null,
   footer = () => null,
@@ -36,11 +34,7 @@ function ProductListing({
             rating={item.ratings}
             presentPrice={item.presentPrice}
             price={item.price}
-            onPress={() =>
-              navigation.navigate(detailsPage, {
-                product: item,
-              })
-            }
+            onPress={() => onSelect(item)}
             ActionBar={() => actions(item)}
           />
         );
@@ -50,6 +44,6 @@ function ProductListing({
   );
 }
 
-export default ProductListing;
+export default CartListing;
 
 // Tamil

@@ -14,7 +14,7 @@ const validationSchema = Yup.object().shape({
   addressLine1: Yup.string().required().label("Address line 1"),
   addressLine2: Yup.string().required().label("Address line 2"),
   pincode: Yup.number().required().label("Pin code"),
-  location: Yup.number().required().label("lat lang"),
+  // location: Yup.number().required().label("lat lang"),
 });
 
 function AddressEditScreen({ navigation, route }) {
@@ -38,30 +38,22 @@ function AddressEditScreen({ navigation, route }) {
     pincode,
   }) => {
     const address = { label, doorNo, addressLine1, addressLine2, pincode };
-    console.log("app");
+
     if (action === "add") {
-      console.log("action: ", "adding");
       const response = await addressApi.addAddress({ user_id, address });
       if (!response.ok) return Notifier.toastShort("Something went wrong !");
-      navigation.replace(routes.ADDRESSES, {
-        action,
-        address_id: response.data.id,
-        address,
-      });
     } else if (action === "update") {
-      console.log("action: ", "updating");
       const response = await addressApi.updateAddress({
         action,
         address_id: initialValues.id,
         address,
       });
       if (!response.ok) return Notifier.toastShort("Something went wrong !");
-      navigation.replace(routes.ADDRESSES, {
-        action: "update",
-        address_id: initialValues.id,
-        address,
-      });
     }
+    navigation.replace(routes.ADDRESSES, {
+      action,
+      address,
+    });
   };
 
   return (
@@ -111,7 +103,7 @@ function AddressEditScreen({ navigation, route }) {
           icon="pin"
           name="pincode"
           placeholder="Pincode"
-          defaultValue={initialValues.pincode}
+          defaultValue={initialValues.pincode + ""}
         />
         <SubmitButton title={action} style={styles.submit} />
       </Form>

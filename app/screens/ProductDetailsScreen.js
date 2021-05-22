@@ -4,13 +4,13 @@ import { View, StyleSheet } from "react-native";
 import colors from "../config/colors";
 import AppText from "./../components/AppText";
 import ImageSlider from "./../components/ImageSlider";
-import { OrderListActions } from "../components/listing";
-import OrdersContext from "./../context/OrdersContext";
+import { CartListActions } from "../components/listing";
+import CartContext from "../context/CartContext";
 
 function ProductDetailsScreen({ route }) {
-  const [orders, ordersLoading, setQuantity] = useContext(OrdersContext);
+  const [cart, cartLoading, setQuantity] = useContext(CartContext);
   const { product } = route.params;
-  const found = orders.find((order) => product.product_id === order.product_id);
+  const found = cart.find((prod) => product.product_id === prod.product_id);
   const quantity = found ? found.quantity : 0;
 
   return (
@@ -21,7 +21,7 @@ function ProductDetailsScreen({ route }) {
         <AppText style={styles.price}>Rs. {product.presentPrice}</AppText>
         <AppText>{product.description}</AppText>
       </View>
-      <OrderListActions quantity={quantity} setQuantity={setQuantity} />
+      <CartListActions quantity={quantity} setQuantity={setQuantity} />
     </View>
   );
 }

@@ -4,30 +4,30 @@ import _ from "lodash";
 
 import images from "../config/images";
 import InfoScreen from "./utils/InfoScreen";
-import Screen from "./../components/Screen";
+import Screen from "../components/Screen";
 import LoadingScreen from "./utils/LoadingScreen";
 import {
   ProductListing,
-  OrdersFooter,
-  OrdersHeader,
-  OrderListActions,
+  CartFooter,
+  CartHeader,
+  CartListActions,
 } from "../components/listing";
 import routes from "../routes/routes";
-import ordersContext from "../context/OrdersContext";
+import CartContext from "../context/CartContext";
 
-function OrdersScreen({ navigation }) {
-  const [orders, loading, setQuantity] = useContext(ordersContext);
+function CartScreen({ navigation }) {
+  const [cart, loading, setQuantity] = useContext(CartContext);
 
   const header = (products) => (
-    <OrdersHeader navigation={navigation} visible={!loading} />
+    <CartHeader navigation={navigation} visible={!loading} />
   );
 
   const footer = (products) => (
-    <OrdersFooter navigation={navigation} visible={!loading} />
+    <CartFooter navigation={navigation} visible={!loading} />
   );
 
   const actions = (item) => (
-    <OrderListActions
+    <CartListActions
       quantity={item.quantity}
       setQuantity={(action) => setQuantity(item.product_id, action)}
     />
@@ -35,11 +35,11 @@ function OrdersScreen({ navigation }) {
 
   const info = () => (
     <InfoScreen
-      title="No orders yet"
-      description="You don't have any orders here"
+      title="Cart is empty"
+      description="You don't have any Product here"
       buttonTitle="Let's Shop"
       action={() => navigation.navigate(routes.PRODUCTS)}
-      image={images.noOrders}
+      image={images.noProds}
       visible={!loading}
     />
   );
@@ -48,9 +48,13 @@ function OrdersScreen({ navigation }) {
     <Screen style={styles.container}>
       <LoadingScreen visible={loading} />
       <ProductListing
-        products={orders}
+        products={cart}
         setQuantity={setQuantity}
-        navigation={navigation}
+        onSelect={(item) =>
+          navigation.navigate(routes.PRODUCT_DETAILS, {
+            product: item,
+          })
+        }
         stickyHeaderIndices={[0]}
         initialNumToRender={5}
         header={header}
@@ -68,6 +72,6 @@ const styles = StyleSheet.create({
   },
 });
 
-export default OrdersScreen;
+export default CartScreen;
 
 // Tamil

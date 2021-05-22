@@ -1,9 +1,17 @@
 import React from "react";
 import { StyleSheet, Text, TouchableOpacity } from "react-native";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import defaultStyles from "../config/defaultStyles";
 
-function AppButton({ title, onPress, color = "primary", style, textStyle }) {
+function AppButton({
+  title = null,
+  icon = null,
+  onPress,
+  color = "primary",
+  style,
+  textStyle,
+}) {
   return (
     <TouchableOpacity
       style={[
@@ -12,7 +20,11 @@ function AppButton({ title, onPress, color = "primary", style, textStyle }) {
       ]}
       onPress={onPress}
     >
-      <Text style={[styles.text, { ...textStyle }]}>{title}</Text>
+      {title ? (
+        <Text style={[styles.text, { ...textStyle }]}>{title}</Text>
+      ) : (
+        <MaterialCommunityIcons name={icon} size={30} />
+      )}
     </TouchableOpacity>
   );
 }

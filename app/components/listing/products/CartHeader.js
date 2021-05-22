@@ -3,7 +3,7 @@ import { StyleSheet, View } from "react-native";
 import defaultStyles from "../../../config/defaultStyles";
 import AppButton from "../../AppButton";
 
-function OrdersHeader({ navigation, visible }) {
+function CartHeader({ navigation, visible }) {
   if (!visible) return null;
   return (
     <View style={styles.container}>
@@ -32,6 +32,6 @@ const styles = StyleSheet.create({
   },
 });
 
-export default OrdersHeader;
+export default CartHeader;
 
 // Tamil

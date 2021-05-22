@@ -3,7 +3,7 @@ import { StyleSheet, View } from "react-native";
 import * as Yup from "yup";
 import defaultStyles from "../../../config/defaultStyles";
 
-import { Form, FormField, FormPicker, SubmitButton } from "../../forms";
+import { Form, FormField, FormPicker } from "../../forms";
 import CategoryPickerItem from "../../CategoryPickerItem";
 
 const validationSchema = Yup.object().shape({
@@ -12,7 +12,6 @@ const validationSchema = Yup.object().shape({
 });
 
 function ProductsHeader({
-  navigation,
   categories,
   onSubmit,
   current,
@@ -27,7 +26,6 @@ function ProductsHeader({
         validationSchema={validationSchema}
       >
         <FormField
-          autoFocus
           returnKeyType="go"
           keyboardAppearance={"dark"}
           autoCapitalize="none"

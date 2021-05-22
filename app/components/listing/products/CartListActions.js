@@ -3,7 +3,7 @@ import { StyleSheet, View } from "react-native";
 import AppButton from "../../AppButton";
 import ItemCounter from "../../ItemCounter";
 
-function OrderListActions({ quantity, setQuantity }) {
+function CartListActions({ quantity, setQuantity }) {
   return (
     <View style={styles.container}>
       {quantity && quantity > 0 ? (
@@ -81,6 +81,6 @@ const styles = StyleSheet.create({
   },
 });
 
-export default OrderListActions;
+export default CartListActions;
 
 // Tamil

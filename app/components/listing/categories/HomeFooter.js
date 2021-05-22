@@ -1,7 +1,6 @@
 import React from "react";
 import { StyleSheet, View, useWindowDimensions } from "react-native";
 import LoadingScreen from "../../../screens/utils/LoadingScreen";
-import AppText from "../../AppText";
 
 function CategoryFooter({ loading }) {
   const { width } = useWindowDimensions();

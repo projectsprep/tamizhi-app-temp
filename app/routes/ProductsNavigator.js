@@ -3,7 +3,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 
 import routes from "./routes";
 import ProductsScreen from "./../screens/ProductsScreen";
-import ProductDetailsScreen from "../screens/ProductDetailsScreen";
+import ProductDetailsScreen from "./../screens/ProductDetailsScreen";
 
 const Stack = createStackNavigator();
 

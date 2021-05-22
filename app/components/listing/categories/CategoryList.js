@@ -7,13 +7,12 @@ import {
   StyleSheet,
 } from "react-native";
 import CategoryListItem from "./CategoryListItem";
-import LoadingScreen from "./../../../screens/utils/LoadingScreen";
 import defaultStyles from "../../../config/defaultStyles";
 
-export default function Categories({ title, data, loading, onSelect }) {
+export default function Categories({ title, data, onSelect }) {
   return (
     <>
-      <LoadingScreen visible={loading} />
+      {/* <LoadingScreen visible={loading} /> */}
       <View style={styles.container}>
         <Text style={styles.heading}>
           {title + " "}

@@ -1,7 +1,8 @@
-// Orders
-export { default as OrdersFooter } from "./products/OrdersFooter";
-export { default as OrdersHeader } from "./products/OrdersHeader";
-export { default as OrderListActions } from "./products/OrderListActions";
+// Cart
+// Cart
+export { default as CartFooter } from "./products/CartHeader";
+export { default as CartHeader } from "./products/CartHeader";
+export { default as CartListActions } from "./products/CartListActions";
 
 // Products
 export { default as ProductListing } from "./products/ProductListing";

@@ -9,27 +9,28 @@ import {
   ProductListing,
   ProductsHeader,
   ProductsFooter,
-  OrderListActions,
+  CartListActions,
 } from "../components/listing";
-import useProducts from "../hooks/useProducts";
-import OrdersContext from "../context/OrdersContext";
+import routes from "../routes/routes";
+import CartContext from "./../context/CartContext";
+import useProducts from "./../hooks/useProducts";
 
 function ProductsScreen({ navigation }) {
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("Food");
   const [page, setPage] = useState(1);
 
-  const [orders, ordersLoading, setQuantity] = useContext(OrdersContext);
+  const [cart, cartLoading, setQuantity] = useContext(CartContext);
   const [prods, categories, loading, isMore] = useProducts(
     page,
     search,
     category
   );
 
-  const products = prods.map((prod) => {
-    const found = orders.find((order) => order.product_id === prod.product_id);
-    if (found) prod.quantity = found.quantity;
-    return prod;
+  const products = prods.map((product) => {
+    const found = cart.find((prod) => prod.product_id === product.product_id);
+    if (found) product.quantity = found.quantity;
+    return product;
   });
 
   const handleSubmit = ({ search: s, category: c }) => {
@@ -42,15 +43,12 @@ function ProductsScreen({ navigation }) {
     if (s) setSearch(s);
   };
 
-  const footer = () => (
-    <ProductsFooter navigation={navigation} isMore={isMore} loading={loading} />
-  );
+  const footer = () => <ProductsFooter isMore={isMore} loading={loading} />;
 
   const header = () => (
     <ProductsHeader
       onSearch={onSearch}
       setCategory={setCategory}
-      navigation={navigation}
       categories={categories}
       onSubmit={handleSubmit}
       current={{ category, search }}
@@ -58,7 +56,7 @@ function ProductsScreen({ navigation }) {
   );
 
   const actions = (item) => (
-    <OrderListActions
+    <CartListActions
       quantity={item.quantity}
       setQuantity={(action) => setQuantity(item.product_id, action)}
     />
@@ -68,8 +66,8 @@ function ProductsScreen({ navigation }) {
     <InfoScreen
       title="No Items Found"
       description="Try other keywords or Try Refreshing"
-      image={images.noOrders}
-      visible={!loading && !ordersLoading}
+      image={images.noProds}
+      visible={!loading && !cartLoading}
     />
   );
 
@@ -78,6 +76,11 @@ function ProductsScreen({ navigation }) {
       <ProductListing
         products={products}
         navigation={navigation}
+        onSelect={(item) =>
+          navigation.navigate(routes.PRODUCT_DETAILS, {
+            product: item,
+          })
+        }
         onEndReached={() => setPage(page + 1)}
         refreshing={loading}
         onRefresh={() => setPage(1)}

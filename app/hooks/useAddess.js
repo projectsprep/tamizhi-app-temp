@@ -16,8 +16,9 @@ export default function useAddress() {
 
     const response = await addressApi.getAllAddress({ user_id });
     if (!response.ok) return setLoading(false);
-    console.log(response.data);
+
     setAddresses(response.data);
+
     setIsUpdated(false);
     setLoading(false);
   };

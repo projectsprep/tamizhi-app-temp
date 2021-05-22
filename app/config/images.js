@@ -1,7 +1,7 @@
-const noOrders = require("../assets/ic_splash_first.png");
+const noProds = require("../assets/ic_splash_first.png");
 
 export default {
-  noOrders,
+  noProds,
 };
 
 // Tamil

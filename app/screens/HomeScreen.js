@@ -7,13 +7,12 @@ import HomeFooter from "../components/listing/categories/HomeFooter";
 import HomeHeader from "../components/listing/categories/HomeHeader";
 import InfoScreen from "./utils/InfoScreen";
 import routes from "../routes/routes";
-import defaultStyles from "../config/defaultStyles";
 
 function HomeScreen({ navigation }) {
-  const [categories, loading] = useCategories();
+  const [categories, loading, setUpdated] = useCategories();
 
   const header = () => (
-    <HomeHeader onPress={() => navigation.navigate(routes.PRODUCTS)} />
+    <HomeHeader onSearch={() => navigation.navigate(routes.PRODUCTS)} />
   );
 
   const footer = () => <HomeFooter loading={loading} />;
@@ -24,7 +23,7 @@ function HomeScreen({ navigation }) {
       title="Something went wrong"
       description="check your internet connection and retry"
       action={() => navigation.replace(routes.HOME)}
-      image={images.noOrders}
+      image={images.noProds}
       visible={!loading}
     />
   );
@@ -33,6 +32,8 @@ function HomeScreen({ navigation }) {
     <View style={styles.container}>
       <FlatList
         data={categories}
+        refreshing={loading}
+        onRefresh={() => setUpdated(true)}
         stickyHeaderIndices={[0]}
         ListFooterComponent={footer}
         ListHeaderComponent={header}

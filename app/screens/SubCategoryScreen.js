@@ -9,14 +9,14 @@ import InfoScreen from "./utils/InfoScreen";
 import images from "../config/images";
 import AddressItem from "../components/listing/Address/AddressItem";
 
-function AddressScreen({ navigation }) {
+function SubCategoryScreen(props) {
   const { user_id } = { user_id: 52326 };
   const [addresses, loading, setUpdated] = useAddress();
 
   const filtered = addresses.filter((address) => address);
 
   const editAddress = (action, values) => {
-    navigation.replace(routes.EDIT_ADDRESSES, {
+    navigation.navigate(routes.EDIT_ADDRESSES, {
       user_id,
       action,
       values,
@@ -57,9 +57,7 @@ function AddressScreen({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
+  container: {},
 });
 
-export default AddressScreen;
+export default SubCategoryScreen;

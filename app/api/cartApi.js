@@ -1,7 +1,7 @@
 import apiClient from "./client";
 const endpoint = "/test";
 
-const getOrders = ({ user_id }) =>
+const getCart = ({ user_id }) =>
   apiClient.post(endpoint + "/orders", { user_id });
 
 const increaseCount = ({ user_id, product_id }) =>
@@ -13,6 +13,6 @@ const decreaseCount = ({ user_id, product_id }) =>
 const remove = ({ user_id, product_id }) =>
   apiClient.post(endpoint + "/orders/remove", { user_id, product_id });
 
-export default { getOrders, increaseCount, decreaseCount, remove };
+export default { getCart, increaseCount, decreaseCount, remove };
 
 // Tamil

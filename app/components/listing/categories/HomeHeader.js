@@ -1,15 +1,16 @@
 import React from "react";
-import { StyleSheet, Image, View, TouchableOpacity } from "react-native";
-import defaultStyles from "../../../config/defaultStyles";
-import images from "../../../config/images";
-import AppTextInput from "../../AppTextInput";
+import { StyleSheet, View, TouchableOpacity } from "react-native";
 
-function HomeHeader({ onPress }) {
+import defaultStyles from "../../../config/defaultStyles";
+import AppTextInput from "./../../AppTextInput";
+
+function HomeHeader({ onSearch }) {
   return (
     <View style={styles.container}>
       {/* <Image source={images.noOrders} style={styles.orderImage} /> */}
-      <TouchableOpacity onPress={onPress}>
+      <TouchableOpacity onPress={onSearch}>
         <AppTextInput
+          onSearch={onSearch}
           placeholder="search"
           containerStyle={styles.input}
           style={styles.search}

@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   placeholder: {
-    color: defaultStyles.colors.medium,
+    color: defaultStyles.colors.textColor,
     flex: 1,
   },
   text: {

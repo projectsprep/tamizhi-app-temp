@@ -25,7 +25,6 @@ const styles = StyleSheet.create({
     paddingVertical: 15,
     alignItems: "center",
     borderRadius: 15,
-    // justifyContent: "space-evenly",
     width: "33%",
   },
 
@@ -34,6 +33,7 @@ const styles = StyleSheet.create({
   label: {
     marginTop: 5,
     textAlign: "center",
+    color: "black",
   },
 });
 

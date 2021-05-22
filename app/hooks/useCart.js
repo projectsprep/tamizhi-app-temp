@@ -1,70 +1,69 @@
 import { useState, useEffect } from "react";
-import ordersApi from "../api/ordersApi";
+import cartApi from "../api/cartApi";
 import Notifier from "../utility/Notifier";
 import wishListApi from "../api/wishListApi";
 
-export default function useOrders() {
-  const [orders, setOrders] = useState([]);
+export default function useCart() {
+  const [cart, setCart] = useState([]);
   const [loading, setLoading] = useState(false);
   const { user_id } = { user_id: 52326 };
 
   const setQuantity = (product_id, action) => {
-    const order = orders.find((order) => order.product_id === product_id);
-    if (order && action === "add") return;
-    if (!order && action != "add") return;
-    const newOrders = orders.filter((order) => order.product_id !== product_id);
-    const oldQuantity = order ? order.quantity : 1;
-    console.log(action);
+    const product = cart.find((prod) => prod.product_id === product_id);
+    if (product && action === "add") return;
+    if (!product && action != "add") return;
+    const newProducts = cart.filter((prod) => prod.product_id !== product_id);
+    const oldQuantity = product ? product.quantity : 1;
 
     async function add() {
-      const addRes = await ordersApi.increaseCount({
+      const addRes = await cartApi.increaseCount({
         user_id,
         product_id,
       });
       if (!addRes.ok) {
         Notifier.toastLong(addRes.data.message);
       }
-      setOrders([...newOrders, addRes.data]);
+      setCart([...newProducts, addRes.data]);
     }
 
     async function increment() {
-      const incRes = await ordersApi.increaseCount({
+      const incRes = await cartApi.increaseCount({
         user_id,
         product_id,
       });
       if (!incRes.ok) {
-        order.quantity = oldQuantity;
+        product.quantity = oldQuantity;
         Notifier.toastLong(resRes.data.message);
-        setOrders([...newOrders, order]);
+        setCart([...newProducts, product]);
       }
     }
 
     async function decrement() {
-      const resDec = await ordersApi.decreaseCount({
+      const resDec = await cartApi.decreaseCount({
         user_id,
         product_id,
       });
       if (!resDec.ok) {
-        order.quantity = oldQuantity;
+        product.quantity = oldQuantity;
         Notifier.toastLong(resDec.data.message);
-        setOrders([...newOrders, order]);
+        setCart([...newProducts, product]);
       }
     }
 
     async function remove() {
-      const resRm = await ordersApi.remove({
+      const resRm = await cartApi.remove({
         user_id,
         product_id,
       });
       if (!resRm.ok) {
-        order.quantity = oldQuantity;
+        product.quantity = oldQuantity;
         Notifier.toastLong(resRm.data.message);
-        setOrders([...newOrders, order]);
+        setCart([...newProducts, product]);
       }
     }
 
     async function saveForLater() {
-      const resRmd = await ordersApi.remove({
+      const resRmd = await cartApi.remove({
         user_id,
         product_id,
       });
@@ -73,9 +72,9 @@ export default function useOrders() {
         product_id,
       });
       if (!resRmd.ok) {
-        order.quantity = oldQuantity;
+        product.quantity = oldQuantity;
         Notifier.toastLong(resRmd.data.message);
-        setOrders([...newOrders, order]);
+        setCart([...newProducts, product]);
       }
       if (!resSav.ok) {
         Notifier.toastLong("Error Adding product to Wishlist");
@@ -87,26 +86,26 @@ export default function useOrders() {
         return add();
 
       case "inc":
-        if (order.quantity >= order.product.stock)
+        if (product.quantity >= product.product.stock)
           return Notifier.toastLong("Out of stock");
 
-        order.quantity = order.quantity + 1;
-        setOrders([...newOrders, order]);
+        product.quantity = product.quantity + 1;
+        setCart([...newProducts, product]);
 
         return increment();
 
       case "dec":
-        order.quantity = order.quantity - 1;
-        setOrders([...newOrders, order]);
+        product.quantity = product.quantity - 1;
+        setCart([...newProducts, product]);
 
         return decrement();
 
       case "remove":
-        setOrders(newOrders);
+        setCart(newProducts);
         return remove();
 
       case "save":
-        setOrders(newOrders);
+        setCart(newProducts);
         return saveForLater();
 
       default:
@@ -115,18 +114,18 @@ export default function useOrders() {
   };
 
   useEffect(() => {
-    getOrders();
+    getCart();
   }, []);
 
-  const getOrders = async () => {
+  const getCart = async () => {
     setLoading(true);
 
-    const response = await ordersApi.getOrders({ user_id: 1 });
+    const response = await cartApi.getCart({ user_id: 1 });
     if (!response.ok) return setLoading(false);
 
-    setOrders(response.data);
+    setCart(response.data);
     setLoading(false);
   };
 
-  return [orders, loading, setQuantity];
+  return [cart, loading, setQuantity];
 }

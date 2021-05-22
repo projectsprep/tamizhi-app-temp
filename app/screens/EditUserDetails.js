@@ -11,10 +11,10 @@ const validationSchema = Yup.object().shape({
   name: Yup.string().required().label("Name"),
   email: Yup.string().required().email().label("Email"),
   mobile: Yup.string().required().email().label("Moblie Number"),
-  address: Yup.string().required().min(4).label("Address"),
 });
 
-function EditUserDetails({ navigation }) {
+function EditUserDetails({ navigation, route }) {
+  const details = route.params;
   const handleSubmit = () => null;
   return (
     <Screen style={styles.container}>
@@ -30,6 +30,17 @@ function EditUserDetails({ navigation }) {
           icon="account"
           name="name"
           placeholder="Name"
+          defaultValue={details.name}
+        />
+        <FormField
+          autoCapitalize="none"
+          autoCorrect={false}
+          icon="phone"
+          keyboardType="number-pad"
+          name="mobile"
+          placeholder="Contact Number"
+          textContentType="telephoneNumber"
+          defaultValue={details.mobile}
         />
         <FormField
           autoCapitalize="none"
@@ -39,15 +50,7 @@ function EditUserDetails({ navigation }) {
           name="email"
           placeholder="Email"
           textContentType="emailAddress"
-        />
-        <FormField
-          autoCapitalize="none"
-          autoCorrect={false}
-          icon="home"
-          name="address"
-          placeholder="Address"
-          secureTextEntry
-          textContentType="address"
+          defaultValue={details.email}
         />
         <SubmitButton title="Update" />
       </Form>
