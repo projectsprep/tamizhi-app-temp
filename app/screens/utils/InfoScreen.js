@@ -13,11 +13,16 @@ function InfoScreen({
   action,
   visible,
 }) {
-  const { height } = useWindowDimensions();
+  const { height, width } = useWindowDimensions();
 
   if (!visible) return null;
   return (
-    <Screen style={{ ...styles.container, height: height / 1.15 }}>
+    <Screen
+      style={{
+        ...styles.container,
+        height: height / 1.15,
+      }}
+    >
       <View style={styles.info}>
         {image && <Image source={image} style={styles.image} />}
         <AppText style={styles.title}>{title}</AppText>
@@ -40,7 +45,6 @@ const styles = StyleSheet.create({
 
   info: {
     flex: 1,
-    // position: "absolute",
     justifyContent: "center",
     alignItems: "center",
   },

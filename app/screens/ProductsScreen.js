@@ -10,7 +10,7 @@ import {
   ProductsHeader,
   ProductsFooter,
   OrderListActions,
-} from "../components/Listings";
+} from "../components/listing";
 import useProducts from "../hooks/useProducts";
 import OrdersContext from "../context/OrdersContext";
 
@@ -18,12 +18,13 @@ function ProductsScreen({ navigation }) {
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("Food");
   const [page, setPage] = useState(1);
+
+  const [orders, ordersLoading, setQuantity] = useContext(OrdersContext);
   const [prods, categories, loading, isMore] = useProducts(
     page,
     search,
     category
   );
-  const [orders, ordersLoading, setQuantity] = useContext(OrdersContext);
 
   const products = prods.map((prod) => {
     const found = orders.find((order) => order.product_id === prod.product_id);
@@ -31,21 +32,24 @@ function ProductsScreen({ navigation }) {
     return prod;
   });
 
-  const handleSubmit = ({ search, category }) => {
-    if (search) setSearch(search);
-    if (category) setCategory(category.value);
+  const handleSubmit = ({ search: s, category: c }) => {
+    if (s) setSearch(s);
+    if (c) setCategory(c.value);
+  };
+
+  const onSearch = (s) => {
+    console.log(154);
+    if (s) setSearch(s);
   };
 
   const footer = () => (
-    <ProductsFooter
-      navigation={navigation}
-      onPress={() => setPage(page + 1)}
-      isMore={isMore}
-    />
+    <ProductsFooter navigation={navigation} isMore={isMore} loading={loading} />
   );
 
   const header = () => (
     <ProductsHeader
+      onSearch={onSearch}
+      setCategory={setCategory}
       navigation={navigation}
       categories={categories}
       onSubmit={handleSubmit}
@@ -63,7 +67,7 @@ function ProductsScreen({ navigation }) {
   const info = () => (
     <InfoScreen
       title="No Items Found"
-      description="Try any other key words"
+      description="Try other keywords or Try Refreshing"
       image={images.noOrders}
       visible={!loading && !ordersLoading}
     />

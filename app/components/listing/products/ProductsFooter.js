@@ -1,9 +1,9 @@
 import React from "react";
 import { StyleSheet, View, useWindowDimensions } from "react-native";
-import LoadingScreen from "./../../../screens/utils/LoadingScreen";
-import AppText from "./../../AppText";
+import LoadingScreen from "../../../screens/utils/LoadingScreen";
+import AppText from "../../AppText";
 
-function ProductsFooter({ onPress, isMore }) {
+function ProductsFooter({ onPress, isMore, loading }) {
   const { width } = useWindowDimensions();
   return isMore ? (
     <View style={{ ...styles.container, width }}>
@@ -11,7 +11,7 @@ function ProductsFooter({ onPress, isMore }) {
     </View>
   ) : (
     <View style={{ ...styles.container, width, height: 50 }}>
-      <AppText>No more items</AppText>
+      {!loading && <AppText>No more items</AppText>}
     </View>
   );
 }

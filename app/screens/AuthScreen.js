@@ -3,14 +3,14 @@ import React, { useState } from "react";
 import { StyleSheet, Image, ToastAndroid } from "react-native";
 import * as Yup from "yup";
 
-import LoadingScreen from "./utils/LoadingScreen";
-import Screen from "../components/Screen";
-import { Form, FormField, SubmitButton } from "../components/forms";
+import icons from "../config/icons";
 import routes from "../routes/routes";
+import Screen from "../components/Screen";
 import authApi from "../api/authApi";
 import AppText from "../components/AppText";
 import defaultStyle from "../config/defaultStyles";
-import icons from "../config/icons";
+import LoadingScreen from "./utils/LoadingScreen";
+import { Form, FormField, SubmitButton } from "../components/forms";
 
 const validationSchema = Yup.object().shape({
   mobile: Yup.string().required().label("Mobile Number"),
@@ -68,7 +68,10 @@ function AuthScreen({ navigation }) {
           <SubmitButton title="Login" />
         </Form>
       </Screen>
-      <LoadingScreen visible={loading} />
+      <LoadingScreen
+        visible={loading}
+        backgroundColor={defaultStyle.colors.white}
+      />
     </>
   );
 }

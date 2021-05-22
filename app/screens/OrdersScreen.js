@@ -11,7 +11,7 @@ import {
   OrdersFooter,
   OrdersHeader,
   OrderListActions,
-} from "./../components/Listings";
+} from "../components/listing";
 import routes from "../routes/routes";
 import ordersContext from "../context/OrdersContext";
 

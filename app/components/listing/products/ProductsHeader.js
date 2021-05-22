@@ -4,45 +4,52 @@ import * as Yup from "yup";
 import defaultStyles from "../../../config/defaultStyles";
 
 import { Form, FormField, FormPicker, SubmitButton } from "../../forms";
-import CategoryPickerItem from "./../../CategoryPickerItem";
+import CategoryPickerItem from "../../CategoryPickerItem";
 
 const validationSchema = Yup.object().shape({
   search: Yup.string().label("Search term"),
   category: Yup.object().nullable().label("Category"),
 });
 
-function ProductsHeader({ navigation, categories, onSubmit, current }) {
+function ProductsHeader({
+  navigation,
+  categories,
+  onSubmit,
+  current,
+  onSearch,
+  setCategory,
+}) {
   return (
     <View style={styles.container}>
       <Form
-        initialValues={{ search: "" }}
+        initialValues={{}}
         onSubmit={({ search, category }) => onSubmit({ search, category })}
         validationSchema={validationSchema}
       >
         <FormField
+          autoFocus
+          returnKeyType="go"
           keyboardAppearance={"dark"}
           autoCapitalize="none"
           autoCorrect={true}
-          icon="home"
+          icon="home-search"
           name="search"
           placeholder="Search for products and shops"
           containerStyle={styles.field}
+          onSearch={onSearch}
+          defaultValue={current.search}
         />
 
-        <View style={styles.searchBox}>
-          <FormPicker
-            name="category"
-            numberOfColumns={3}
-            placeholder={current.category}
-            style={styles.picker}
-            width={"40%"}
-            items={categories}
-            throwError={false}
-            PickerItemComponent={CategoryPickerItem}
-          />
-
-          <SubmitButton title="Search" style={styles.button} />
-        </View>
+        <FormPicker
+          onSelected={(item) => setCategory(item.value)}
+          name="category"
+          numberOfColumns={3}
+          placeholder={current.category}
+          style={styles.picker}
+          items={categories}
+          throwError={false}
+          PickerItemComponent={CategoryPickerItem}
+        />
       </Form>
     </View>
   );
@@ -53,17 +60,10 @@ const styles = StyleSheet.create({
     backgroundColor: defaultStyles.colors.white,
   },
 
-  searchBox: {
-    flexDirection: "row",
-    justifyContent: "space-around",
-  },
-
   picker: {
+    height: 40,
+    paddingVertical: "2%",
     borderRadius: 10,
-  },
-
-  button: {
-    width: "40%",
   },
 });
 

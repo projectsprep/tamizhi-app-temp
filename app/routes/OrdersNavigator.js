@@ -8,7 +8,9 @@ import OrdersScreen from "./../screens/OrdersScreen";
 const Stack = createStackNavigator();
 
 const OrdersNavigator = (props) => (
-  <Stack.Navigator screenOptions={{ headerShown: false }}>
+  <Stack.Navigator
+  // screenOptions={{ headerShown: false }}
+  >
     <Stack.Screen name={routes.ORDERS} component={OrdersScreen} />
     <Stack.Screen
       name={routes.ORDERS_DETAILS}

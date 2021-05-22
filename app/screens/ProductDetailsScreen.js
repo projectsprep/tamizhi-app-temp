@@ -4,7 +4,7 @@ import { View, StyleSheet } from "react-native";
 import colors from "../config/colors";
 import AppText from "./../components/AppText";
 import ImageSlider from "./../components/ImageSlider";
-import { OrderListActions } from "./../components/Listings";
+import { OrderListActions } from "../components/listing";
 import OrdersContext from "./../context/OrdersContext";
 
 function ProductDetailsScreen({ route }) {

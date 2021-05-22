@@ -67,7 +67,10 @@ function PhoneVerification({ navigation, route }) {
           <SubmitButton title="Verify" />
         </Form>
       </Screen>
-      <LoadingView visible={loading} />
+      <LoadingView
+        visible={loading}
+        backgroundColor={defaultStyle.colors.white}
+      />
     </>
   );
 }

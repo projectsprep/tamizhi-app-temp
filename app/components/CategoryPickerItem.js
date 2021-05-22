@@ -1,17 +1,16 @@
 import React from "react";
-import { View, StyleSheet, TouchableOpacity } from "react-native";
+import { View, StyleSheet, Image, TouchableOpacity } from "react-native";
 
-import Icon from "./Icon";
 import AppText from "./AppText";
 
 function CategoryPickerItem({ item, onPress }) {
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={onPress}>
-        <Icon
+        <Image
           backgroundColor={item.backgroundColor}
-          name={item.icon}
-          size={100}
+          source={{ uri: item.icon }}
+          style={styles.image}
           radius={10}
         />
       </TouchableOpacity>
@@ -25,9 +24,13 @@ const styles = StyleSheet.create({
     paddingHorizontal: 30,
     paddingVertical: 15,
     alignItems: "center",
+    borderRadius: 15,
     // justifyContent: "space-evenly",
     width: "33%",
   },
+
+  image: { width: 100, height: 100, borderRadius: 15 },
+
   label: {
     marginTop: 5,
     textAlign: "center",

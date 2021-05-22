@@ -5,7 +5,7 @@ import wishListApi from "../api/wishListApi";
 
 export default function useOrders() {
   const [orders, setOrders] = useState([]);
-  const [loading, setLoading] = useState([]);
+  const [loading, setLoading] = useState(false);
   const { user_id } = { user_id: 52326 };
 
   const setQuantity = (product_id, action) => {

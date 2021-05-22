@@ -8,7 +8,9 @@ import ProductDetailsScreen from "../screens/ProductDetailsScreen";
 const Stack = createStackNavigator();
 
 const ProductsNavigator = (props) => (
-  <Stack.Navigator screenOptions={{ headerShown: false }}>
+  <Stack.Navigator
+  // screenOptions={{ headerShown: false }}
+  >
     <Stack.Screen name={routes.SEARCH} component={ProductsScreen} />
     <Stack.Screen
       name={routes.PRODUCT_DETAILS}

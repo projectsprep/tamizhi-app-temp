@@ -13,6 +13,7 @@ function AppTextInput({
   containerStyle,
   note,
   isFocused = true,
+  onSearch,
   ...otherProps
 }) {
   const inputRef = useRef();
@@ -39,6 +40,7 @@ function AppTextInput({
           ref={inputRef}
           placeholderTextColor={style.colors.medium}
           style={style.text}
+          onSubmitEditing={onSearch}
           {...otherProps}
         />
       </View>
