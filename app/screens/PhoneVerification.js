@@ -20,6 +20,7 @@ const validationSchema = Yup.object().shape({
 });
 
 function PhoneVerification({ navigation, route }) {
+  const { redirect } = route.params;
   const [error, setError] = useState();
   const [loading, setLoading] = useState();
 
@@ -41,7 +42,7 @@ function PhoneVerification({ navigation, route }) {
     setError(false);
     setLoading(false);
 
-    navigation.reset({ index: 0, routes: [{ name: routes.MAIN }] });
+    navigation.reset({ index: 0, routes: [{ name: redirect }] });
   };
 
   return (

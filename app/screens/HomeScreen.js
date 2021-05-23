@@ -12,7 +12,9 @@ function HomeScreen({ navigation }) {
   const [categories, loading, setUpdated] = useCategories();
 
   const header = () => (
-    <HomeHeader onSearch={() => navigation.navigate(routes.PRODUCTS)} />
+    <HomeHeader
+      onSearch={(query) => navigation.navigate(routes.PRODUCTS, { query })}
+    />
   );
 
   const footer = () => <HomeFooter loading={loading} />;

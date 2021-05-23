@@ -7,7 +7,8 @@ import InfoScreen from "./utils/InfoScreen";
 import Screen from "../components/Screen";
 import LoadingScreen from "./utils/LoadingScreen";
 import {
-  ProductListing,
+  Listing,
+  ProductListItem,
   CartFooter,
   CartHeader,
   CartListActions,
@@ -18,20 +19,14 @@ import CartContext from "../context/CartContext";
 function CartScreen({ navigation }) {
   const [cart, loading, setQuantity] = useContext(CartContext);
 
-  const header = (products) => (
-    <CartHeader navigation={navigation} visible={!loading} />
-  );
-
-  const footer = (products) => (
-    <CartFooter navigation={navigation} visible={!loading} />
-  );
-
-  const actions = (item) => (
-    <CartListActions
-      quantity={item.quantity}
-      setQuantity={(action) => setQuantity(item.product_id, action)}
+  const header = () => (
+    <CartHeader
+      onPress={() => navigation.navigate(routes.CHECK_OUT, { cart })}
+      visible={cart.length !== 0 && !loading}
     />
   );
+
+  const footer = () => <CartFooter visible={!loading} />;
 
   const info = () => (
     <InfoScreen
@@ -44,23 +39,39 @@ function CartScreen({ navigation }) {
     />
   );
 
+  const productItem = (item, onSelect) => (
+    <ProductListItem
+      id={item.product_id}
+      imageUri={item.image_uris[0]}
+      title={item.name}
+      rating={item.ratings}
+      presentPrice={item.presentPrice}
+      price={item.price}
+      onPress={() => onSelect(item)}
+      ActionBar={() => (
+        <CartListActions
+          quantity={item.quantity}
+          setQuantity={(action) => setQuantity(item.product_id, action)}
+        />
+      )}
+    />
+  );
+
   return (
     <Screen style={styles.container}>
       <LoadingScreen visible={loading} />
-      <ProductListing
-        products={cart}
-        setQuantity={setQuantity}
+      <Listing
+        items={_.orderBy(cart, "product_id", "desc")}
+        stickyHeaderIndices={[0]}
+        customListItem={productItem}
+        header={header}
+        footer={footer}
+        emptyInfoScreen={info}
         onSelect={(item) =>
-          navigation.navigate(routes.PRODUCT_DETAILS, {
+          navigation.navigate(routes.CART_PRODUCT_DETAILS, {
             product: item,
           })
         }
-        stickyHeaderIndices={[0]}
-        initialNumToRender={5}
-        header={header}
-        footer={footer}
-        actions={actions}
-        emptyInfoScreen={info}
       />
     </Screen>
   );

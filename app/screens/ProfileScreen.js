@@ -16,7 +16,7 @@ const menu = [
       name: "cart",
       backgroundColor: defaultStyles.colors.primary,
     },
-    targetScreen: routes.CART,
+    targetScreen: routes.ORDERS,
   },
   {
     title: "Manage Address",
@@ -44,6 +44,14 @@ const lines = [
       backgroundColor: defaultStyles.colors.success,
     },
     targetScreen: routes.FEEDBACK,
+  },
+  {
+    title: "Login",
+    icon: {
+      name: "login",
+      backgroundColor: defaultStyles.colors.secondary,
+    },
+    targetScreen: routes.PROFILE_AUTH,
   },
 ];
 
@@ -91,7 +99,11 @@ function ProfileScreen({ navigation }) {
                       backgroundColor={item.icon.backgroundColor}
                     />
                   }
-                  onPress={() => navigation.navigate(item.targetScreen)}
+                  onPress={() =>
+                    navigation.navigate(item.targetScreen, {
+                      redirect: routes.PROFILE_OPTIONS,
+                    })
+                  }
                 />
                 <ListItemSeparator />
               </View>

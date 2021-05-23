@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import AppText from "./../components/AppText";
+import AppText from "../components/AppText";
 
 function EditLocation(props) {
   return (

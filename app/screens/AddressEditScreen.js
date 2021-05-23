@@ -1,5 +1,5 @@
-import React from "react";
-import { StyleSheet } from "react-native";
+import React, { useEffect } from "react";
+import { StyleSheet, BackHandler } from "react-native";
 import * as Yup from "yup";
 
 import Screen from "./../components/Screen";
@@ -14,11 +14,23 @@ const validationSchema = Yup.object().shape({
   addressLine1: Yup.string().required().label("Address line 1"),
   addressLine2: Yup.string().required().label("Address line 2"),
   pincode: Yup.number().required().label("Pin code"),
-  // location: Yup.number().required().label("lat lang"),
+  // location: Yup.object().required().label("lat lang"),
 });
 
 function AddressEditScreen({ navigation, route }) {
   const { action, user_id, values } = route.params;
+
+  useEffect(() => {
+    BackHandler.addEventListener("hardwareBackPress", backHandler);
+    return () => {
+      BackHandler.removeEventListener("hardwareBackPress", backHandler);
+    };
+  }, []);
+
+  const backHandler = () => {
+    navigation.replace(routes.ADDRESSES);
+    return true;
+  };
 
   const initialValues = values
     ? values

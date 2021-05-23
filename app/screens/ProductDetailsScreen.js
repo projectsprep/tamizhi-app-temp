@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { View, StyleSheet } from "react-native";
+import { ScrollView, View, StyleSheet } from "react-native";
 
 import colors from "../config/colors";
 import AppText from "./../components/AppText";
@@ -9,25 +9,39 @@ import CartContext from "../context/CartContext";
 
 function ProductDetailsScreen({ route }) {
   const [cart, cartLoading, setQuantity] = useContext(CartContext);
+
   const { product } = route.params;
   const found = cart.find((prod) => product.product_id === prod.product_id);
   const quantity = found ? found.quantity : 0;
 
   return (
-    <View>
-      <ImageSlider images={product.image_uris} />
-      <View style={styles.detailsContainer}>
-        <AppText style={styles.title}>{product.title || product.name}</AppText>
-        <AppText style={styles.price}>Rs. {product.presentPrice}</AppText>
-        <AppText>{product.description}</AppText>
-      </View>
-      <CartListActions quantity={quantity} setQuantity={setQuantity} />
+    <View style={styles.container}>
+      <ScrollView>
+        <ImageSlider images={product.image_uris} />
+        <View style={styles.detailsContainer}>
+          <AppText style={styles.title}>
+            {product.title || product.name}
+          </AppText>
+          <AppText style={styles.price}>Rs. {product.presentPrice}</AppText>
+          <AppText>{product.description}</AppText>
+        </View>
+
+        <View style={styles.actionContainer}>
+          <CartListActions quantity={quantity} setQuantity={setQuantity} />
+        </View>
+      </ScrollView>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+  container: {
+    // padding: 20,
+  },
   detailsContainer: {
+    padding: 20,
+  },
+  actionContainer: {
     padding: 20,
   },
   image: {

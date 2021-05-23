@@ -26,7 +26,7 @@ function ProductsHeader({
         validationSchema={validationSchema}
       >
         <FormField
-          returnKeyType="go"
+          returnKeyType="search"
           keyboardAppearance={"dark"}
           autoCapitalize="none"
           autoCorrect={true}

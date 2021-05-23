@@ -9,7 +9,7 @@ const store = async (key, value) => {
     const item = { value, timestamp: Date.now() };
     await AsyncStorage.setItem(prefix + key, JSON.stringify(item));
   } catch (ex) {
-    console.log(ex);
+    console.error(ex);
   }
 };
 
@@ -24,7 +24,7 @@ const get = async (key, isVolatile) => {
 
     return item.value;
   } catch (ex) {
-    console.log(ex);
+    console.error(ex);
   }
 };
 

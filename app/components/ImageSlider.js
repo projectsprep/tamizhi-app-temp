@@ -14,19 +14,16 @@ export default function ImageSlider({ images }) {
         activeDotIndex={10}
         ref={ref}
         data={images}
-        renderItem={({ item, index }) => {
-          console.log(item);
-          return (
-            <View
-              style={{
-                height: Math.floor(height * (50 / 100)),
-                width: width,
-              }}
-            >
-              <Image style={styles.image} source={{ uri: item }} />
-            </View>
-          );
-        }}
+        renderItem={({ item, index }) => (
+          <View
+            style={{
+              height: Math.floor(height * (50 / 100)),
+              width: width,
+            }}
+          >
+            <Image style={styles.image} source={{ uri: item }} />
+          </View>
+        )}
         sliderWidth={width}
         itemWidth={width}
         onSnapToItem={(index) => setActive(index)}

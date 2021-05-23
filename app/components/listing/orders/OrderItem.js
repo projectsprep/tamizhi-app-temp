@@ -3,15 +3,14 @@ import { StyleSheet, TouchableOpacity } from "react-native";
 import AppText from "../../AppText";
 import defaultStyles from "../../../config/defaultStyles";
 
-function AddressItem({ address, onPress }) {
-  if (!address) return null;
+function OrderItem({ order, onPress }) {
+  if (!order) return null;
   return (
     <TouchableOpacity onPress={onPress} style={styles.container}>
-      <AppText>{address.label} : </AppText>
-      <AppText>{address.doorNo},</AppText>
-      <AppText>{address.addressLine1},</AppText>
-      <AppText>{address.addressLine2},</AppText>
-      <AppText>{`${address.pincode}`},</AppText>
+      <AppText>Tracking Id: {order.trackingId + ""},</AppText>
+      <AppText>Status: {order.status + ""},</AppText>
+      <AppText>Number of products: {order.noOfItems + ""},</AppText>
+      <AppText>Total Price: {order.totalPrice + ""},</AppText>
     </TouchableOpacity>
   );
 }
@@ -28,4 +27,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default AddressItem;
+export default OrderItem;

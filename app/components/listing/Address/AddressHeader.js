@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
 import defaultStyles from "../../../config/defaultStyles";
-import AppButton from "./../../AppButton";
+import AppButton from "../../AppButton";
 
 function AddressHeader({ onPress }) {
   return (

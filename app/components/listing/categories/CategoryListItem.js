@@ -4,7 +4,6 @@ import defaultStyles from "../../../config/defaultStyles";
 import AppText from "./../../AppText";
 
 function CategoryListItem({ catname, catimg, onPress }) {
-  console.log(catname, "----", catimg);
   return (
     <TouchableOpacity onPress={onPress}>
       <View style={styles.container}>

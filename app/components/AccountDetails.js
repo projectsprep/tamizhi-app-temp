@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, View } from "react-native";
 import AppText from "./AppText";
 import AppButton from "./AppButton";
-import AddressItem from "./listing/Address/AddressItem";
+import AddressItem from "./listing/address/AddressItem";
 
 function AccountDetails({ address, onEdit, onAddress }) {
   return (

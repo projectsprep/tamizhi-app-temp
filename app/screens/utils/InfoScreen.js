@@ -15,8 +15,6 @@ function InfoScreen({
 }) {
   const { height } = useWindowDimensions();
 
-  console.log("loading", visible);
-
   if (!visible) return null;
   return (
     <Screen

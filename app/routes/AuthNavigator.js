@@ -7,13 +7,16 @@ import PhoneVerification from "./../screens/PhoneVerification";
 
 const Stack = createStackNavigator();
 
-const AuthNavigator = (props) => (
+const AuthNavigator = ({ route }) => (
   <Stack.Navigator screenOptions={{ headerShown: false }}>
-    <Stack.Screen name={routes.LOGIN} component={AuthScreen} />
+    <Stack.Screen
+      name={routes.LOGIN}
+      component={AuthScreen}
+      initialParams={{ redirect: route.params?.redirect ?? routes.MAIN }}
+    />
     <Stack.Screen
       name={routes.OTP_VERIFICATION}
       component={PhoneVerification}
-      initialParams={{ redirect: routes.MAIN }}
     />
   </Stack.Navigator>
 );

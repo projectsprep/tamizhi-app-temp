@@ -4,7 +4,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import routes from "./routes";
 import WelcomeScreen from "../screens/WelcomeScreen";
 import WelcomeOptions from "../screens/WelcomeOptions";
-import EditLocation from "./../screens/EditLocation";
+import EditLocation from "../screens/EditLocationScreen";
 import AppNavigator from "./AppNavigator";
 import AuthNavigator from "./AuthNavigator";
 

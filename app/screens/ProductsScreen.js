@@ -6,7 +6,8 @@ import images from "../config/images";
 import InfoScreen from "./utils/InfoScreen";
 import Screen from "./../components/Screen";
 import {
-  ProductListing,
+  Listing,
+  ProductListItem,
   ProductsHeader,
   ProductsFooter,
   CartListActions,
@@ -15,8 +16,9 @@ import routes from "../routes/routes";
 import CartContext from "./../context/CartContext";
 import useProducts from "./../hooks/useProducts";
 
-function ProductsScreen({ navigation }) {
-  const [search, setSearch] = useState("");
+function ProductsScreen({ navigation, route }) {
+  const query = route.params?.query ?? "";
+  const [search, setSearch] = useState(query);
   const [category, setCategory] = useState("Food");
   const [page, setPage] = useState(1);
 
@@ -39,7 +41,6 @@ function ProductsScreen({ navigation }) {
   };
 
   const onSearch = (s) => {
-    console.log(154);
     if (s) setSearch(s);
   };
 
@@ -55,10 +56,21 @@ function ProductsScreen({ navigation }) {
     />
   );
 
-  const actions = (item) => (
-    <CartListActions
-      quantity={item.quantity}
-      setQuantity={(action) => setQuantity(item.product_id, action)}
+  const productItem = (item, onSelect) => (
+    <ProductListItem
+      id={item.product_id}
+      imageUri={item.image_uris[0]}
+      title={item.name}
+      rating={item.ratings}
+      presentPrice={item.presentPrice}
+      price={item.price}
+      onPress={() => onSelect(item)}
+      ActionBar={() => (
+        <CartListActions
+          quantity={item.quantity}
+          setQuantity={(action) => setQuantity(item.product_id, action)}
+        />
+      )}
     />
   );
 
@@ -73,23 +85,22 @@ function ProductsScreen({ navigation }) {
 
   return (
     <Screen style={styles.container}>
-      <ProductListing
-        products={products}
-        navigation={navigation}
+      <Listing
+        items={_.orderBy(products, "product_id", "desc")}
+        footer={footer}
+        header={header}
+        refreshing={loading}
+        onEndReached={() => setPage(page + 1)}
+        onEndReachedThreshold={0.5}
+        onRefresh={() => setPage(1)}
+        stickyHeaderIndices={[0]}
+        emptyInfoScreen={info}
+        customListItem={productItem}
         onSelect={(item) =>
           navigation.navigate(routes.PRODUCT_DETAILS, {
             product: item,
           })
         }
-        onEndReached={() => setPage(page + 1)}
-        refreshing={loading}
-        onRefresh={() => setPage(1)}
-        stickyHeaderIndices={[0]}
-        initialNumToRender={5}
-        footer={footer}
-        header={header}
-        actions={actions}
-        emptyInfoScreen={info}
       />
     </Screen>
   );

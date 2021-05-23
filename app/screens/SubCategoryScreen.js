@@ -3,11 +3,11 @@ import { StyleSheet, View, FlatList } from "react-native";
 
 import routes from "../routes/routes";
 import useAddress from "./../hooks/useAddess";
-import AddressHeader from "../components/listing/Address/AddressHeader";
-import AddressFooter from "./../components/listing/Address/AddressFooter";
+import AddressHeader from "../components/listing/address/AddressHeader";
+import AddressFooter from "../components/listing/address/AddressFooter";
 import InfoScreen from "./utils/InfoScreen";
 import images from "../config/images";
-import AddressItem from "../components/listing/Address/AddressItem";
+import AddressItem from "../components/listing/address/AddressItem";
 
 function SubCategoryScreen(props) {
   const { user_id } = { user_id: 52326 };

@@ -20,7 +20,6 @@ function CartListing({
       keyExtractor={(item, index) => `${item.product_id}-${index}`}
       stickyHeaderIndices={[0]}
       onEndReached={onEndReached}
-      onEndReachedThreshold={0.5}
       initialNumToRender={5}
       ListHeaderComponent={() => header()}
       ListFooterComponent={() => footer()}

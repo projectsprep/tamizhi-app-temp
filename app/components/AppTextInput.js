@@ -20,7 +20,6 @@ function AppTextInput({
   return (
     <TouchableWithoutFeedback
       onPress={() => {
-        console.log(inputRef.current.isFocused());
         inputRef.current.isFocused()
           ? inputRef.current.blur()
           : inputRef.current.focus();

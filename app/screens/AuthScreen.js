@@ -16,7 +16,8 @@ const validationSchema = Yup.object().shape({
   mobile: Yup.string().required().label("Mobile Number"),
 });
 
-function AuthScreen({ navigation }) {
+function AuthScreen({ navigation, route }) {
+  const { redirect } = route.params;
   const [error, setError] = useState();
   const [loading, setLoading] = useState();
 
@@ -38,7 +39,7 @@ function AuthScreen({ navigation }) {
     setError(false);
     setLoading(false);
 
-    navigation.navigate(routes.OTP_VERIFICATION, { mobile });
+    navigation.navigate(routes.OTP_VERIFICATION, { mobile, redirect });
   };
 
   return (

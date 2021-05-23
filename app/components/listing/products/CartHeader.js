@@ -3,13 +3,13 @@ import { StyleSheet, View } from "react-native";
 import defaultStyles from "../../../config/defaultStyles";
 import AppButton from "../../AppButton";
 
-function CartHeader({ navigation, visible }) {
+function CartHeader({ onPress, visible }) {
   if (!visible) return null;
   return (
     <View style={styles.container}>
       <AppButton
         title="Check Out"
-        onPress={() => navigation.navigate("dummy")}
+        onPress={onPress}
         color="primaryDark"
         style={styles.button}
       />

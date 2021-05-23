@@ -1,0 +1,11 @@
+Logging Needed:
+    * utility/cache.js
+    * hooks/useLocation.js
+
+
+Pending:
+    * Home Screen
+    * Api integration
+    * Designing
+    * Testing
+    * Fixing
