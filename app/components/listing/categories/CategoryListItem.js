@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 2,
     marginVertical: 5,
     fontSize: 15,
-    fontWeight: "600",
+    fontWeight: "500",
   },
 });
 

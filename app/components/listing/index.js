@@ -11,6 +11,12 @@ export { default as CartFooter } from "./products/CartFooter";
 export { default as CartHeader } from "./products/CartHeader";
 export { default as CartListActions } from "./products/CartListActions";
 
+// Category
+export { default as HomeHeader } from "./categories/HomeHeader";
+export { default as HomeFooter } from "./categories/HomeFooter";
+export { default as CategoryListItem } from "./categories/CategoryListItem";
+export { default as SubCategoryListItem } from "./categories/SubCategoryListItem";
+
 // Orders
 export { default as OrderListActions } from "./orders/OrderListActions";
 export { default as OrderItem } from "./orders/OrderItem";

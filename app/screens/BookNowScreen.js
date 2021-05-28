@@ -3,16 +3,15 @@ import React from "react";
 import { StyleSheet, View, ScrollView } from "react-native";
 import AppButton from "../components/AppButton";
 import routes from "../routes/routes";
-import AppText from "./../components/AppText";
-import { ProductListItem, OrderListActions } from "./../components/listing";
-import useCartContext from "./../hooks/useCartContext";
+import AppText from "../components/AppText";
+import { ProductListItem, OrderListActions } from "../components/listing";
 
-function CheckOutScreen({ navigation, route }) {
-  const [cart, cartLoading, setQuantity] = useCartContext();
+function BookNowScreen({ navigation, route }) {
+  const { product } = route.params;
 
   const item = {
     id: 13,
-    products: cart,
+    product: [product],
     totalPrice: 3968,
     status: "cancelled",
     createdAt: 1621776159248,
@@ -22,33 +21,26 @@ function CheckOutScreen({ navigation, route }) {
     navigation.navigate(routes.PAYMENT, { payment_id: 25, order_id: 54, item });
   };
 
-  const products = _.orderBy(item.products, "product_id", "desc");
   return (
     <View style={styles.container}>
       <ScrollView>
         <AppText style={[styles.text, styles.id]}>orderId: {item.id}</AppText>
-        <AppText style={[styles.text, styles.number]}>
-          numberOfProducts: {item.products.length}
-        </AppText>
 
-        {products.map((item) => (
-          <View style={styles.list} key={item.product_id}>
-            <ProductListItem
-              id={item.product_id}
-              imageUri={item.image_uris[0]}
-              title={item.name}
-              rating={item.ratings}
-              presentPrice={item.presentPrice}
-              price={item.price}
-              ActionBar={() => <OrderListActions quantity={item.quantity} />}
-              onPress={() =>
-                navigation.navigate(routes.CART_PRODUCT_DETAILS, {
-                  product: item,
-                })
-              }
-            />
-          </View>
-        ))}
+        <View style={styles.list} key={product.product_id}>
+          <ProductListItem
+            id={product.product_id}
+            imageUri={product.image_uris[0]}
+            title={product.name}
+            rating={product.ratings}
+            presentPrice={product.presentPrice}
+            price={product.price}
+            onPress={() =>
+              navigation.navigate(routes.CART_PRODUCT_DETAILS, {
+                product: product,
+              })
+            }
+          />
+        </View>
 
         <AppText style={[styles.text, styles.price]}>
           price: Rs.{item.totalPrice}
@@ -90,4 +82,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CheckOutScreen;
+export default BookNowScreen;

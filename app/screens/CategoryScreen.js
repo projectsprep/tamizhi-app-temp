@@ -2,14 +2,13 @@ import React from "react";
 import { StyleSheet, View, FlatList } from "react-native";
 
 import routes from "../routes/routes";
-import useAddress from "./../hooks/useAddess";
-import AddressHeader from "../components/listing/address/AddressHeader";
-import AddressFooter from "../components/listing/address/AddressFooter";
+import useAddress from "../hooks/useAddess";
 import InfoScreen from "./utils/InfoScreen";
 import images from "../config/images";
-import AddressItem from "../components/listing/address/AddressItem";
 
-function SubCategoryScreen({ navigation, route }) {
+import { CategoryListItem } from "./../components/listing";
+
+function CategoryScreen({ navigation, route }) {
   const { user_id } = { user_id: 52326 };
   const [addresses, loading, setUpdated] = useAddress();
 
@@ -25,9 +24,7 @@ function SubCategoryScreen({ navigation, route }) {
 
   const header = () => <AddressHeader onPress={() => editAddress("add")} />;
   const footer = () => <AddressFooter />;
-  const renderItem = (item) => (
-    <AddressItem address={item} onPress={() => editAddress("update", item)} />
-  );
+  const renderItem = (item) => CategoryListItem;
   const info = (loading) => (
     <InfoScreen
       title="No address found"
@@ -60,4 +57,4 @@ const styles = StyleSheet.create({
   container: {},
 });
 
-export default SubCategoryScreen;
+export default CategoryScreen;

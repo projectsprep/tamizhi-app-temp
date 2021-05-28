@@ -9,6 +9,7 @@ function AppFormField({
   width,
   style,
   onSearch = () => null,
+  noError = true,
   ...otherProps
 }) {
   const { setFieldTouched, setFieldValue, errors, touched, values } =
@@ -24,7 +25,7 @@ function AppFormField({
         onSearch={() => onSearch(values[name])}
         {...otherProps}
       />
-      <ErrorMessage error={errors[name]} visible={touched[name]} />
+      {noError && <ErrorMessage error={errors[name]} visible={touched[name]} />}
     </>
   );
 }

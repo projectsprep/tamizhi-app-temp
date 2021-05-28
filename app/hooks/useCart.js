@@ -3,10 +3,9 @@ import cartApi from "../api/cartApi";
 import Notifier from "../utility/Notifier";
 import wishListApi from "../api/wishListApi";
 
-export default function useCart() {
+export default function useCart(user_id) {
   const [cart, setCart] = useState([]);
   const [loading, setLoading] = useState(false);
-  const { user_id } = { user_id: 52326 };
 
   const setQuantity = (product_id, action) => {
     const product = cart.find((prod) => prod.product_id === product_id);

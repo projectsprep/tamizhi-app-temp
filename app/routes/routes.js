@@ -42,6 +42,16 @@ const routes = {
   // ! test
   Cart_AUTH: "Cart Auth",
 
+  // Booking
+  BOOK: "Book",
+  PRODUCTS_BOOK: "Products Booking",
+  BOOK_NOW: "Book Now",
+  BOOK_ORDER_UPDATES: "Book order updates",
+  BOOK_ORDER_DETAILS: "Book Order Details",
+  BOOK_PRODUCT_DETAILS: "Book Product Details",
+  // ! test
+  BOOK_AUTH: "BOok Auth",
+
   // Ordering Flow
   CHECK_OUT: "CheckOut",
   PAYMENT: "PAYMENT",

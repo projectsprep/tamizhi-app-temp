@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import { StyleSheet } from "react-native";
 import _ from "lodash";
 
@@ -14,10 +14,10 @@ import {
   CartListActions,
 } from "../components/listing";
 import routes from "../routes/routes";
-import CartContext from "../context/CartContext";
+import useCartContext from "./../hooks/useCartContext";
 
 function CartScreen({ navigation }) {
-  const [cart, loading, setQuantity] = useContext(CartContext);
+  const [cart, loading, setQuantity] = useCartContext();
 
   const header = () => (
     <CartHeader
@@ -50,6 +50,8 @@ function CartScreen({ navigation }) {
       onPress={() => onSelect(item)}
       ActionBar={() => (
         <CartListActions
+          type={item.order_type}
+          onPress={() => navigation.navigate(routes.BOOK, { product: item })}
           quantity={item.quantity}
           setQuantity={(action) => setQuantity(item.product_id, action)}
         />
@@ -58,22 +60,24 @@ function CartScreen({ navigation }) {
   );
 
   return (
-    <Screen style={styles.container}>
+    <>
       <LoadingScreen visible={loading} />
-      <Listing
-        items={_.orderBy(cart, "product_id", "desc")}
-        stickyHeaderIndices={[0]}
-        customListItem={productItem}
-        header={header}
-        footer={footer}
-        emptyInfoScreen={info}
-        onSelect={(item) =>
-          navigation.navigate(routes.CART_PRODUCT_DETAILS, {
-            product: item,
-          })
-        }
-      />
-    </Screen>
+      <Screen style={styles.container}>
+        <Listing
+          items={_.orderBy(cart, "product_id", "desc")}
+          stickyHeaderIndices={[0]}
+          customListItem={productItem}
+          header={header}
+          footer={footer}
+          emptyInfoScreen={info}
+          onSelect={(item) =>
+            navigation.navigate(routes.CART_PRODUCT_DETAILS, {
+              product: item,
+            })
+          }
+        />
+      </Screen>
+    </>
   );
 }
 

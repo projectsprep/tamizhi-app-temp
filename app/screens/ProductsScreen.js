@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { StyleSheet } from "react-native";
 import _ from "lodash";
 
@@ -13,8 +13,8 @@ import {
   CartListActions,
 } from "../components/listing";
 import routes from "../routes/routes";
-import CartContext from "./../context/CartContext";
 import useProducts from "./../hooks/useProducts";
+import useCartContext from "./../hooks/useCartContext";
 
 function ProductsScreen({ navigation, route }) {
   const query = route.params?.query ?? "";
@@ -22,7 +22,7 @@ function ProductsScreen({ navigation, route }) {
   const [category, setCategory] = useState("Food");
   const [page, setPage] = useState(1);
 
-  const [cart, cartLoading, setQuantity] = useContext(CartContext);
+  const [cart, cartLoading, setQuantity] = useCartContext();
   const [prods, categories, loading, isMore] = useProducts(
     page,
     search,
@@ -44,7 +44,10 @@ function ProductsScreen({ navigation, route }) {
     if (s) setSearch(s);
   };
 
-  const footer = () => <ProductsFooter isMore={isMore} loading={loading} />;
+  const footer = () => {
+    const noMore = prods.length !== 0 && (!loading || !cartLoading);
+    return <ProductsFooter isMore={isMore} visible={noMore} />;
+  };
 
   const header = () => (
     <ProductsHeader
@@ -67,6 +70,8 @@ function ProductsScreen({ navigation, route }) {
       onPress={() => onSelect(item)}
       ActionBar={() => (
         <CartListActions
+          type={item.order_type}
+          onPress={() => navigation.navigate(routes.BOOK, { product: item })}
           quantity={item.quantity}
           setQuantity={(action) => setQuantity(item.product_id, action)}
         />
@@ -74,14 +79,19 @@ function ProductsScreen({ navigation, route }) {
     />
   );
 
-  const info = () => (
-    <InfoScreen
-      title="No Items Found"
-      description="Try other keywords or Try Refreshing"
-      image={images.noProds}
-      visible={!loading && !cartLoading}
-    />
-  );
+  const info = () => {
+    const searched = search !== "" && (!loading || !cartLoading);
+    if (searched)
+      return (
+        <InfoScreen
+          title="No Items Found"
+          description="Try other keywords or Try Refreshing"
+          image={images.noProds}
+          visible={true}
+        />
+      );
+    else return null;
+  };
 
   return (
     <Screen style={styles.container}>

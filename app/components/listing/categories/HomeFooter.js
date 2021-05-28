@@ -1,12 +1,17 @@
 import React from "react";
 import { StyleSheet, View, useWindowDimensions } from "react-native";
 import LoadingScreen from "../../../screens/utils/LoadingScreen";
+import AppText from "../../AppText";
 
-function CategoryFooter({ loading }) {
+function HomeFooter({ onPress, isMore, visible }) {
   const { width } = useWindowDimensions();
-  return (
+  return isMore ? (
     <View style={{ ...styles.container, width }}>
-      <LoadingScreen visible={loading} />
+      <LoadingScreen visible={isMore} />
+    </View>
+  ) : (
+    <View style={{ ...styles.container, width, height: 50 }}>
+      {visible && <AppText>No more items</AppText>}
     </View>
   );
 }
@@ -14,7 +19,7 @@ function CategoryFooter({ loading }) {
 const styles = StyleSheet.create({
   container: {
     position: "relative",
-    height: 50,
+    height: 200,
     alignItems: "center",
     justifyContent: "center",
     paddingVertical: 20,
@@ -23,6 +28,6 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CategoryFooter;
+export default HomeFooter;
 
 // Tamil

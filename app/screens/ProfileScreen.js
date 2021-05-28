@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View, FlatList, ScrollView } from "react-native";
+import { StyleSheet, View, ScrollView } from "react-native";
 
 import { ListItemSeparator } from "../components/listing";
 import Icon from "../components/Icon";
@@ -8,6 +8,7 @@ import defaultStyles from "../config/defaultStyles";
 import routes from "../routes/routes";
 import Screen from "./../components/Screen";
 import ListItem from "../components/listing/ListItem";
+import useAuth from "./../auth/useAuth";
 
 const menu = [
   {
@@ -45,24 +46,18 @@ const lines = [
     },
     targetScreen: routes.FEEDBACK,
   },
-  {
-    title: "Login",
-    icon: {
-      name: "login",
-      backgroundColor: defaultStyles.colors.secondary,
-    },
-    targetScreen: routes.PROFILE_AUTH,
-  },
 ];
 
 function ProfileScreen({ navigation }) {
+  const { user, logout } = useAuth();
+
   return (
     <Screen style={styles.screen}>
       <ScrollView>
         <View style={styles.container}>
           <ListItem
-            title="User"
-            subTitle="user@userbase.com"
+            title={user.username}
+            subTitle={user.mobile + "\n" + user.email}
             image={icons.logo}
             style={styles.account}
             onPress={() => navigation.navigate(routes.ACCOUNT)}
@@ -112,8 +107,9 @@ function ProfileScreen({ navigation }) {
         </View>
         <ListItem
           title="Log Out"
-          IconComponent={<Icon name="logout" backgroundColor="#ffe66d" />}
           style={styles.logout}
+          IconComponent={<Icon name="logout" backgroundColor="#ffe66d" />}
+          onPress={logout}
         />
       </ScrollView>
     </Screen>
@@ -122,23 +118,30 @@ function ProfileScreen({ navigation }) {
 
 const styles = StyleSheet.create({
   screen: {
-    backgroundColor: defaultStyles.colors.white,
+    backgroundColor: "#F5F5F8",
   },
 
   container: {
-    marginVertical: 20,
+    marginVertical: 10,
   },
 
   account: {
     backgroundColor: defaultStyles.colors.white,
+    borderRadius: 20,
+    marginVertical: 13,
   },
 
   logout: {
     backgroundColor: defaultStyles.colors.white,
+    borderRadius: 20,
+    fontWeight: "600",
+    marginVertical: 13,
   },
 
   item: {
-    backgroundColor: defaultStyles.colors.listItem,
+    backgroundColor: defaultStyles.colors.white,
+    borderRadius: 20,
+    marginVertical: 13,
   },
 });
 

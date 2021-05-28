@@ -4,15 +4,11 @@ import { createStackNavigator } from "@react-navigation/stack";
 import routes from "./routes";
 import HomeScreen from "./../screens/HomeScreen";
 import SubCategoryScreen from "./../screens/SubCategoryScreen";
-import ProductsScreen from "./../screens/ProductsScreen";
-import AuthNavigator from "./AuthNavigator";
 
 const Stack = createStackNavigator();
 
 const HomeNavigator = (props) => (
-  <Stack.Navigator
-  // screenOptions={{ headerShown: false }}
-  >
+  <Stack.Navigator screenOptions={{ headerShown: false }}>
     <Stack.Screen
       name={routes.CATEGORIES}
       component={HomeScreen}
@@ -23,7 +19,6 @@ const HomeNavigator = (props) => (
       component={SubCategoryScreen}
       options={{ title: "Home" }}
     />
-    <Stack.Screen name={routes.HOME_AUTH} component={AuthNavigator} />
   </Stack.Navigator>
 );
 

@@ -1,34 +1,27 @@
 import React from "react";
-import { StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
 import LottieView from "lottie-react-native";
 
 import animations from "../../config/animations";
+import defaultStyles from "../../config/defaultStyles";
 
-function LoadingScreen({
-  visible = false,
-  isFull,
-  backgroundColor,
-  ...otherProps
-}) {
+function LoadingScreen({ visible = false, isFull, ...otherProps }) {
   if (!visible) return null;
   return (
-    <LottieView
-      autoPlay
-      loop
-      source={animations.loading}
-      style={{ ...styles.loading, backgroundColor: backgroundColor }}
-      {...otherProps}
-    />
+    <View style={styles.container}>
+      <LottieView autoPlay loop source={animations.loading} />
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  loading: {
-    flex: 1,
-    width: "100%",
+  container: {
     height: "100%",
+    width: "100%",
+    backgroundColor: defaultStyles.colors.white,
     position: "absolute",
     zIndex: 10,
+    opacity: 0.7,
   },
 });
 

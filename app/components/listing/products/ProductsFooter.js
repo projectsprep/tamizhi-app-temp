@@ -3,7 +3,7 @@ import { StyleSheet, View, useWindowDimensions } from "react-native";
 import LoadingScreen from "../../../screens/utils/LoadingScreen";
 import AppText from "../../AppText";
 
-function ProductsFooter({ onPress, isMore, loading }) {
+function ProductsFooter({ onPress, isMore, visible }) {
   const { width } = useWindowDimensions();
   return isMore ? (
     <View style={{ ...styles.container, width }}>
@@ -11,7 +11,7 @@ function ProductsFooter({ onPress, isMore, loading }) {
     </View>
   ) : (
     <View style={{ ...styles.container, width, height: 50 }}>
-      {!loading && <AppText>No more items</AppText>}
+      {visible && <AppText>No more items</AppText>}
     </View>
   );
 }

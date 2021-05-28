@@ -6,8 +6,7 @@ import ErrorMessage from "./ErrorMessage";
 import defaultStyles from "../../config/defaultStyles";
 
 function FormOptInput({ name, width, textInputStyle, ...otherProps }) {
-  const { setFieldTouched, setFieldValue, errors, touched, values } =
-    useFormikContext();
+  const { setFieldValue, errors, touched, values } = useFormikContext();
 
   return (
     <>

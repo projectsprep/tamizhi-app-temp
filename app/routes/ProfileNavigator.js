@@ -12,7 +12,6 @@ import OrderDetailsScreen from "./../screens/OrderDetailsScreen";
 import OrdersScreen from "../screens/OrdersScreen";
 import ProductDetailsScreen from "./../screens/ProductDetailsScreen";
 import OrderTrackScreen from "../screens/OrderTrackScreen";
-import AuthNavigator from "./AuthNavigator";
 
 const Stack = createStackNavigator();
 
@@ -31,7 +30,6 @@ const ProfileNavigator = (props) => (
     <Stack.Screen name={routes.ADDRESSES} component={AddressNavigator} />
     <Stack.Screen name={routes.HELP} component={HelpScreen} />
     <Stack.Screen name={routes.FEEDBACK} component={FeedbackScreen} />
-    <Stack.Screen name={routes.PROFILE_AUTH} component={AuthNavigator} />
   </Stack.Navigator>
 );
 

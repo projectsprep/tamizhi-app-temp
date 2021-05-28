@@ -1,18 +1,37 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, StatusBar } from "react-native";
+import defaultStyles from "../../config/defaultStyles";
 import AppText from "./../AppText";
+import { useNetInfo } from "@react-native-community/netinfo";
 
-function NoNetwork({ visible }) {
-  if (!visible) return null;
+function NoNetwork() {
+  const netinfo = useNetInfo();
+  const network = netinfo.isInternetReachable;
+
+  if (network) return null;
+
   return (
-    <View style={styles.container}>
-      <AppText>No internet connection...</AppText>
-    </View>
+    <>
+      <StatusBar hidden={false} />
+      <View style={styles.container}>
+        <AppText style={styles.text}>YOU ARE OFFLINE</AppText>
+      </View>
+    </>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {},
+  container: {
+    height: "5%",
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: defaultStyles.colors.danger,
+  },
+  text: {
+    color: defaultStyles.colors.white,
+    fontSize: 12,
+    fontWeight: "bold",
+  },
 });
 
 export default NoNetwork;

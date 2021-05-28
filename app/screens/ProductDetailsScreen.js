@@ -1,16 +1,17 @@
-import React, { useContext } from "react";
+import React from "react";
 import { ScrollView, View, StyleSheet } from "react-native";
 
 import colors from "../config/colors";
 import AppText from "./../components/AppText";
 import ImageSlider from "./../components/ImageSlider";
 import { CartListActions } from "../components/listing";
-import CartContext from "../context/CartContext";
+import routes from "../routes/routes";
+import useCartContext from "./../hooks/useCartContext";
 
-function ProductDetailsScreen({ route }) {
-  const [cart, cartLoading, setQuantity] = useContext(CartContext);
+function ProductDetailsScreen({ navigation, route }) {
+  const [cart, cartLoading, setQuantity] = useCartContext();
 
-  const { product } = route.params;
+  const { isDisplayOnly, product } = route.params;
   const found = cart.find((prod) => product.product_id === prod.product_id);
   const quantity = found ? found.quantity : 0;
 
@@ -26,9 +27,16 @@ function ProductDetailsScreen({ route }) {
           <AppText>{product.description}</AppText>
         </View>
 
-        <View style={styles.actionContainer}>
-          <CartListActions quantity={quantity} setQuantity={setQuantity} />
-        </View>
+        {!isDisplayOnly && (
+          <View style={styles.actionContainer}>
+            <CartListActions
+              type={product.order_type}
+              onPress={() => navigation.navigate(routes.BOOK, { product })}
+              quantity={quantity}
+              setQuantity={setQuantity}
+            />
+          </View>
+        )}
       </ScrollView>
     </View>
   );

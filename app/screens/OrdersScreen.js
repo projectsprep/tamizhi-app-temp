@@ -43,20 +43,22 @@ function OrdersScreen({ navigation }) {
   );
 
   return (
-    <Screen style={styles.container}>
+    <>
       <LoadingScreen visible={loading} />
-      <Listing
-        keyProp="id"
-        items={_.orderBy(orders, "createdAt", "desc")}
-        stickyHeaderIndices={[0]}
-        customListItem={orderItem}
-        onSelect={(item) =>
-          navigation.navigate(routes.ORDER_PRODUCT_DETAILS, {
-            product: item,
-          })
-        }
-      />
-    </Screen>
+      <Screen style={styles.container}>
+        <Listing
+          keyProp="id"
+          items={_.orderBy(orders, "createdAt", "desc")}
+          stickyHeaderIndices={[0]}
+          customListItem={orderItem}
+          onSelect={(item) =>
+            navigation.navigate(routes.ORDER_PRODUCT_DETAILS, {
+              product: item,
+            })
+          }
+        />
+      </Screen>
+    </>
   );
 }
 

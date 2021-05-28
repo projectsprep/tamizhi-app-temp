@@ -1,26 +1,48 @@
-import React, { useState } from "react";
-import { StyleSheet, View, TouchableOpacity } from "react-native";
-
+import React from "react";
+import { StyleSheet, View } from "react-native";
+import * as Yup from "yup";
 import defaultStyles from "../../../config/defaultStyles";
-import AppTextInput from "./../../AppTextInput";
 
-function HomeHeader({ onSearch }) {
-  const [query, setQuery] = useState("");
+import { Form, FormField, FormPicker } from "../../forms";
+import CategoryPickerItem from "../../CategoryPickerItem";
+
+const validationSchema = Yup.object().shape({
+  search: Yup.string().label("Search term"),
+  category: Yup.object().nullable().label("Category"),
+});
+
+function HomeHeader({ categories, onSubmit, current, onSearch, setCategory }) {
   return (
     <View style={styles.container}>
-      {/* <Image source={images.noOrders} style={styles.orderImage} /> */}
-      {/* <TouchableOpacity onPress={onSearch}> */}
-      <AppTextInput
-        returnKeyType="search"
-        onSearch={onSearch}
-        placeholder="search"
-        containerStyle={styles.input}
-        onChangeText={(text) => setQuery(text)}
-        style={styles.search}
-        onSearch={() => onSearch(query)}
-        width={"85%"}
-      />
-      {/* </TouchableOpacity> */}
+      <Form
+        initialValues={{}}
+        onSubmit={({ search, category }) => onSubmit({ search, category })}
+        validationSchema={validationSchema}
+      >
+        <FormField
+          returnKeyType="search"
+          keyboardAppearance={"dark"}
+          autoCapitalize="none"
+          autoCorrect={true}
+          icon="store"
+          name="search"
+          placeholder="Search for products and shops"
+          containerStyle={styles.field}
+          onSearch={onSearch}
+          defaultValue={current.search}
+        />
+
+        <FormPicker
+          onSelected={(item) => setCategory(item.value)}
+          name="category"
+          numberOfColumns={3}
+          placeholder={current.category}
+          style={styles.picker}
+          items={categories}
+          throwError={false}
+          PickerItemComponent={CategoryPickerItem}
+        />
+      </Form>
     </View>
   );
 }
@@ -28,26 +50,15 @@ function HomeHeader({ onSearch }) {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: defaultStyles.colors.white,
-    // height: 100,
   },
 
-  orderImage: {
-    height: 26,
-    width: 26,
-    alignSelf: "flex-end",
-  },
-
-  input: {
-    alignSelf: "center",
-
-    height: 50,
-  },
-
-  search: {
-    alignSelf: "center",
+  picker: {
+    height: 40,
+    paddingVertical: "2%",
+    borderRadius: 10,
   },
 });
 
 export default HomeHeader;
 
-// Sudharsan
+// Tamil

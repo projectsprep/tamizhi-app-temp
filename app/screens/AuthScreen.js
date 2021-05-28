@@ -16,12 +16,11 @@ const validationSchema = Yup.object().shape({
   mobile: Yup.string().required().label("Mobile Number"),
 });
 
-function AuthScreen({ navigation, route }) {
-  const { redirect } = route.params;
+function AuthScreen({ navigation }) {
   const [error, setError] = useState();
   const [loading, setLoading] = useState();
 
-  const handleSubmit = async ({ mobile }) => {
+  const handleSubmit = async (mobile) => {
     setLoading(true);
 
     const response = await authApi.login({ mobile });
@@ -39,64 +38,99 @@ function AuthScreen({ navigation, route }) {
     setError(false);
     setLoading(false);
 
-    navigation.navigate(routes.OTP_VERIFICATION, { mobile, redirect });
+    navigation.navigate(routes.OTP_VERIFICATION, { mobile });
   };
 
   return (
     <>
+      <LoadingScreen visible={loading} />
       <Screen style={styles.container}>
-        <Image style={styles.logo} source={icons.logo} />
-        {error && <AppText>Something went wrong !</AppText>}
+        <Image style={styles.logo} source={icons.auth} />
+        {error && (
+          <AppText style={styles.error}>Something went wrong !</AppText>
+        )}
         <AppText style={styles.note}>Please Enter your phone number</AppText>
         <Form
           initialValues={{ mobile: "" }}
-          onSubmit={({ mobile }) => handleSubmit({ mobile })}
+          onSubmit={({ mobile }) => handleSubmit(mobile)}
           validationSchema={validationSchema}
         >
           <FormField
             keyboardAppearance={"dark"}
+            returnKeyType="go"
             autoFocus
             autoCapitalize="none"
             autoCorrect={false}
             icon="phone"
             note="+91"
-            width="100%"
+            width="80%"
             keyboardType="number-pad"
             name="mobile"
             placeholder="Mobile Number"
             containerStyle={styles.mobile}
+            onSearch={handleSubmit}
+            noError={false}
           />
-          <SubmitButton title="Login" />
+          <SubmitButton title="Login" style={styles.loginBtn} />
         </Form>
       </Screen>
-      <LoadingScreen
-        visible={loading}
-        backgroundColor={defaultStyle.colors.white}
-      />
     </>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    padding: 10,
-    justifyContent: "center",
+    flex: 1,
+    backgroundColor: "#fff",
+  },
+  error: {
+    marginVertical: 20,
+    alignSelf: "center",
+    color: defaultStyle.colors.danger,
+  },
+  topView: {
+    flex: 2,
+  },
+  login: {
+    flex: 1,
     alignItems: "center",
   },
-
-  mobile: {
-    marginTop: 50,
-    marginBottom: 10,
-  },
-
-  note: { color: "grey", marginTop: 50 },
-
-  register: { color: defaultStyle.colors.primaryDark },
-
   logo: {
-    width: 90,
-    height: 90,
+    marginTop: 30,
+    minHeight: 100,
+    minWidth: 100,
+    maxHeight: "40%",
+    maxWidth: "40%",
+    height: "35%",
+    width: "35%",
+    resizeMode: "contain",
     alignSelf: "center",
+  },
+  note: {
+    alignSelf: "center",
+    fontSize: 19,
+    paddingVertical: 15,
+    fontWeight: "bold",
+  },
+  desc: {
+    alignSelf: "center",
+    textAlign: "center",
+    fontSize: 15,
+    marginHorizontal: 25,
+    color: "#555",
+  },
+  mobile: {
+    backgroundColor: "#fff",
+    borderBottomWidth: 2,
+    alignSelf: "center",
+  },
+  loginBtn: {
+    backgroundColor: "#ffb845",
+    minWidth: 150,
+    maxWidth: 200,
+    alignSelf: "center",
+    marginBottom: 25,
+    marginVertical: "10%",
   },
 });
 

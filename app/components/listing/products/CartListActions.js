@@ -3,7 +3,8 @@ import { StyleSheet, View } from "react-native";
 import AppButton from "../../AppButton";
 import ItemCounter from "../../ItemCounter";
 
-function CartListActions({ quantity, setQuantity }) {
+function CartListActions({ type, onPress, quantity, setQuantity }) {
+  console.log("type, ", type);
   return (
     <View style={styles.container}>
       {quantity && quantity > 0 ? (
@@ -11,8 +12,8 @@ function CartListActions({ quantity, setQuantity }) {
       ) : (
         <AppButton
           color="primaryDark"
-          title="Add to Cart"
-          onPress={() => setQuantity("add")}
+          title={type === "multiple" ? "Add to Cart" : "Book Now"}
+          onPress={type === "multiple" ? () => setQuantity("add") : onPress}
           style={styles.remove}
           textStyle={styles.removeText}
         />
