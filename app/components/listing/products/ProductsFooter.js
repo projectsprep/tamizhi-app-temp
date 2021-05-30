@@ -1,19 +1,18 @@
 import React from "react";
 import { StyleSheet, View, useWindowDimensions } from "react-native";
+import defaultStyles from "../../../config/defaultStyles";
 import LoadingScreen from "../../../screens/utils/LoadingScreen";
-import AppText from "../../AppText";
 
-function ProductsFooter({ onPress, isMore, visible }) {
+function ProductsFooter({ onPress, isMore }) {
   const { width } = useWindowDimensions();
   return isMore ? (
     <View style={{ ...styles.container, width }}>
-      <LoadingScreen visible={isMore} />
+      <LoadingScreen
+        visible={isMore}
+        backgroundColor={defaultStyles.colors.transparent}
+      />
     </View>
-  ) : (
-    <View style={{ ...styles.container, width, height: 50 }}>
-      {visible && <AppText>No more items</AppText>}
-    </View>
-  );
+  ) : null;
 }
 
 const styles = StyleSheet.create({

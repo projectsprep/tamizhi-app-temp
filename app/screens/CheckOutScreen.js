@@ -8,7 +8,7 @@ import { ProductListItem, OrderListActions } from "./../components/listing";
 import useCartContext from "./../hooks/useCartContext";
 
 function CheckOutScreen({ navigation, route }) {
-  const [cart, cartLoading, setQuantity] = useCartContext();
+  const { cart } = useCartContext();
 
   const item = {
     id: 13,

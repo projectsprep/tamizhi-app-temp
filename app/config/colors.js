@@ -19,6 +19,7 @@ const light = Object.freeze({
   white: "white",
   textColor: "black",
   black: "black",
+  transparent: "#AARRGGBB",
 
   // Listings
   listItem: "#ebebeb",

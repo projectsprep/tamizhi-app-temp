@@ -1,8 +1,8 @@
 import apiClient from "./client";
 const endpoint = "/test";
 
-const getCategories = () => apiClient.post(endpoint + "/cats");
-const getAllCategories = () => apiClient.post(endpoint + "/cats/all");
+const getCategories = () => apiClient.get(endpoint + "/cats");
+const getAllCategories = () => apiClient.get(endpoint + "/cats/all");
 
 export default { getCategories, getAllCategories };
 

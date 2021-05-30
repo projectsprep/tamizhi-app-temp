@@ -17,7 +17,7 @@ import routes from "../routes/routes";
 import useCartContext from "./../hooks/useCartContext";
 
 function CartScreen({ navigation }) {
-  const [cart, loading, setQuantity] = useCartContext();
+  const { cart, loading, setQuantity } = useCartContext();
 
   const header = () => (
     <CartHeader

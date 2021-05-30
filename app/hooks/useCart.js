@@ -126,5 +126,5 @@ export default function useCart(user_id) {
     setLoading(false);
   };
 
-  return [cart, loading, setQuantity];
+  return { cart, loading, setQuantity, refresh: getCart };
 }

@@ -1,26 +1,18 @@
 import apiClient from "./client";
 const endpoint = "/test";
 
-const getSubCategories = ({ user_id, category }) =>
-  apiClient.post(endpoint + "/shops", { user_id, category });
+const getSubCategories = ({ category }) =>
+  apiClient.get(endpoint + "/shops", { category });
 
-const getPagedSubCategories = ({ user_id, per_page, page_number, category }) =>
-  apiClient.post(endpoint + "/shops", {
-    user_id,
+const getPagedSubCategories = ({ per_page, page_number, category }) =>
+  apiClient.get(endpoint + "/shops", {
     per_page,
     page_number,
     category,
   });
 
-const searchCategories = ({
-  user_id,
-  per_page,
-  page_number,
-  search,
-  category,
-}) =>
-  apiClient.post(endpoint + "/shops", {
-    user_id,
+const searchCategories = ({ per_page, page_number, search, category }) =>
+  apiClient.get(endpoint + "/shops", {
     per_page,
     page_number,
     search,

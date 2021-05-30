@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { StyleSheet } from "react-native";
-import _ from "lodash";
 
 import images from "../config/images";
 import InfoScreen from "./utils/InfoScreen";
@@ -13,8 +12,9 @@ import {
   CartListActions,
 } from "../components/listing";
 import routes from "../routes/routes";
-import useProducts from "./../hooks/useProducts";
 import useCartContext from "./../hooks/useCartContext";
+import useProductListing from "./../hooks/useProductsLIsting";
+import _ from "lodash";
 
 function ProductsScreen({ navigation, route }) {
   const query = route.params?.query ?? "";
@@ -22,18 +22,27 @@ function ProductsScreen({ navigation, route }) {
   const [category, setCategory] = useState("Food");
   const [page, setPage] = useState(1);
 
-  const [cart, cartLoading, setQuantity] = useCartContext();
-  const [prods, categories, loading, isMore] = useProducts(
+  const { cart, cartLoading, setQuantity } = useCartContext();
+  const { products, categories, loading, isMore, refresh } = useProductListing(
     page,
     search,
     category
   );
 
-  const products = prods.map((product) => {
+  const prods = products.map((product) => {
     const found = cart.find((prod) => prod.product_id === product.product_id);
     if (found) product.quantity = found.quantity;
     return product;
   });
+
+  const handleLoadMore = () => {
+    if (!loading && isMore) setPage(page + 1);
+  };
+
+  const handleRefresh = () => {
+    setPage(1);
+    refresh();
+  };
 
   const handleSubmit = ({ search: s, category: c }) => {
     if (s) setSearch(s);
@@ -45,8 +54,9 @@ function ProductsScreen({ navigation, route }) {
   };
 
   const footer = () => {
+    const hasMore = prods.length !== 0 && isMore;
     const noMore = prods.length !== 0 && (!loading || !cartLoading);
-    return <ProductsFooter isMore={isMore} visible={noMore} />;
+    return <ProductsFooter isMore={hasMore} visible={noMore} />;
   };
 
   const header = () => (
@@ -96,13 +106,13 @@ function ProductsScreen({ navigation, route }) {
   return (
     <Screen style={styles.container}>
       <Listing
-        items={_.orderBy(products, "product_id", "desc")}
+        items={_.orderBy(prods, "product_id", "desc")}
         footer={footer}
         header={header}
         refreshing={loading}
-        onEndReached={() => setPage(page + 1)}
+        onEndReached={handleLoadMore}
         onEndReachedThreshold={0.5}
-        onRefresh={() => setPage(1)}
+        onRefresh={handleRefresh}
         stickyHeaderIndices={[0]}
         emptyInfoScreen={info}
         customListItem={productItem}

@@ -23,7 +23,7 @@ apiClient.get = async (url, params, axiosConfig) => {
     return response;
   }
 
-  const data = await cache.get(url);
+  const data = await cache.get(url, true);
   return data ? { ok: true, data } : response;
 };
 

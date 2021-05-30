@@ -9,7 +9,7 @@ import routes from "../routes/routes";
 import useCartContext from "./../hooks/useCartContext";
 
 function ProductDetailsScreen({ navigation, route }) {
-  const [cart, cartLoading, setQuantity] = useCartContext();
+  const { cart, setQuantity } = useCartContext();
 
   const { isDisplayOnly, product } = route.params;
   const found = cart.find((prod) => product.product_id === prod.product_id);

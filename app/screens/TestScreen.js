@@ -1,27 +1,26 @@
 import React, { useState } from "react";
 import {
-  StyleSheet,
   View,
-  ScrollView,
+  StyleSheet,
   TextInput,
   TouchableOpacity,
+  ScrollView,
 } from "react-native";
-import _ from "lodash";
-
-import Screen from "./../components/Screen";
+import Icon from "../components/Icon";
 import Banner from "./../components/banner";
-import CategoryList from "./../components/listing/home/CategoryList";
 import FoodProductList from "./../components/listing/home/FoodProductList";
-import Icon from "./../components/Icon";
-import useHome from "../hooks/useHome";
+import CategoryList from "./../components/listing/home/CategoryList";
 
-function HomeScreen({ navigation, route }) {
+const pics = [
+  "http://192.168.10.10:3001/images/4.jpg",
+  "http://192.168.10.10:3001/images/3.jpg",
+];
+
+export default function HomePage() {
   const [searchText, onChangeSearchText] = useState("");
 
-  const { home, loading, refresh } = useHome();
-
   return (
-    <Screen>
+    <>
       <View style={styles.container}>
         <ScrollView showsVerticalScrollIndicator={false}>
           <View style={styles.topView}>
@@ -37,14 +36,14 @@ function HomeScreen({ navigation, route }) {
               </TouchableOpacity>
             </View>
           </View>
-          <Banner images={home.banners} />
+          <Banner images={pics} />
           <View style={styles.mainView}>
-            <CategoryList data={home.categories} />
-            <FoodProductList data={home.foodItems} />
+            <CategoryList />
+            <FoodProductList />
           </View>
         </ScrollView>
       </View>
-    </Screen>
+    </>
   );
 }
 
@@ -55,6 +54,7 @@ const styles = StyleSheet.create({
   },
   topView: {
     position: "relative",
+    paddingTop: 40,
     width: "100%",
     alignSelf: "center",
     paddingBottom: 15,
@@ -90,7 +90,3 @@ const styles = StyleSheet.create({
     marginRight: 4,
   },
 });
-
-export default HomeScreen;
-
-// Tamil

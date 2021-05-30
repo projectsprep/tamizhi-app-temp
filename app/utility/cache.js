@@ -40,6 +40,6 @@ const clearCache = async (key, item) => {
   return null;
 };
 
-export default { store };
+export default { store, get };
 
 // Tamil

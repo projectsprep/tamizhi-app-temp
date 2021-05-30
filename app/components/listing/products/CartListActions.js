@@ -4,7 +4,6 @@ import AppButton from "../../AppButton";
 import ItemCounter from "../../ItemCounter";
 
 function CartListActions({ type, onPress, quantity, setQuantity }) {
-  console.log("type, ", type);
   return (
     <View style={styles.container}>
       {quantity && quantity > 0 ? (

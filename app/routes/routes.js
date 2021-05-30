@@ -1,74 +1,51 @@
 const routes = {
-  // WELCOME AND AUTH
-  WELCOME: "Welcome",
-  WELCOME_OPTIONS: "Welcome-Options",
-  WELCOME_LOCATION: "Welcome-Location",
-  MAIN: "Main",
-  // ! test
-  AUTH: "Auth",
-
   // AUTH
   LOGIN: "Login",
   OTP_VERIFICATION: "OTP verification",
 
   // APP
   HOME: "Home",
-  CATEGORIES: "Categories",
-  HOME_SEARCH: "Home Search",
-  HOME_PRODUCT_DETAILS: "Home Product Details",
-  SUB_CATEGORIES: "Sub Categories",
-  PRODUCTS: "products",
+  PRODUCTS: "Products",
+  CART: "Cart",
   PROFILE: "Profile",
-  // ! test
-  HOME_AUTH: "Home Auth",
+
+  // ADDRESS
+  LIST_ADDRESSES: "Addresses",
+  EDIT_ADDRESSES: "Edit Addresses",
+
+  // BOOK NOW
+  BOOK_NOW: "Book Now",
+  CART_ORDER_DETAILS: "CartOrder Details",
+  CART_ORDER_UPDATES: "Cart Order Updates",
+  CART_PRODUCT_DETAILS: "Cart Produt Details",
+
+  // CART
+  MY_CART: "Cart",
+  CHECK_OUT: "Check Out",
+  BOOK: "Book",
+  PAYMENT: "Payment",
+  // shares few with BOOK NOW {CART_ORDER_DETAILS, CART_ORDER_UPDATES, CART_PRODUCT_DETAILS}
+
+  // HOME
+  HOME_PAGE: "Home Page",
+  SUB_CATEGORIES: "Sub Categories",
+
+  // PRODUCTS
+  SEARCH: "Search",
+  PRODUCT_DETAILS: "Product Details",
+  BOOK: "Book",
 
   // PROFILE
   PROFILE_OPTIONS: "Profile Options",
-  PROFILE_DETAILS: "Profile Details",
-  ACCOUNT: "Account",
-  EDIT_USER_DETAILS: "Profile Edit Details",
-  ADDRESSES: "Addresses",
-  LIST_ADDRESSES: "Addresses",
-  EDIT_ADDRESSES: "Edit Addresses",
-  HELP: "Help",
-  FEEDBACK: "Feedback",
-  PROFILE_AUTH: "Profile Auth",
-
-  // Cart
-  CART: "My Cart",
-  CART_ORDER_UPDATES: "Cart order updates",
-  CART_ORDER_DETAILS: "Cart Order Details",
-  CART_PRODUCT_DETAILS: "Cart Product Details",
-  // ! test
-  Cart_AUTH: "Cart Auth",
-
-  // Booking
-  BOOK: "Book",
-  PRODUCTS_BOOK: "Products Booking",
-  BOOK_NOW: "Book Now",
-  BOOK_ORDER_UPDATES: "Book order updates",
-  BOOK_ORDER_DETAILS: "Book Order Details",
-  BOOK_PRODUCT_DETAILS: "Book Product Details",
-  // ! test
-  BOOK_AUTH: "BOok Auth",
-
-  // Ordering Flow
-  CHECK_OUT: "CheckOut",
-  PAYMENT: "PAYMENT",
-  ORDER_UPDATES: "Order Updates",
-  // ! test
-  Order_AUTH: "order Auth",
-
-  // Orders
+  EDIT_USER_DETAILS: "Edit User Details",
   ORDERS: "Orders",
   ORDER_DETAILS: "Order Details",
+  ORDER_UPDATES: "Order Updates",
   ORDER_PRODUCT_DETAILS: "Order Product Details",
-
-  // SEARCH PRODUCTS
-  SEARCH: "Search",
-  PRODUCT_DETAILS: "Prodcut Details",
-  // ! test
-  product_AUTH: "prod Auth",
+  ACCOUNT: "Account",
+  ADDRESSES: "Address",
+  HELP: "Help",
+  FEEDBACK: "Feedback",
 };
 
 export default Object.freeze(routes);

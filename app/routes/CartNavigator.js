@@ -14,7 +14,7 @@ const Stack = createStackNavigator();
 
 const CartNavigator = (props) => (
   <Stack.Navigator screenOptions={{ headerShown: false }}>
-    <Stack.Screen name={routes.CART} component={CartScreen} />
+    <Stack.Screen name={routes.MY_CART} component={CartScreen} />
     <Stack.Screen
       name={routes.CART_PRODUCT_DETAILS}
       component={ProductDetailsScreen}

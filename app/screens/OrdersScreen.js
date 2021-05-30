@@ -11,7 +11,7 @@ import routes from "../routes/routes";
 let count = 1;
 
 function OrdersScreen({ navigation }) {
-  const [cart, loading, setUpdated] = useCart();
+  const { cart, loading } = useCart();
 
   // Status
   // 0 => cancelled

@@ -5,10 +5,15 @@ import LottieView from "lottie-react-native";
 import animations from "../../config/animations";
 import defaultStyles from "../../config/defaultStyles";
 
-function LoadingScreen({ visible = false, isFull, ...otherProps }) {
+function LoadingScreen({
+  visible = false,
+  isFull,
+  backgroundColor,
+  ...otherProps
+}) {
   if (!visible) return null;
   return (
-    <View style={styles.container}>
+    <View style={{ ...styles.container, backgroundColor }}>
       <LottieView autoPlay loop source={animations.loading} />
     </View>
   );

@@ -1,20 +1,18 @@
 import apiClient from "./client";
 const endpoint = "/test";
 
-const getProducts = ({ user_id, category }) =>
-  apiClient.post(endpoint + "/products", { user_id, category });
+const getProducts = ({ category }) =>
+  apiClient.get(endpoint + "/products", { category });
 
-const getPagedProducts = ({ user_id, per_page, page_number, category }) =>
-  apiClient.post(endpoint + "/products", {
-    user_id,
+const getPagedProducts = ({ per_page, page_number, category }) =>
+  apiClient.get(endpoint + "/products", {
     per_page,
     page_number,
     category,
   });
 
-const searchProducts = ({ user_id, per_page, page_number, search, category }) =>
-  apiClient.post(endpoint + "/products", {
-    user_id,
+const searchProducts = ({ per_page, page_number, search, category }) =>
+  apiClient.get(endpoint + "/products", {
     per_page,
     page_number,
     search,

@@ -10,7 +10,7 @@ const Stack = createStackNavigator();
 const HomeNavigator = (props) => (
   <Stack.Navigator screenOptions={{ headerShown: false }}>
     <Stack.Screen
-      name={routes.CATEGORIES}
+      name={routes.HOME_PAGE}
       component={HomeScreen}
       options={{ title: "Home" }}
     />

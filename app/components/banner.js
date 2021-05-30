@@ -2,8 +2,8 @@ import Carousel, { Pagination } from "react-native-snap-carousel";
 import React, { useRef, useState } from "react";
 import { Image, View, StyleSheet, useWindowDimensions } from "react-native";
 
-export default function ImageSlider({ images }) {
-  const { width, height } = useWindowDimensions();
+export default function Banner({ images }) {
+  const { width } = useWindowDimensions();
   const [active, setActive] = useState(0);
   const ref = useRef();
 
@@ -17,11 +17,11 @@ export default function ImageSlider({ images }) {
         renderItem={({ item, index }) => (
           <View
             style={{
-              height: Math.floor(height * (50 / 100)),
+              ...styles.imageContainer,
               width: width,
             }}
           >
-            <Image style={styles.image} source={{ uri: item }} />
+            <Image style={styles.image} source={{ uri: item.uri }} />
           </View>
         )}
         sliderWidth={width}
@@ -46,17 +46,27 @@ export default function ImageSlider({ images }) {
 }
 
 const styles = StyleSheet.create({
+  imageContainer: {
+    alignItems: "center",
+    marginTop: 20,
+    padding: 0,
+    height: 200,
+  },
+
   image: {
-    width: "100%",
+    borderRadius: 20,
+    width: "97.5%",
     height: "100%",
+    padding: 0,
+    margin: 0,
   },
 
   dot: {
-    width: 10,
-    height: 10,
+    width: 5,
+    height: 5,
     borderRadius: 5,
-    marginHorizontal: 8,
-    backgroundColor: "black",
+    marginHorizontal: 0,
+    backgroundColor: "rgba(0, 0, 0, 0.92)",
   },
 });
 

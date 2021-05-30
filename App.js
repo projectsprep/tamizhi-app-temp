@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+
 import AppLoading from "expo-app-loading";
 import { DefaultTheme, NavigationContainer } from "@react-navigation/native";
 import { AppearanceProvider } from "react-native-appearance";
@@ -16,14 +17,12 @@ function App() {
   const [user, setUser] = useState();
   const [isReady, setIsReady] = useState(false);
 
-  const cartArray = useCart(user?.user_id);
+  const { cart, cartLoading, setQuantity, refresh } = useCart(user?.user_id);
 
   const restoreUser = async () => {
     const user = await authStorage.getUser();
     if (user) setUser(user);
   };
-
-  const theme = DefaultTheme;
 
   if (!isReady)
     return (
@@ -36,11 +35,12 @@ function App() {
 
   return (
     <AppearanceProvider>
+      <></>
       <AuthContext.Provider value={{ user, setUser }}>
-        <CartContext.Provider value={cartArray}>
+        <CartContext.Provider value={{ cart, cartLoading, setQuantity }}>
           <StatusBar hidden={true} />
-          <NoNetwork />
-          <NavigationContainer theme={theme}>
+          <NoNetwork action={refresh} />
+          <NavigationContainer theme={DefaultTheme}>
             {user ? <AppNavigator /> : <AuthNavigator />}
           </NavigationContainer>
         </CartContext.Provider>

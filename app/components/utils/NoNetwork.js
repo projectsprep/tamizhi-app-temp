@@ -1,12 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { StyleSheet, View, StatusBar } from "react-native";
 import defaultStyles from "../../config/defaultStyles";
 import AppText from "./../AppText";
 import { useNetInfo } from "@react-native-community/netinfo";
 
-function NoNetwork() {
+function NoNetwork({ action }) {
   const netinfo = useNetInfo();
-  const network = netinfo.isInternetReachable;
+  const network = netinfo.isConnected && netinfo.isInternetReachable;
+
+  useEffect(() => {
+    if (network) action();
+  }, [network]);
 
   if (network) return null;
 
