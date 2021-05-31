@@ -10,3 +10,5 @@ const styles = StyleSheet.create({
 });
 
 export default AddressFooter;
+
+// Tamil

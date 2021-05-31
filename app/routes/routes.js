@@ -28,6 +28,7 @@ const routes = {
 
   // HOME
   HOME_PAGE: "Home Page",
+  CATEGORIES: "Categories",
   SUB_CATEGORIES: "Sub Categories",
 
   // PRODUCTS

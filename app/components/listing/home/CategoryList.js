@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import CategoryListItem from "./CategoryListItem";
 
-export default function CategoryList({ data }) {
+export default function CategoryList({ data, showMore }) {
   const [selectedId, setSelectedId] = useState(null);
 
   const renderItem = ({ item }) => {
@@ -30,7 +30,9 @@ export default function CategoryList({ data }) {
       <View style={styles.headingTitle}>
         <Text style={styles.heading}>Categories</Text>
         <TouchableOpacity>
-          <Text style={styles.headingLink}>see more</Text>
+          <Text style={styles.headingLink} onPress={showMore}>
+            see more
+          </Text>
         </TouchableOpacity>
       </View>
       <View style={styles.categoryList}>
@@ -84,3 +86,5 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
 });
+
+// Sudharsann

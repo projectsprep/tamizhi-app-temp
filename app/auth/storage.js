@@ -44,3 +44,5 @@ const removeToken = async () => {
 const authStorage = { storeToken, getToken, getUser, removeToken };
 
 export default authStorage;
+
+// Tamil

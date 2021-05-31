@@ -16,3 +16,5 @@ function ActivityIndicator({ visible, animation, ...otherProps }) {
 }
 
 export default ActivityIndicator;
+
+// Tamil

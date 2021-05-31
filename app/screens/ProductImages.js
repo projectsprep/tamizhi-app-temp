@@ -11,3 +11,5 @@ const styles = StyleSheet.create({
 });
 
 export default ProductImages;
+
+// Tamil

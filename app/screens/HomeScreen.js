@@ -14,11 +14,20 @@ import CategoryList from "./../components/listing/home/CategoryList";
 import FoodProductList from "./../components/listing/home/FoodProductList";
 import Icon from "./../components/Icon";
 import useHome from "../hooks/useHome";
+import routes from "../routes/routes";
 
 function HomeScreen({ navigation, route }) {
-  const [searchText, onChangeSearchText] = useState("");
+  const [search, onChangeSearchText] = useState("");
 
   const { home, loading, refresh } = useHome();
+
+  const handleSearch = (query) => {
+    navigation.navigate(routes.PRODUCTS, { query });
+  };
+
+  const handleShowCats = (query) => {
+    navigation.navigate(routes.CATEGORIES);
+  };
 
   return (
     <Screen>
@@ -27,19 +36,21 @@ function HomeScreen({ navigation, route }) {
           <View style={styles.topView}>
             <View style={styles.searchRow}>
               <TextInput
-                placeholder="Search..."
-                value={searchText}
-                onChangeText={onChangeSearchText}
+                value={search}
                 style={styles.searchInput}
+                placeholder="Search..."
+                onChangeText={onChangeSearchText}
+                returnKeyType="search"
+                onSubmitEditing={() => handleSearch(search)}
               />
-              <TouchableOpacity>
+              <TouchableOpacity onPress={() => handleSearch(search)}>
                 <Icon name="magnify" backgroundColor="#333" size={30} />
               </TouchableOpacity>
             </View>
           </View>
           <Banner images={home.banners} />
           <View style={styles.mainView}>
-            <CategoryList data={home.categories} />
+            <CategoryList data={home.categories} showMore={handleShowCats} />
             <FoodProductList data={home.foodItems} />
           </View>
         </ScrollView>

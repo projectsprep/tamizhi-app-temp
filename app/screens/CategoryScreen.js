@@ -1,39 +1,22 @@
 import React from "react";
 import { StyleSheet, View, FlatList } from "react-native";
 
-import routes from "../routes/routes";
 import InfoScreen from "./utils/InfoScreen";
 import images from "../config/images";
 
-import {
-  AddressHeader,
-  AddressFooter,
-  CategoryListItem,
-} from "./../components/listing";
+import { CategoryListItem } from "./../components/listing";
 import categoryApi from "../api/categoryApi";
 import useApi from "./../hooks/useApi";
+import Screen from "./../components/Screen";
 
 function CategoryScreen({ navigation, route }) {
-  const { user_id } = { user_id: 52326 };
   const { items, loading } = useApi(categoryApi.getAllCategories);
 
   console.log(items);
 
   const filtered = items.filter((cat) => cat);
 
-  const editAddress = (action, values) => {
-    navigation.navigate(routes.EDIT_ADDRESSES, {
-      user_id,
-      action,
-      values,
-    });
-  };
-
-  const header = () => <AddressHeader onPress={() => editAddress("add")} />;
-  const footer = () => <AddressFooter />;
-  const renderItem = (item) => (
-    <CategoryListItem catimg={item.icon} catname={item.label} />
-  );
+  const renderItem = (item) => <CategoryListItem item={item} />;
   const info = (loading) => (
     <InfoScreen
       title="No address found"
@@ -46,38 +29,24 @@ function CategoryScreen({ navigation, route }) {
   );
 
   return (
-    <View style={styles.container}>
+    <Screen style={styles.container}>
       <FlatList
-        numColumns={2}
-        style={styles.container}
         contentContainerStyle={styles.list}
-        columnWrapperStyle={styles.column}
+        numColumns={2}
         data={filtered}
-        refreshing={loading}
         ListEmptyComponent={info}
-        stickyHeaderIndices={[0]}
-        ListHeaderComponent={header}
-        ListFooterComponent={footer}
-        onRefresh={() => setUpdated(true)}
-        keyExtractor={(item, index) => item.category_id + ""}
+        keyExtractor={(item, index) => item.id + index}
         renderItem={({ item }) => renderItem(item)}
       />
-    </View>
+    </Screen>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: "column",
-  },
-  list: {
-    width: "100%",
-    justifyContent: "space-around",
-  },
-  column: {
-    flexShrink: 1,
-  },
+  container: {},
+  list: { height: "100%" },
 });
 
 export default CategoryScreen;
+
+// Tamil

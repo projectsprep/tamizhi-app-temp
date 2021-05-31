@@ -39,3 +39,5 @@ const styles = StyleSheet.create({
 });
 
 export default NoNetwork;
+
+// Tamil

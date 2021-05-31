@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, View, Image, TouchableOpacity, Text } from "react-native";
-import defaultStyles from "../../../config/defaultStyles";
+
 import Icon from "../../Icon";
 
 function CategoryListItem({ item, backgroundColor, onPress }) {
@@ -65,3 +65,5 @@ const styles = StyleSheet.create({
 });
 
 export default CategoryListItem;
+
+// Sudharsan
