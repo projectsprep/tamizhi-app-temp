@@ -1,5 +1,5 @@
 import apiClient from "./client";
-const endpoint = "/test";
+const endpoint = "";
 
 const getProducts = ({ category }) =>
   apiClient.get(endpoint + "/products", { category });
@@ -12,10 +12,10 @@ const getPagedProducts = ({ per_page, page_number, category }) =>
   });
 
 const searchProducts = ({ per_page, page_number, search, category }) =>
-  apiClient.get(endpoint + "/products", {
+  apiClient.get(endpoint + "/getsearchproduct", {
     per_page,
     page_number,
-    search,
+    query: search,
     category,
   });
 

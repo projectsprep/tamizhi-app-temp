@@ -23,7 +23,7 @@ export default function useAddress() {
     setLoading(false);
   };
 
-  return [addresses, loading, setIsUpdated];
+  return { addresses, loading, setIsUpdated };
 }
 
 // Tamil

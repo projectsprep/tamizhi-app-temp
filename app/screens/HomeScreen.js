@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import {
+  RefreshControl,
   StyleSheet,
   View,
   ScrollView,
@@ -10,8 +11,8 @@ import _ from "lodash";
 
 import Screen from "./../components/Screen";
 import Banner from "./../components/banner";
-import CategoryList from "./../components/listing/home/CategoryList";
-import FoodProductList from "./../components/listing/home/FoodProductList";
+import CategoryList from "../components/listing/home/CategoryHomeList";
+import FoodProductList from "../components/listing/home/FoodHomeList";
 import Icon from "./../components/Icon";
 import useHome from "../hooks/useHome";
 import routes from "../routes/routes";
@@ -22,7 +23,10 @@ function HomeScreen({ navigation, route }) {
   const { home, loading, refresh } = useHome();
 
   const handleSearch = (query) => {
-    navigation.navigate(routes.PRODUCTS, { query });
+    navigation.navigate(routes.PRODUCTS, {
+      screen: routes.SEARCH,
+      params: { query },
+    });
   };
 
   const handleShowCats = (query) => {
@@ -32,7 +36,12 @@ function HomeScreen({ navigation, route }) {
   return (
     <Screen>
       <View style={styles.container}>
-        <ScrollView showsVerticalScrollIndicator={false}>
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          refreshControl={
+            <RefreshControl refreshing={loading} onRefresh={refresh} />
+          }
+        >
           <View style={styles.topView}>
             <View style={styles.searchRow}>
               <TextInput

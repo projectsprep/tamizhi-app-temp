@@ -15,7 +15,7 @@ function AccountScreen({ navigation }) {
     email: "user@userbase.com",
     mobile: "9876543210",
   };
-  const [addresses, loading, setUpdated] = useAddress();
+  const { addresses } = useAddress();
 
   const onEdit = () => navigation.navigate(routes.EDIT_USER_DETAILS, account);
 

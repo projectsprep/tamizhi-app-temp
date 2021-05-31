@@ -1,12 +1,12 @@
 import React from "react";
 import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
-import FoodListItem from "./FoodListItem";
-import CartListActions from "./../products/CartListActions";
+import FoodHomeItem from "./FoodHomeItem";
+import CartListActions from "../products/CartListActions";
 
 export default function FoodProductList({ data }) {
   const renderProduct = ({ item }) => {
     return (
-      <FoodListItem
+      <FoodHomeItem
         key={item.id}
         item={item}
         Action={() => (

@@ -13,7 +13,7 @@ const ProductsNavigator = ({ route }) => (
     <Stack.Screen
       name={routes.SEARCH}
       component={ProductsScreen}
-      initialParams={{ query: route.params?.query ?? "" }}
+      initialParams={{ query: route?.params?.query ?? "" }}
     />
     <Stack.Screen
       name={routes.PRODUCT_DETAILS}

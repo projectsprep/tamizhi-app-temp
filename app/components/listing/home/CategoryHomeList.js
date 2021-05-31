@@ -6,7 +6,7 @@ import {
   Text,
   FlatList,
 } from "react-native";
-import CategoryListItem from "./CategoryListItem";
+import CategoryHomeItem from "./CategoryHomeItem";
 
 export default function CategoryList({ data, showMore }) {
   const [selectedId, setSelectedId] = useState(null);
@@ -14,7 +14,7 @@ export default function CategoryList({ data, showMore }) {
   const renderItem = ({ item }) => {
     const backgroundColor = item.id === selectedId ? "#EFB60E" : "#fff";
     return (
-      <CategoryListItem
+      <CategoryHomeItem
         key={item.id}
         item={item}
         backgroundColor={backgroundColor}

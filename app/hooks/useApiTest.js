@@ -10,7 +10,7 @@ export default function useApiTest() {
 
   const test = async () => {
     const response = await testApi.test();
-    if (!response.ok || response.status !== 200) return setIsAlive(false);
+    if (!response.ok) return setIsAlive(false);
     if (response.ok) return setIsAlive(true);
   };
 

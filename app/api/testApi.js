@@ -1,7 +1,7 @@
 import apiClient from "./client";
 const endpoint = "/test";
 
-const test = () => apiClient.get(endpoint);
+const test = () => apiClient.post(endpoint);
 
 export default { test };
 

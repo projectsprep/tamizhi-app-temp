@@ -14,7 +14,7 @@ import {
 
 function AddressScreen({ navigation }) {
   const { user_id } = { user_id: 52326 };
-  const [addresses, loading, setUpdated] = useAddress();
+  const { addresses, loading, setUpdated } = useAddress();
 
   const filtered = addresses.filter((address) => address);
 

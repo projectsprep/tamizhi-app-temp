@@ -1,10 +1,10 @@
 import React from "react";
-import { StyleSheet, View, FlatList } from "react-native";
+import { StyleSheet, FlatList } from "react-native";
 
 import InfoScreen from "./utils/InfoScreen";
 import images from "../config/images";
 
-import { CategoryListItem } from "./../components/listing";
+import { CategoryHomeItem } from "./../components/listing";
 import categoryApi from "../api/categoryApi";
 import useApi from "./../hooks/useApi";
 import Screen from "./../components/Screen";
@@ -16,7 +16,7 @@ function CategoryScreen({ navigation, route }) {
 
   const filtered = items.filter((cat) => cat);
 
-  const renderItem = (item) => <CategoryListItem item={item} />;
+  const renderItem = (item) => <CategoryHomeItem item={item} />;
   const info = (loading) => (
     <InfoScreen
       title="No address found"

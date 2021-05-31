@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { StyleSheet } from "react-native";
 
 import images from "../config/images";
@@ -19,21 +19,38 @@ import _ from "lodash";
 function ProductsScreen({ navigation, route }) {
   const query = route.params?.query ?? "";
   const [search, setSearch] = useState(query);
-  const [category, setCategory] = useState("Food");
+  const [category, setCategory] = useState("FOOD");
   const [page, setPage] = useState(1);
 
-  const { cart, cartLoading, setQuantity } = useCartContext();
-  const { products, categories, loading, isMore, refresh } = useProductListing(
-    page,
-    search,
-    category
-  );
+  useEffect(() => {
+    setSearch(query);
+  }, [route]);
 
-  const prods = products.map((product) => {
-    const found = cart.find((prod) => prod.product_id === product.product_id);
-    if (found) product.quantity = found.quantity;
-    return product;
-  });
+  const { cart, cartLoading, setQuantity } = useCartContext();
+  const {
+    products,
+    categories: cats,
+    loading,
+    isMore,
+    refresh,
+  } = useProductListing(page, search, category);
+
+  console.log("products", products);
+  const categories = cats.map((cat) => ({
+    ...cat,
+    label: cat.catname.toString(),
+    value: cat.catname.toString(),
+  }));
+
+  const prods = !products
+    ? []
+    : products.map((product) => {
+        const found = cart.find(
+          (prod) => prod.product_id === product.product_id
+        );
+        if (found) product.quantity = found.quantity;
+        return product;
+      });
 
   const handleLoadMore = () => {
     if (!loading && isMore) setPage(page + 1);
@@ -58,16 +75,6 @@ function ProductsScreen({ navigation, route }) {
     const noMore = prods.length !== 0 && (!loading || !cartLoading);
     return <ProductsFooter isMore={hasMore} visible={noMore} />;
   };
-
-  const header = () => (
-    <ProductsHeader
-      onSearch={onSearch}
-      setCategory={setCategory}
-      categories={categories}
-      onSubmit={handleSubmit}
-      current={{ category, search }}
-    />
-  );
 
   const productItem = (item, onSelect) => (
     <ProductListItem
@@ -105,10 +112,16 @@ function ProductsScreen({ navigation, route }) {
 
   return (
     <Screen style={styles.container}>
+      <ProductsHeader
+        onSearch={onSearch}
+        setCategory={setCategory}
+        categories={categories}
+        onSubmit={handleSubmit}
+        current={{ category, search }}
+      />
       <Listing
         items={_.orderBy(prods, "product_id", "desc")}
         footer={footer}
-        header={header}
         refreshing={loading}
         onEndReached={handleLoadMore}
         onEndReachedThreshold={0.5}

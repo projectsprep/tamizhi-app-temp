@@ -8,8 +8,8 @@ import {
 } from "react-native";
 import Icon from "../components/Icon";
 import Banner from "./../components/banner";
-import FoodProductList from "./../components/listing/home/FoodProductList";
-import CategoryList from "./../components/listing/home/CategoryList";
+import FoodProductList from "../components/listing/home/FoodHomeList";
+import CategoryList from "../components/listing/home/CategoryHomeList";
 
 const pics = [
   "http://192.168.10.10:3001/images/4.jpg",

@@ -1,5 +1,6 @@
 import React from "react";
 import { View, StyleSheet, Image, TouchableOpacity } from "react-native";
+import api from "../config/api";
 
 import AppText from "./AppText";
 
@@ -8,13 +9,15 @@ function CategoryPickerItem({ item, onPress }) {
     <View style={styles.container}>
       <TouchableOpacity onPress={onPress}>
         <Image
-          backgroundColor={item.backgroundColor}
-          source={{ uri: item.icon }}
+          // backgroundColor={item.backgroundColor}
+          source={{
+            uri: api.baseAssetUrl + item.catimg,
+          }}
           style={styles.image}
           radius={10}
         />
       </TouchableOpacity>
-      <AppText style={styles.label}>{item.label}</AppText>
+      <AppText style={styles.label}>{item.catname}</AppText>
     </View>
   );
 }
@@ -34,6 +37,7 @@ const styles = StyleSheet.create({
     marginTop: 5,
     textAlign: "center",
     color: "black",
+    fontSize: 12,
   },
 });
 

@@ -1,9 +1,9 @@
 import apiClient from "./client";
-const endpoint = "/test";
+const endpoint = "/category";
 
-const getCategories = () => apiClient.get(endpoint + "/cats");
-const getAllCategories = () => apiClient.get(endpoint + "/cats/all");
+const getCategory = ({ id }) => apiClient.get(endpoint + "/" + id);
+const getAllCategories = () => apiClient.get(endpoint);
 
-export default { getCategories, getAllCategories };
+export default { getCategory, getAllCategories };
 
 // Tamil

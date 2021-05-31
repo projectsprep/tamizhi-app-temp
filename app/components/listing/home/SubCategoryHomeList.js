@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, View, TouchableOpacity, Text } from "react-native";
-import SubCategoryListItem from "./SubCategoryListItem";
+import SubCategoryHomeItem from "./SubCategoryHomeItem";
 
 export default function SubcategoryList() {
   const data = [
@@ -12,7 +12,7 @@ export default function SubcategoryList() {
   ];
 
   const renderItem = ({ item }) => {
-    return <SubCategoryListItem item={item} />;
+    return <SubCategoryHomeItem item={item} />;
   };
 
   return (
