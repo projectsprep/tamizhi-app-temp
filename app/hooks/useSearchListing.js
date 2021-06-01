@@ -9,19 +9,16 @@ export default function useSearchListing(
   per_page = 5
 ) {
   const [listing, setListing] = useState([]);
-  const [isNeed, setIsNeed] = useState(false);
   const [isMore, setIsMore] = useState(true);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     _.debounce(() => onQueryChange(), 500)();
-  }, [search, category, isNeed]);
+  }, [search, category]);
 
   useEffect(() => {
-    if (isMore) {
-      onPageChange();
-    }
-    if (page_number === 1) return setIsNeed(true);
+    if (page_number === 1) refresh();
+    else if (isMore) onPageChange();
   }, [page_number]);
 
   const refresh = () => {
@@ -42,7 +39,6 @@ export default function useSearchListing(
     setIsMore(response.data.isMore);
     setListing(response.data.data);
 
-    setIsNeed(false);
     setLoading(false);
   };
 
@@ -58,7 +54,6 @@ export default function useSearchListing(
 
     setIsMore(response.data.isMore);
     setListing([...listing, ...response.data.data]);
-    setIsNeed(false);
   };
 
   return { listing, loading, isMore, refresh };

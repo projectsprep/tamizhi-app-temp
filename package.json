@@ -31,16 +31,15 @@
     "react-native-appearance": "~0.3.3",
     "react-native-expo-image-cache": "^4.1.0",
     "react-native-gesture-handler": "~1.10.2",
-    "react-native-onesignal": "^4.1.1",
     "react-native-otp-textinput": "0.0.8",
-    "react-native-parallax-swiper": "^1.1.7",
     "react-native-ratings": "^8.0.4",
     "react-native-reanimated": "~2.1.0",
     "react-native-safe-area-context": "3.2.0",
     "react-native-screens": "~3.0.0",
     "react-native-snap-carousel": "^3.9.1",
     "react-native-web": "^0.16.2",
-    "yup": "^0.32.9"
+    "yup": "^0.32.9",
+    "expo-notifications": "~0.11.6"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",

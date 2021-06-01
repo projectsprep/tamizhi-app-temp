@@ -1,22 +1,19 @@
 import React from "react";
-import { StyleSheet, FlatList } from "react-native";
+import { StyleSheet, FlatList, View } from "react-native";
 
 import InfoScreen from "./utils/InfoScreen";
 import images from "../config/images";
 
-import { CategoryHomeItem } from "./../components/listing";
-import categoryApi from "../api/categoryApi";
+import categoryApi from "../api/category";
 import useApi from "./../hooks/useApi";
 import Screen from "./../components/Screen";
+import AppText from "./../components/AppText";
+import CategoryListItem from "../components/listing/category/CategoryListItem";
 
 function CategoryScreen({ navigation, route }) {
-  const { items, loading } = useApi(categoryApi.getAllCategories);
+  const { items, loading, refresh } = useApi(categoryApi.getAllCategories);
 
-  console.log(items);
-
-  const filtered = items.filter((cat) => cat);
-
-  const renderItem = (item) => <CategoryHomeItem item={item} />;
+  const renderItem = (item) => <CategoryListItem item={item} />;
   const info = (loading) => (
     <InfoScreen
       title="No address found"
@@ -24,29 +21,49 @@ function CategoryScreen({ navigation, route }) {
       visible={!loading}
       image={images.noProds}
       buttonTitle="Add Address"
-      action={() => setUpdated(true)}
+      action={refresh}
     />
   );
 
   return (
     <Screen style={styles.container}>
-      <FlatList
-        contentContainerStyle={styles.list}
-        numColumns={2}
-        data={filtered}
-        ListEmptyComponent={info}
-        keyExtractor={(item, index) => item.id + index}
-        renderItem={({ item }) => renderItem(item)}
-      />
+      <View style={styles.headingTitle}>
+        <AppText style={styles.heading}>Categories</AppText>
+      </View>
+      <View style={styles.categoryList}>
+        <FlatList
+          ListEmptyComponent={info}
+          numColumns={2}
+          refreshing={loading}
+          onRefresh={refresh}
+          data={items}
+          keyExtractor={(item) => item.id}
+          renderItem={({ item }) => renderItem(item)}
+        />
+      </View>
     </Screen>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {},
-  list: { height: "100%" },
+  container: {
+    flex: 1,
+    backgroundColor: "#F5F5F8",
+    padding: 5,
+  },
+  heading: {
+    fontSize: 24,
+    fontWeight: "bold",
+    color: "#333",
+  },
+  headingTitle: {
+    marginTop: 5,
+  },
+  categoryList: {
+    marginVertical: 5,
+  },
 });
 
 export default CategoryScreen;
 
-// Tamil
+// Sudharsan

@@ -4,7 +4,7 @@ import * as Yup from "yup";
 
 import Screen from "./../components/Screen";
 import { Form, FormField, SubmitButton } from "../components/forms";
-import addressApi from "../api/addressApi";
+import addressApi from "../api/address";
 import Notifier from "../utility/Notifier";
 import routes from "../routes/routes";
 

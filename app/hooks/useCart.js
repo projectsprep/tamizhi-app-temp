@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import cartApi from "../api/cartApi";
+import cartApi from "../api/cart";
 import Notifier from "../utility/Notifier";
-import wishListApi from "../api/wishListApi";
+import wishListApi from "../api/wishList";
 
 export default function useCart(user_id) {
   const [cart, setCart] = useState([]);

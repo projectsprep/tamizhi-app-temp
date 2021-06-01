@@ -1,22 +1,23 @@
 import React from "react";
-import { StyleSheet, View, FlatList } from "react-native";
+import { StyleSheet, FlatList, View } from "react-native";
 
-import useAddress from "./../hooks/useAddess";
 import InfoScreen from "./utils/InfoScreen";
 import images from "../config/images";
-import SubCategoryHomeItem from "../components/listing/home/SubCategoryHomeItem";
 
-function SubCategoryScreen({ navigation, route }) {
-  const { addresses, setUpdated } = useAddress();
+import useApi from "./../hooks/useApi";
+import Screen from "./../components/Screen";
+import AppText from "./../components/AppText";
+import subCategoryApi from "../api/subCategory";
+import SubCategoryListItem from "../components/listing/category/SubCategoryListItem";
 
-  const filtered = addresses.filter((address) => address);
-
-  const renderItem = (item) => (
-    <SubCategoryHomeItem
-      address={item}
-      onPress={() => editAddress("update", item)}
-    />
+function CategoryScreen({ navigation, route }) {
+  const { items, loading, refresh } = useApi(
+    subCategoryApi.getAllSubCategories
   );
+
+  console.log(items);
+
+  const renderItem = (item) => <SubCategoryListItem item={item} />;
   const info = (loading) => (
     <InfoScreen
       title="No address found"
@@ -24,26 +25,49 @@ function SubCategoryScreen({ navigation, route }) {
       visible={!loading}
       image={images.noProds}
       buttonTitle="Add Address"
-      action={() => setUpdated(true)}
+      action={refresh}
     />
   );
 
   return (
-    <View style={styles.container}>
-      <FlatList
-        data={filtered}
-        ListEmptyComponent={info}
-        keyExtractor={(item, index) => item.id + ""}
-        renderItem={({ item }) => renderItem(item)}
-      />
-    </View>
+    <Screen style={styles.container}>
+      <View style={styles.headingTitle}>
+        <AppText style={styles.heading}>Shops</AppText>
+      </View>
+      <View style={styles.categoryList}>
+        <FlatList
+          ListEmptyComponent={info}
+          numColumns={2}
+          refreshing={loading}
+          onRefresh={refresh}
+          data={items}
+          keyExtractor={(item) => item.id}
+          renderItem={({ item }) => renderItem(item)}
+        />
+      </View>
+    </Screen>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {},
+  container: {
+    flex: 1,
+    backgroundColor: "#F5F5F8",
+    padding: 5,
+  },
+  heading: {
+    fontSize: 24,
+    fontWeight: "bold",
+    color: "#333",
+  },
+  headingTitle: {
+    marginTop: 5,
+  },
+  categoryList: {
+    marginVertical: 5,
+  },
 });
 
-export default SubCategoryScreen;
+export default CategoryScreen;
 
-// Tamil
+// Sudharsan

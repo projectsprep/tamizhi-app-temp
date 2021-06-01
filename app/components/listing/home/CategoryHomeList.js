@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import CategoryHomeItem from "./CategoryHomeItem";
 
-export default function CategoryList({ data, showMore }) {
+export default function CategoryHomeList({ data, showMore }) {
   const [selectedId, setSelectedId] = useState(null);
 
   const renderItem = ({ item }) => {

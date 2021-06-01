@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, View, TouchableOpacity, Text } from "react-native";
 import SubCategoryHomeItem from "./SubCategoryHomeItem";
 
-export default function SubcategoryList() {
+export default function SubcategoryHomeList() {
   const data = [
     {
       id: 1,

@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, View, Image, TouchableOpacity } from "react-native";
 import AppText from "./../../AppText";
 
-function SubCategoryHomeItem({ item, onPress }) {
+function SubCategoryListItem({ item, onPress }) {
   return (
     <TouchableOpacity style={styles.subcategoryItem} onPress={onPress}>
       <View style={styles.column}>
@@ -70,6 +70,6 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SubCategoryHomeItem;
+export default SubCategoryListItem;
 
 // Sudharsan

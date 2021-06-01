@@ -12,7 +12,7 @@ const getPagedProducts = ({ per_page, page_number, category }) =>
   });
 
 const searchProducts = ({ per_page, page_number, search, category }) =>
-  apiClient.get(endpoint + "/getsearchproduct", {
+  apiClient.get("/getsearchproduct", {
     per_page,
     page_number,
     query: search,

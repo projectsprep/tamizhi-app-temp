@@ -3,7 +3,8 @@ import cache from "../utility/cache";
 import authStorage from "./../auth/storage";
 
 const apiClient = create({
-  baseURL: "https://project.tamizhistore.com/api",
+  // baseURL: "https://project.tamizhistore.com/api",
+  baseURL: "http://192.168.10.10:3001/api",
   timeout: 3500,
 });
 

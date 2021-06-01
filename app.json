@@ -2,6 +2,7 @@
   "expo": {
     "name": "tamizhi-app",
     "slug": "tamizhi-app",
+    "description": "Products at your door step",
     "version": "1.0.0",
     "orientation": "portrait",
     "userInterfaceStyle": "automatic",
@@ -27,6 +28,9 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "notification": {
+      "iosDisplayInForeground": true
     }
   }
 }

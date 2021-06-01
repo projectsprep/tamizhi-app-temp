@@ -4,7 +4,7 @@ import * as Yup from "yup";
 
 import Screen from "../components/Screen";
 import { Form, SubmitButton } from "../components/forms";
-import authApi from "../api/authApi";
+import authApi from "../api/auth";
 import AppText from "./../components/AppText";
 import LoadingView from "./utils/LoadingScreen";
 import defaultStyle from "../config/defaultStyles";

@@ -1,5 +1,7 @@
 import apiClient from "./client";
-const endpoint = "/test";
+const endpoint = "/subcategory";
+
+const getAllSubCategories = () => apiClient.get(endpoint);
 
 const getSubCategories = ({ category }) =>
   apiClient.get(endpoint + "/shops", { category });
@@ -19,6 +21,11 @@ const searchCategories = ({ per_page, page_number, search, category }) =>
     category,
   });
 
-export default { getSubCategories, getPagedSubCategories, searchCategories };
+export default {
+  getAllSubCategories,
+  getSubCategories,
+  getPagedSubCategories,
+  searchCategories,
+};
 
 // Tamil

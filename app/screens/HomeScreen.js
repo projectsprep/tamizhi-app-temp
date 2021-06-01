@@ -11,15 +11,14 @@ import _ from "lodash";
 
 import Screen from "./../components/Screen";
 import Banner from "./../components/banner";
-import CategoryList from "../components/listing/home/CategoryHomeList";
-import FoodProductList from "../components/listing/home/FoodHomeList";
+import CategoryHomeList from "../components/listing/home/CategoryHomeList";
+import FoodHomeList from "../components/listing/home/FoodHomeList";
 import Icon from "./../components/Icon";
 import useHome from "../hooks/useHome";
 import routes from "../routes/routes";
 
 function HomeScreen({ navigation, route }) {
-  const [search, onChangeSearchText] = useState("");
-
+  const [search, setSearch] = useState("");
   const { home, loading, refresh } = useHome();
 
   const handleSearch = (query) => {
@@ -48,7 +47,7 @@ function HomeScreen({ navigation, route }) {
                 value={search}
                 style={styles.searchInput}
                 placeholder="Search..."
-                onChangeText={onChangeSearchText}
+                onChangeText={setSearch}
                 returnKeyType="search"
                 onSubmitEditing={() => handleSearch(search)}
               />
@@ -59,8 +58,11 @@ function HomeScreen({ navigation, route }) {
           </View>
           <Banner images={home.banners} />
           <View style={styles.mainView}>
-            <CategoryList data={home.categories} showMore={handleShowCats} />
-            <FoodProductList data={home.foodItems} />
+            <CategoryHomeList
+              data={home.categories}
+              showMore={handleShowCats}
+            />
+            <FoodHomeList data={home.foodItems} />
           </View>
         </ScrollView>
       </View>

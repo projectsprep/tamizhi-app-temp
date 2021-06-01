@@ -1,5 +1,4 @@
-import _ from "lodash";
-import homeApi from "../api/homeApi";
+import homeApi from "../api/home";
 import useApi from "./useApi";
 
 export default function useProductListing() {
@@ -21,8 +20,8 @@ export default function useProductListing() {
     refresh: refreshFoodItems,
   } = useApi(homeApi.getFoodItems);
 
-  //   Structuring
-  const home = { banners, categories, foodItems };
+  //   Structurin
+  const home = { banners, categories: categories.slice(0, 4), foodItems };
 
   const loading = bannerLoading || categoryLoading || foodItemsLoading;
 

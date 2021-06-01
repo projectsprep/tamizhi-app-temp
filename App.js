@@ -12,6 +12,7 @@ import AuthNavigator from "./app/routes/AuthNavigator";
 import AppNavigator from "./app/routes/AppNavigator";
 import authStorage from "./app/auth/storage";
 import { StatusBar } from "react-native";
+import { navigationRef } from "./app/routes/rootNavigation";
 
 function App() {
   const [user, setUser] = useState();
@@ -40,7 +41,7 @@ function App() {
         <CartContext.Provider value={{ cart, cartLoading, setQuantity }}>
           <StatusBar hidden={true} />
           <NoNetwork action={refresh} />
-          <NavigationContainer theme={DefaultTheme}>
+          <NavigationContainer ref={navigationRef} theme={DefaultTheme}>
             {user ? <AppNavigator /> : <AuthNavigator />}
           </NavigationContainer>
         </CartContext.Provider>

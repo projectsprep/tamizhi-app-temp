@@ -8,8 +8,8 @@ import {
 } from "react-native";
 import Icon from "../components/Icon";
 import Banner from "./../components/banner";
-import FoodProductList from "../components/listing/home/FoodHomeList";
-import CategoryList from "../components/listing/home/CategoryHomeList";
+import FoodHomeList from "../components/listing/home/FoodHomeList";
+import CategoryHomeList from "../components/listing/home/CategoryHomeList";
 
 const pics = [
   "http://192.168.10.10:3001/images/4.jpg",
@@ -38,8 +38,8 @@ export default function HomePage() {
           </View>
           <Banner images={pics} />
           <View style={styles.mainView}>
-            <CategoryList />
-            <FoodProductList />
+            <CategoryHomeList />
+            <FoodHomeList />
           </View>
         </ScrollView>
       </View>

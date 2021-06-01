@@ -1,7 +1,7 @@
 import _ from "lodash";
 import { TabBarIOS } from "react-native";
-import categoryApi from "../api/categoryApi";
-import productsApi from "../api/productsApi";
+import categoryApi from "../api/category";
+import productsApi from "../api/products";
 import useApi from "./useApi";
 import useSearchListing from "./useSearchListing";
 

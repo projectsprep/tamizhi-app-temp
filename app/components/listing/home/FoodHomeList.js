@@ -3,7 +3,7 @@ import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
 import FoodHomeItem from "./FoodHomeItem";
 import CartListActions from "../products/CartListActions";
 
-export default function FoodProductList({ data }) {
+export default function FoodHomeList({ data }) {
   const renderProduct = ({ item }) => {
     return (
       <FoodHomeItem

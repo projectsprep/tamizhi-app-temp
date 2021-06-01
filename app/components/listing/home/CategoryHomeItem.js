@@ -1,9 +1,10 @@
 import React from "react";
 import { StyleSheet, View, Image, TouchableOpacity, Text } from "react-native";
+import api from "../../../config/api";
 
 import Icon from "../../Icon";
 
-function CategoryListItem({ item, backgroundColor, onPress }) {
+function CategoryHomeItem({ item, backgroundColor, onPress }) {
   return (
     <TouchableOpacity
       style={[styles.item, { backgroundColor }]}
@@ -11,7 +12,7 @@ function CategoryListItem({ item, backgroundColor, onPress }) {
     >
       <Image
         source={{
-          uri: "https://project.tamizhistore.com/assets/images/" + item.catimg,
+          uri: api.baseAssetUrl + item.catimg,
         }}
         style={styles.image}
       />
@@ -64,6 +65,6 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CategoryListItem;
+export default CategoryHomeItem;
 
 // Sudharsan

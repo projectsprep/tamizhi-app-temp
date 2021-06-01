@@ -6,7 +6,7 @@ import * as Yup from "yup";
 import icons from "../config/icons";
 import routes from "../routes/routes";
 import Screen from "../components/Screen";
-import authApi from "../api/authApi";
+import authApi from "../api/auth";
 import AppText from "../components/AppText";
 import defaultStyle from "../config/defaultStyles";
 import LoadingScreen from "./utils/LoadingScreen";

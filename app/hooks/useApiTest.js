@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import testApi from "../api/testApi";
+import testApi from "../api/test";
 
 export default function useApiTest() {
   const [isAlive, setIsAlive] = useState();

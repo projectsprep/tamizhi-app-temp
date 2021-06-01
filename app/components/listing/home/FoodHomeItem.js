@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, View, TouchableOpacity, Text, Image } from "react-native";
 
-function FoodListItem({ item, Action }) {
+function FoodHomeItem({ item, Action }) {
   return (
     <View style={[styles.productItem]}>
       <TouchableOpacity>
@@ -99,6 +99,6 @@ const styles = StyleSheet.create({
   },
 });
 
-export default FoodListItem;
+export default FoodHomeItem;
 
 // Sudharsan

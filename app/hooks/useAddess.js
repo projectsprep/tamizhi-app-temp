@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import addressApi from "../api/addressApi";
+import addressApi from "../api/address";
 
 export default function useAddress() {
   const [isUpdated, setIsUpdated] = useState(false);
