@@ -1,5 +1,4 @@
 import _ from "lodash";
-import { TabBarIOS } from "react-native";
 import categoryApi from "../api/category";
 import productsApi from "../api/products";
 import useApi from "./useApi";
@@ -25,14 +24,33 @@ export default function useProductListing(page_number, search, category) {
     refresh: refreshCats,
   } = useApi(categoryApi.getAllCategories);
 
+  console.log("products", listing);
+
+  const products =
+    listing?.map((prod) => ({
+      ...prod,
+      product_id: prod.id,
+      name: prod.pname,
+      seller: prod.sname,
+      categoryId: prod.cid,
+      subCategoryId: prod.sid,
+      description: prod.psdesc,
+      is_assured: true,
+      rating: 2.35,
+      price: prod.pprice,
+      order_type: "multiple",
+      image_uris: [prod.pimg],
+    })) ?? [];
+
   const isLoading = prodsLoading || catsLoading;
+
   const refreshListing = () => {
     refreshProds();
     refreshCats();
   };
 
   return {
-    products: listing,
+    products,
     categories: items,
     loading: isLoading,
     isMore,

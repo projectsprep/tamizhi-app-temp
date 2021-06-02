@@ -16,6 +16,7 @@ import FoodHomeList from "../components/listing/home/FoodHomeList";
 import Icon from "./../components/Icon";
 import useHome from "../hooks/useHome";
 import routes from "../routes/routes";
+import SubcategoryHomeList from "./../components/listing/home/SubCategoryHomeList";
 
 function HomeScreen({ navigation, route }) {
   const [search, setSearch] = useState("");
@@ -32,35 +33,43 @@ function HomeScreen({ navigation, route }) {
     navigation.navigate(routes.CATEGORIES);
   };
 
+  const handleShowSubCats = (query) => {
+    navigation.navigate(routes.SUB_CATEGORIES);
+  };
+
   return (
     <Screen>
       <View style={styles.container}>
+        <View style={styles.topView}>
+          <View style={styles.searchRow}>
+            <TextInput
+              value={search}
+              style={styles.searchInput}
+              placeholder="Search..."
+              onChangeText={setSearch}
+              returnKeyType="search"
+              onSubmitEditing={() => handleSearch(search)}
+            />
+            <TouchableOpacity onPress={() => handleSearch(search)}>
+              <Icon name="magnify" backgroundColor="#333" size={30} />
+            </TouchableOpacity>
+          </View>
+        </View>
         <ScrollView
           showsVerticalScrollIndicator={false}
           refreshControl={
             <RefreshControl refreshing={loading} onRefresh={refresh} />
           }
         >
-          <View style={styles.topView}>
-            <View style={styles.searchRow}>
-              <TextInput
-                value={search}
-                style={styles.searchInput}
-                placeholder="Search..."
-                onChangeText={setSearch}
-                returnKeyType="search"
-                onSubmitEditing={() => handleSearch(search)}
-              />
-              <TouchableOpacity onPress={() => handleSearch(search)}>
-                <Icon name="magnify" backgroundColor="#333" size={30} />
-              </TouchableOpacity>
-            </View>
-          </View>
-          <Banner images={home.banners} />
+          <Banner data={home.banners} />
           <View style={styles.mainView}>
             <CategoryHomeList
               data={home.categories}
               showMore={handleShowCats}
+            />
+            <SubcategoryHomeList
+              data={home.subCategories}
+              showMore={handleShowSubCats}
             />
             <FoodHomeList data={home.foodItems} />
           </View>

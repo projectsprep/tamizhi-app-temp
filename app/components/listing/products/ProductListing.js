@@ -27,12 +27,7 @@ function CartListing({
       renderItem={({ item }) => {
         return (
           <ProductListItem
-            id={item.product_id}
-            imageUri={item.image_uris[0]}
-            title={item.name}
-            rating={item.ratings}
-            presentPrice={item.presentPrice}
-            price={item.price}
+            item={item}
             onPress={() => onSelect(item)}
             ActionBar={() => actions(item)}
           />

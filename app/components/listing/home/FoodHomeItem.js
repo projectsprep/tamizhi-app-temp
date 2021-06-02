@@ -1,5 +1,6 @@
 import React from "react";
 import { StyleSheet, View, TouchableOpacity, Text, Image } from "react-native";
+import api from "../../../config/api";
 
 function FoodHomeItem({ item, Action }) {
   return (
@@ -27,8 +28,7 @@ function FoodHomeItem({ item, Action }) {
           </View>
           <Image
             source={{
-              uri:
-                "https://project.tamizhistore.com/assets/images/" + item.pimg,
+              uri: api.baseAssetUrl + item.pimg,
             }}
             style={styles.productImage}
           />

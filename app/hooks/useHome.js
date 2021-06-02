@@ -3,7 +3,7 @@ import useApi from "./useApi";
 
 export default function useProductListing() {
   const {
-    items: banners,
+    items: bannersObjs,
     loading: bannerLoading,
     refresh: refreshBanner,
   } = useApi(homeApi.getBanners);
@@ -12,23 +12,41 @@ export default function useProductListing() {
     items: categories,
     loading: categoryLoading,
     refresh: refreshCategory,
-  } = useApi(homeApi.getCategories);
+  } = useApi(homeApi.getCategories, { rows: 4 });
 
   const {
     items: foodItems,
     loading: foodItemsLoading,
     refresh: refreshFoodItems,
-  } = useApi(homeApi.getFoodItems);
+  } = useApi(homeApi.getFoodItems, { rows: 20 });
 
-  //   Structurin
-  const home = { banners, categories: categories.slice(0, 4), foodItems };
+  const {
+    items: subCategoriesObjs,
+    loading: subCategoryLoading,
+    refresh: refreshSubCategory,
+  } = useApi(homeApi.getSubCategories, { rows: 10 });
 
-  const loading = bannerLoading || categoryLoading || foodItemsLoading;
+  //   Structuring
+  const banners = bannersObjs.map((banner) => ({
+    ...banner,
+    bimg: "/assets/images/" + banner.bimg,
+  }));
+
+  const subCategories = subCategoriesObjs.map((subCat) => ({
+    ...subCat,
+    img: "/assets/images/" + subCat.img,
+  }));
+
+  const home = { banners, categories, subCategories, foodItems };
+
+  const loading =
+    bannerLoading || categoryLoading || foodItemsLoading || subCategoryLoading;
 
   const refresh = () => {
     refreshBanner();
     refreshCategory();
     refreshFoodItems();
+    refreshSubCategory();
   };
 
   return { home, loading, refresh };

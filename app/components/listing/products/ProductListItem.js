@@ -1,46 +1,42 @@
 import React from "react";
 import { StyleSheet, View, Image, TouchableOpacity } from "react-native";
 import { Rating } from "react-native-ratings";
+import api from "../../../config/api";
 
 import defaultStyles from "../../../config/defaultStyles";
 import AppText from "../../AppText";
 
 const itemColor = defaultStyles.colors.listItem;
 
-function ProductListItem({
-  id,
-  imageUri,
-  title,
-  rating = 2.35,
-  presentPrice = 10.54,
-  price = 10,
-  onPress,
-  ActionBar,
-}) {
+function ProductListItem({ item, onPress, ActionBar }) {
+  console.log(api.baseAssetUrl + item.image_uris[0]);
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={onPress} style={styles.item}>
-        <Image style={styles.image} source={{ uri: imageUri }} />
+        <Image
+          style={styles.image}
+          source={{ uri: api.baseAssetUrl + item.image_uris[0] }}
+        />
         <View style={styles.details}>
           <AppText style={styles.title} numberOfLines={3}>
-            {`${title}-${id}`}
+            {`${item.name}-${item.id}`}
           </AppText>
           <View style={styles.ratingBox}>
             <Rating
               tintColor={itemColor}
               type="star"
               ratingCount={5}
-              startingValue={rating}
+              startingValue={item.rating}
               readonly={true}
               imageSize={20}
               style={styles.ratingStars}
             />
-            <AppText style={styles.ratingCount}>{rating}</AppText>
+            <AppText style={styles.ratingCount}>{item.rating}</AppText>
           </View>
           <AppText style={styles.presentPrice}>
-            ₹{presentPrice.toFixed(2) + " "}
-            {price && price !== presentPrice && (
-              <AppText style={styles.price}>₹{price.toFixed(2)}</AppText>
+            ₹{item.price}
+            {item.discount && item.discount !== "0" && (
+              <AppText style={styles.discount}>{item.discount}%off</AppText>
             )}
           </AppText>
         </View>
@@ -90,10 +86,10 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
 
-  price: {
+  discount: {
     fontSize: 12,
     fontWeight: "normal",
-    textDecorationLine: "line-through",
+    // textDecorationLine: "line-through",
   },
 
   ratingBox: {

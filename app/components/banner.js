@@ -1,8 +1,9 @@
 import Carousel, { Pagination } from "react-native-snap-carousel";
 import React, { useRef, useState } from "react";
 import { Image, View, StyleSheet, useWindowDimensions } from "react-native";
+import api from "../config/api";
 
-export default function Banner({ images }) {
+export default function Banner({ data }) {
   const { width } = useWindowDimensions();
   const [active, setActive] = useState(0);
   const ref = useRef();
@@ -13,7 +14,7 @@ export default function Banner({ images }) {
         autoplay={true}
         activeDotIndex={10}
         ref={ref}
-        data={images}
+        data={data}
         renderItem={({ item, index }) => (
           <View
             style={{
@@ -21,7 +22,10 @@ export default function Banner({ images }) {
               width: width,
             }}
           >
-            <Image style={styles.image} source={{ uri: item.uri }} />
+            <Image
+              style={styles.image}
+              source={{ uri: api.baseAssetUrl + item.bimg }}
+            />
           </View>
         )}
         sliderWidth={width}
@@ -29,7 +33,7 @@ export default function Banner({ images }) {
         onSnapToItem={(index) => setActive(index)}
       />
       <Pagination
-        dotsLength={images.length}
+        dotsLength={data.length}
         activeDotIndex={active}
         containerStyle={styles.dotContainer}
         dotStyle={styles.dot}

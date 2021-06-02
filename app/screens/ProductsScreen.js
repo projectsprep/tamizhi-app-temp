@@ -35,7 +35,7 @@ function ProductsScreen({ navigation, route }) {
     refresh,
   } = useProductListing(page, search, category);
 
-  console.log("products", products);
+  // console.log("products", products);
   const categories = cats.map((cat) => ({
     ...cat,
     label: cat.catname.toString(),
@@ -78,12 +78,7 @@ function ProductsScreen({ navigation, route }) {
 
   const productItem = (item, onSelect) => (
     <ProductListItem
-      id={item.product_id}
-      imageUri={item.image_uris[0]}
-      title={item.name}
-      rating={item.ratings}
-      presentPrice={item.presentPrice}
-      price={item.price}
+      item={item}
       onPress={() => onSelect(item)}
       ActionBar={() => (
         <CartListActions

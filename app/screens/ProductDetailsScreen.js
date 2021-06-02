@@ -7,6 +7,7 @@ import ImageSlider from "./../components/ImageSlider";
 import { CartListActions } from "../components/listing";
 import routes from "../routes/routes";
 import useCartContext from "./../hooks/useCartContext";
+import api from "../config/api";
 
 function ProductDetailsScreen({ navigation, route }) {
   const { cart, setQuantity } = useCartContext();
@@ -15,10 +16,12 @@ function ProductDetailsScreen({ navigation, route }) {
   const found = cart.find((prod) => product.product_id === prod.product_id);
   const quantity = found ? found.quantity : 0;
 
+  const images = product.image_uris.map((uri) => api.baseAssetUrl + uri);
+
   return (
     <View style={styles.container}>
       <ScrollView>
-        <ImageSlider images={product.image_uris} />
+        <ImageSlider images={images} />
         <View style={styles.detailsContainer}>
           <AppText style={styles.title}>
             {product.title || product.name}

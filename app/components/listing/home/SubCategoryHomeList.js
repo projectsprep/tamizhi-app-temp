@@ -1,44 +1,33 @@
 import React from "react";
-import { StyleSheet, View, TouchableOpacity, Text } from "react-native";
+import { StyleSheet, View, ScrollView, TouchableOpacity } from "react-native";
 import SubCategoryHomeItem from "./SubCategoryHomeItem";
+import AppText from "./../../AppText";
 
-export default function SubcategoryHomeList() {
-  const data = [
-    {
-      id: 1,
-      img: "http://192.168.10.10:3001/images/4.jpg",
-      name: "fasdklfj",
-    },
-  ];
-
-  const renderItem = ({ item }) => {
-    return <SubCategoryHomeItem item={item} />;
-  };
-
+export default function SubcategoryHomeList({ data, showMore }) {
   return (
-    <View style={styles.subcategory}>
+    <View style={styles.container}>
       <View style={styles.headingTitle}>
-        <Text style={styles.heading}>Subcategories</Text>
-        <TouchableOpacity>
-          <Text style={styles.headingLink}>see more</Text>
+        <AppText style={styles.heading}>Shops</AppText>
+        <TouchableOpacity onPress={showMore}>
+          <AppText style={styles.headingLink}>see more</AppText>
         </TouchableOpacity>
       </View>
       <View style={styles.subcategoryList}>
-        <FlatList
-          data={data}
-          renderItem={renderItem}
-          numColumns={2}
-          keyExtractor={(item) => item.id}
-        />
+        <ScrollView horizontal>
+          {data.map((item) => (
+            <SubCategoryHomeItem key={item.id} item={item} />
+          ))}
+        </ScrollView>
       </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  subcategory: {
+  container: {
     flex: 1,
     marginTop: 14,
+    marginBottom: 14,
   },
   heading: {
     fontSize: 20,

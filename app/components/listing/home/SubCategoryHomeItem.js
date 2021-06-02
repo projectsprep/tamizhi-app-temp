@@ -1,14 +1,16 @@
 import React from "react";
 import { StyleSheet, View, Image, TouchableOpacity } from "react-native";
+import api from "../../../config/api";
 import AppText from "./../../AppText";
 
 function SubCategoryHomeItem({ item, onPress }) {
+  console.log(item);
   return (
-    <TouchableOpacity style={styles.subcategoryItem} onPress={onPress}>
+    <TouchableOpacity style={styles.container} onPress={onPress}>
       <View style={styles.column}>
         <Image
           source={{
-            uri: "https://project.tamizhistore.com/assets/images/" + item.img,
+            uri: api.baseAssetUrl + item.img,
           }}
           style={styles.image}
         />
@@ -22,7 +24,7 @@ function SubCategoryHomeItem({ item, onPress }) {
 }
 
 const styles = StyleSheet.create({
-  subcategoryItem: {
+  container: {
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
@@ -31,7 +33,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.44,
     shadowRadius: 10.32,
     elevation: 5,
-    width: "45%",
+    width: "10%",
     backgroundColor: "#fff",
     marginHorizontal: 8,
     marginVertical: 6,
@@ -52,7 +54,7 @@ const styles = StyleSheet.create({
   title: {
     textTransform: "capitalize",
     fontWeight: "700",
-    width: "80%",
+    width: 100,
     textAlign: "center",
     color: "#222",
   },
