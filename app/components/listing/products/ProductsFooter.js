@@ -5,20 +5,22 @@ import LoadingScreen from "../../../screens/utils/LoadingScreen";
 
 function ProductsFooter({ onPress, isMore }) {
   const { width } = useWindowDimensions();
-  return isMore ? (
+  return (
     <View style={{ ...styles.container, width }}>
-      <LoadingScreen
-        visible={isMore}
-        backgroundColor={defaultStyles.colors.transparent}
-      />
+      {isMore && (
+        <LoadingScreen
+          visible={isMore}
+          backgroundColor={defaultStyles.colors.transparent}
+        />
+      )}
     </View>
-  ) : null;
+  );
 }
 
 const styles = StyleSheet.create({
   container: {
     position: "relative",
-    height: 200,
+    height: 150,
     alignItems: "center",
     justifyContent: "center",
     paddingVertical: 20,

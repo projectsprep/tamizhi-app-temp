@@ -24,8 +24,6 @@ export default function useProductListing(page_number, search, category) {
     refresh: refreshCats,
   } = useApi(categoryApi.getAllCategories);
 
-  console.log("products", listing);
-
   const products =
     listing?.map((prod) => ({
       ...prod,

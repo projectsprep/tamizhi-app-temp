@@ -4,7 +4,7 @@ const endpoint = "/subcategory";
 const getAllSubCategories = () => apiClient.get(endpoint);
 
 const getSubCategories = ({ category }) =>
-  apiClient.get(endpoint + "/shops", { category });
+  apiClient.get(endpoint, { category });
 
 const getPagedSubCategories = ({ per_page, page_number, category }) =>
   apiClient.get(endpoint + "/shops", {
@@ -13,7 +13,7 @@ const getPagedSubCategories = ({ per_page, page_number, category }) =>
     category,
   });
 
-const searchCategories = ({ per_page, page_number, search, category }) =>
+const searchSubCategories = ({ per_page, page_number, search, category }) =>
   apiClient.get(endpoint + "/shops", {
     per_page,
     page_number,
@@ -25,7 +25,7 @@ export default {
   getAllSubCategories,
   getSubCategories,
   getPagedSubCategories,
-  searchCategories,
+  searchSubCategories,
 };
 
 // Tamil

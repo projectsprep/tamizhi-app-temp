@@ -1,5 +1,4 @@
 import apiClient from "./client";
-const endpoint = "/test";
 
 const getBanners = () => apiClient.get("/banner");
 

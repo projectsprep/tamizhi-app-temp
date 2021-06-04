@@ -9,15 +9,27 @@ import Screen from "./../components/Screen";
 import AppText from "./../components/AppText";
 import subCategoryApi from "../api/subCategory";
 import SubCategoryListItem from "../components/listing/category/SubCategoryListItem";
+import routes from "../routes/routes";
 
 function CategoryScreen({ navigation, route }) {
-  const { items, loading, refresh } = useApi(
-    subCategoryApi.getAllSubCategories
+  const category = route.params?.category;
+
+  const fetcher = () =>
+    category
+      ? subCategoryApi.getSubCategories
+      : subCategoryApi.getAllSubCategories;
+
+  const { items, loading, refresh } = useApi(fetcher(), {
+    category: category?.id ?? "",
+  });
+
+  const handleShowDetails = (item) => {
+    navigation.navigate(routes.HOME_PRODUCTS, { subCategory: item });
+  };
+
+  const renderItem = (item) => (
+    <SubCategoryListItem item={item} onPress={() => handleShowDetails(item)} />
   );
-
-  console.log(items);
-
-  const renderItem = (item) => <SubCategoryListItem item={item} />;
   const info = (loading) => (
     <InfoScreen
       title="No address found"
@@ -54,11 +66,13 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#F5F5F8",
     padding: 5,
+    marginBottom: "5%",
   },
   heading: {
     fontSize: 24,
     fontWeight: "bold",
     color: "#333",
+    marginBottom: "2.5%",
   },
   headingTitle: {
     marginTop: 5,

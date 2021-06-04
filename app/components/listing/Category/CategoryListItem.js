@@ -3,9 +3,9 @@ import { StyleSheet, View, TouchableOpacity, Image } from "react-native";
 import api from "../../../config/api";
 import AppText from "../../AppText";
 
-function CategoryListItem({ item }) {
+function CategoryListItem({ item, onPress }) {
   return (
-    <TouchableOpacity style={styles.container}>
+    <TouchableOpacity style={styles.container} onPress={onPress}>
       <View style={styles.column}>
         <AppText ellipsizeMode="tail" numberOfLines={2} style={styles.catname}>
           {item.catname}

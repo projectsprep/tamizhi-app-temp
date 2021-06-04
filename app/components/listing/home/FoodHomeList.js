@@ -3,12 +3,13 @@ import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
 import FoodHomeItem from "./FoodHomeItem";
 import CartListActions from "../products/CartListActions";
 
-export default function FoodHomeList({ data }) {
+export default function FoodHomeList({ data, showMore, showDetails }) {
   const renderProduct = ({ item }) => {
     return (
       <FoodHomeItem
         key={item.id}
         item={item}
+        onPress={() => showDetails(item)}
         Action={() => (
           <CartListActions
             type="multiple"
@@ -25,7 +26,7 @@ export default function FoodHomeList({ data }) {
     <View style={styles2.products}>
       <View style={styles2.headingTitle}>
         <Text style={styles2.heading}>Food items</Text>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={showMore}>
           <Text style={styles2.headingLink}>see more</Text>
         </TouchableOpacity>
       </View>

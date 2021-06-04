@@ -3,7 +3,7 @@ import { StyleSheet, View, ScrollView, TouchableOpacity } from "react-native";
 import SubCategoryHomeItem from "./SubCategoryHomeItem";
 import AppText from "./../../AppText";
 
-export default function SubcategoryHomeList({ data, showMore }) {
+export default function SubcategoryHomeList({ data, showMore, showDetails }) {
   return (
     <View style={styles.container}>
       <View style={styles.headingTitle}>
@@ -13,9 +13,13 @@ export default function SubcategoryHomeList({ data, showMore }) {
         </TouchableOpacity>
       </View>
       <View style={styles.subcategoryList}>
-        <ScrollView horizontal>
+        <ScrollView horizontal showsHorizontalScrollIndicator={false}>
           {data.map((item) => (
-            <SubCategoryHomeItem key={item.id} item={item} />
+            <SubCategoryHomeItem
+              key={item.id}
+              item={item}
+              onPress={() => showDetails(item)}
+            />
           ))}
         </ScrollView>
       </View>

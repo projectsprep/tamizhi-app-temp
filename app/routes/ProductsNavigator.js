@@ -2,7 +2,7 @@ import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 
 import routes from "./routes";
-import ProductsScreen from "./../screens/ProductsScreen";
+import ProductsSearchScreen from "../screens/ProductsSearchScreen";
 import ProductDetailsScreen from "./../screens/ProductDetailsScreen";
 import BookNowNavigator from "./BookNowNavigator";
 
@@ -12,7 +12,7 @@ const ProductsNavigator = ({ route }) => (
   <Stack.Navigator screenOptions={{ headerShown: false }}>
     <Stack.Screen
       name={routes.SEARCH}
-      component={ProductsScreen}
+      component={ProductsSearchScreen}
       initialParams={{ query: route?.params?.query ?? "" }}
     />
     <Stack.Screen

@@ -3,7 +3,7 @@ import { StyleSheet } from "react-native";
 
 import images from "../config/images";
 import InfoScreen from "./utils/InfoScreen";
-import Screen from "./../components/Screen";
+import Screen from "../components/Screen";
 import {
   Listing,
   ProductListItem,
@@ -12,15 +12,15 @@ import {
   CartListActions,
 } from "../components/listing";
 import routes from "../routes/routes";
-import useCartContext from "./../hooks/useCartContext";
-import useProductListing from "./../hooks/useProductsLIsting";
+import useCartContext from "../hooks/useCartContext";
+import useProductListing from "../hooks/useProductsLIsting";
 import _ from "lodash";
 
-function ProductsScreen({ navigation, route }) {
-  const query = route.params?.query ?? "";
+function ProductsSearchScreen({ navigation, route }) {
+  const query = route.params?.query ?? "choco";
   const [search, setSearch] = useState(query);
   const [category, setCategory] = useState("FOOD");
-  const [page, setPage] = useState(1);
+  const [page_number, setPage] = useState(1);
 
   useEffect(() => {
     setSearch(query);
@@ -33,9 +33,8 @@ function ProductsScreen({ navigation, route }) {
     loading,
     isMore,
     refresh,
-  } = useProductListing(page, search, category);
+  } = useProductListing(page_number, search, category, 5);
 
-  // console.log("products", products);
   const categories = cats.map((cat) => ({
     ...cat,
     label: cat.catname.toString(),
@@ -53,7 +52,7 @@ function ProductsScreen({ navigation, route }) {
       });
 
   const handleLoadMore = () => {
-    if (!loading && isMore) setPage(page + 1);
+    if (!loading && isMore) setPage(page_number + 1);
   };
 
   const handleRefresh = () => {
@@ -93,16 +92,18 @@ function ProductsScreen({ navigation, route }) {
 
   const info = () => {
     const searched = search !== "" && (!loading || !cartLoading);
-    if (searched)
-      return (
-        <InfoScreen
-          title="No Items Found"
-          description="Try other keywords or Try Refreshing"
-          image={images.noProds}
-          visible={true}
-        />
-      );
-    else return null;
+    return (
+      <InfoScreen
+        title={searched ? "No Items Found" : "Search Products"}
+        description={
+          searched
+            ? "Try other keywords or Try Refreshing"
+            : "Search your favorite products"
+        }
+        image={images.noProds}
+        visible={!loading}
+      />
+    );
   };
 
   return (
@@ -121,7 +122,6 @@ function ProductsScreen({ navigation, route }) {
         onEndReached={handleLoadMore}
         onEndReachedThreshold={0.5}
         onRefresh={handleRefresh}
-        stickyHeaderIndices={[0]}
         emptyInfoScreen={info}
         customListItem={productItem}
         onSelect={(item) =>
@@ -140,6 +140,6 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ProductsScreen;
+export default ProductsSearchScreen;
 
 // Tamil

@@ -9,7 +9,6 @@ import AppText from "../../AppText";
 const itemColor = defaultStyles.colors.listItem;
 
 function ProductListItem({ item, onPress, ActionBar }) {
-  console.log(api.baseAssetUrl + item.image_uris[0]);
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={onPress} style={styles.item}>
@@ -41,7 +40,11 @@ function ProductListItem({ item, onPress, ActionBar }) {
           </AppText>
         </View>
       </TouchableOpacity>
-      {ActionBar && <ActionBar />}
+      {ActionBar && (
+        <View style={styles.actionBar}>
+          <ActionBar />
+        </View>
+      )}
     </View>
   );
 }
@@ -106,6 +109,11 @@ const styles = StyleSheet.create({
 
   ratingCount: {
     marginStart: 7.5,
+  },
+
+  actionBar: {
+    alignSelf: "center",
+    width: "95%",
   },
 });
 

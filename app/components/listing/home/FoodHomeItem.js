@@ -2,10 +2,10 @@ import React from "react";
 import { StyleSheet, View, TouchableOpacity, Text, Image } from "react-native";
 import api from "../../../config/api";
 
-function FoodHomeItem({ item, Action }) {
+function FoodHomeItem({ item, Action, onPress }) {
   return (
     <View style={[styles.productItem]}>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={onPress}>
         <View style={styles.container}>
           <View style={styles.productRow}>
             <Text

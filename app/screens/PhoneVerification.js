@@ -36,7 +36,8 @@ function PhoneVerification({ route }) {
       );
 
       setError(true);
-      return setLoading(false);
+      setLoading(false);
+      // return setLoading(false);
     }
 
     setError(false);

@@ -30,6 +30,8 @@ const routes = {
   HOME_PAGE: "Home Page",
   CATEGORIES: "Categories",
   SUB_CATEGORIES: "Sub Categories",
+  HOME_PRODUCTS: "Home Products",
+  // shares products details with products
 
   // PRODUCTS
   SEARCH: "Search",

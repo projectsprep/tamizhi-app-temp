@@ -1,56 +1,62 @@
-import React, { useState } from "react";
+import React from "react"; // { useState }
+import * as AppAuth from "expo-app-auth";
+import { StyleSheet, Image } from "react-native";
+// import * as Yup from "yup";
 
-import { StyleSheet, Image, ToastAndroid } from "react-native";
-import * as Yup from "yup";
-
+// import authApi from "../api/auth";
+// import routes from "../routes/routes";
 import icons from "../config/icons";
-import routes from "../routes/routes";
 import Screen from "../components/Screen";
-import authApi from "../api/auth";
 import AppText from "../components/AppText";
 import defaultStyle from "../config/defaultStyles";
 import LoadingScreen from "./utils/LoadingScreen";
-import { Form, FormField, SubmitButton } from "../components/forms";
+// import { Form, FormField, SubmitButton } from "../components/forms";
 
-const validationSchema = Yup.object().shape({
-  mobile: Yup.string().required().label("Mobile Number"),
-});
+// const validationSchema = Yup.object().shape({
+//   mobile: Yup.string().required().label("Mobile Number"),
+// });
 
 function AuthScreen({ navigation }) {
-  const [error, setError] = useState();
-  const [loading, setLoading] = useState();
+  const { URLSchemes } = AppAuth;
+  console.log(URLSchemes);
+  // const [error, setError] = useState();
+  // const [loading, setLoading] = useState();
 
-  const handleSubmit = async (mobile) => {
-    setLoading(true);
+  // const handleSubmit = async (mobile) => {
+  //   setLoading(true);
 
-    const response = await authApi.login({ mobile });
+  //   const response = await authApi.login({ mobile });
 
-    if (!response.ok) {
-      ToastAndroid.show(
-        `${response.problem}: Something Went Wrong !`,
-        ToastAndroid.LONG
-      );
+  //   if (!response.ok) {
+  //     ToastAndroid.show(
+  //       `${response.problem}: Something Went Wrong !`,
+  //       ToastAndroid.LONG
+  //     );
 
-      setError(true);
-      return setLoading(false);
-    }
+  //     setError(true);
+  //     setLoading(false);
+  //     return setLoading(false);
+  //   }
 
-    setError(false);
-    setLoading(false);
+  //   setError(false);
+  //   setLoading(false);
 
-    navigation.navigate(routes.OTP_VERIFICATION, { mobile });
-  };
+  //   navigation.navigate(routes.OTP_VERIFICATION, { mobile });
+  // };
 
   return (
     <>
-      <LoadingScreen visible={loading} />
+      <LoadingScreen
+      // visible={loading}
+      />
       <Screen style={styles.container}>
         <Image style={styles.logo} source={icons.auth} />
-        {error && (
+        {/* {error && (
           <AppText style={styles.error}>Something went wrong !</AppText>
-        )}
+        )} */}
         <AppText style={styles.note}>Please Enter your phone number</AppText>
-        <Form
+
+        {/* <Form
           initialValues={{ mobile: "" }}
           onSubmit={({ mobile }) => handleSubmit(mobile)}
           validationSchema={validationSchema}
@@ -72,7 +78,7 @@ function AuthScreen({ navigation }) {
             noError={false}
           />
           <SubmitButton title="Login" style={styles.loginBtn} />
-        </Form>
+        </Form> */}
       </Screen>
     </>
   );

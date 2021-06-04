@@ -29,12 +29,28 @@ function HomeScreen({ navigation, route }) {
     });
   };
 
-  const handleShowCats = (query) => {
+  const handleShowCats = () => {
     navigation.navigate(routes.CATEGORIES);
   };
 
-  const handleShowSubCats = (query) => {
+  const handleShowSubCats = () => {
     navigation.navigate(routes.SUB_CATEGORIES);
+  };
+
+  const handleShowProds = () => {
+    navigation.navigate(routes.SEARCH);
+  };
+
+  const handleCatDetails = (item) => {
+    navigation.navigate(routes.HOME_PRODUCTS, { category: item });
+  };
+
+  const handleSubCatDetails = (item) => {
+    navigation.navigate(routes.HOME_PRODUCTS, { subCategory: item });
+  };
+
+  const handleProdDetails = (item) => {
+    navigation.push(routes.PRODUCT_DETAILS, { product: item });
   };
 
   return (
@@ -66,12 +82,18 @@ function HomeScreen({ navigation, route }) {
             <CategoryHomeList
               data={home.categories}
               showMore={handleShowCats}
+              showDetails={handleCatDetails}
             />
             <SubcategoryHomeList
               data={home.subCategories}
               showMore={handleShowSubCats}
+              showDetails={handleSubCatDetails}
             />
-            <FoodHomeList data={home.foodItems} />
+            <FoodHomeList
+              data={home.foodItems}
+              showMore={handleShowProds}
+              showDetails={handleProdDetails}
+            />
           </View>
         </ScrollView>
       </View>

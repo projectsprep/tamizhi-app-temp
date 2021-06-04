@@ -12,7 +12,7 @@ Notifications.setNotificationHandler({
 });
 
 function useNotifications(notificationListener) {
-  const notificationResponseListener = useRef();
+  const responseListener = useRef();
 
   const regiserForPushNotifications = async () => {
     try {
@@ -32,7 +32,7 @@ function useNotifications(notificationListener) {
       }
 
       if (notificationListener)
-        notificationResponseListener.current =
+        responseListener.current =
           Notifications.addNotificationResponseReceivedListener(
             notificationListener
           );
@@ -45,9 +45,9 @@ function useNotifications(notificationListener) {
     regiserForPushNotifications();
 
     return () => {
-      Notifications.removeNotificationSubscription(
-        notificationResponseListener.current
-      );
+      try {
+        Notifications.removeNotificationSubscription(responseListener.current);
+      } catch (ex) {}
     };
   }, []);
   return;

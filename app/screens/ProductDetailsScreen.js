@@ -12,7 +12,7 @@ import api from "../config/api";
 function ProductDetailsScreen({ navigation, route }) {
   const { cart, setQuantity } = useCartContext();
 
-  const { isDisplayOnly, product } = route.params;
+  const { isDisplayOnly = false, product } = route.params;
   const found = cart.find((prod) => product.product_id === prod.product_id);
   const quantity = found ? found.quantity : 0;
 
@@ -26,7 +26,7 @@ function ProductDetailsScreen({ navigation, route }) {
           <AppText style={styles.title}>
             {product.title || product.name}
           </AppText>
-          <AppText style={styles.price}>Rs. {product.presentPrice}</AppText>
+          <AppText style={styles.price}>Rs. {product.price}</AppText>
           <AppText>{product.description}</AppText>
         </View>
 

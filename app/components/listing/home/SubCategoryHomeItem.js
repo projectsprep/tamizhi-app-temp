@@ -4,7 +4,6 @@ import api from "../../../config/api";
 import AppText from "./../../AppText";
 
 function SubCategoryHomeItem({ item, onPress }) {
-  console.log(item);
   return (
     <TouchableOpacity style={styles.container} onPress={onPress}>
       <View style={styles.column}>

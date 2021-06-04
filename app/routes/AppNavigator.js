@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Platform } from "react-native";
+import { StyleSheet } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import routes from "./routes";
@@ -12,7 +12,7 @@ import useNotifications from "./../hooks/useNotifications";
 
 const Tab = createBottomTabNavigator();
 
-const AppNavigator = (props) => {
+const AppNavigator = () => {
   useNotifications();
 
   return (
@@ -45,7 +45,7 @@ const AppNavigator = (props) => {
         }}
       />
       <Tab.Screen
-        name={routes.PROFILE}
+        name={routes.PROFILE_OPTIONS}
         component={ProfileNavigator}
         options={{
           tabBarIcon: ({ color, size }) => icon("account", color, size),

@@ -39,10 +39,7 @@ function ProductsHeader({
         />
 
         <FormPicker
-          onSelected={(item) => {
-            console.log(item);
-            setCategory(item.catname);
-          }}
+          onSelected={(item) => setCategory(item.catname)}
           name="category"
           numberOfColumns={3}
           placeholder={current.category}

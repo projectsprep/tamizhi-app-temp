@@ -36,13 +36,13 @@ function App() {
 
   return (
     <AppearanceProvider>
-      <></>
       <AuthContext.Provider value={{ user, setUser }}>
         <CartContext.Provider value={{ cart, cartLoading, setQuantity }}>
           <StatusBar hidden={true} />
           <NoNetwork action={refresh} />
           <NavigationContainer ref={navigationRef} theme={DefaultTheme}>
             {user ? <AppNavigator /> : <AuthNavigator />}
+            {/* <AppNavigator /> */}
           </NavigationContainer>
         </CartContext.Provider>
       </AuthContext.Provider>

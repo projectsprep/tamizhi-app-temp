@@ -15,7 +15,7 @@ export default function useProductListing() {
   } = useApi(homeApi.getCategories, { rows: 4 });
 
   const {
-    items: foodItems,
+    items: foodItemsObjs,
     loading: foodItemsLoading,
     refresh: refreshFoodItems,
   } = useApi(homeApi.getFoodItems, { rows: 20 });
@@ -36,6 +36,22 @@ export default function useProductListing() {
     ...subCat,
     img: "/assets/images/" + subCat.img,
   }));
+
+  const foodItems =
+    foodItemsObjs?.map((prod) => ({
+      ...prod,
+      product_id: prod.id,
+      name: prod.pname,
+      seller: prod.sname,
+      categoryId: prod.cid,
+      subCategoryId: prod.sid,
+      description: prod.psdesc,
+      is_assured: true,
+      rating: 2.35,
+      price: prod.pprice,
+      order_type: "multiple",
+      image_uris: [prod.pimg],
+    })) ?? [];
 
   const home = { banners, categories, subCategories, foodItems };
 

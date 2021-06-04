@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
   title: {
     textTransform: "capitalize",
     fontWeight: "700",
-    width: "80%",
+    width: 100,
     textAlign: "center",
     color: "#222",
   },
