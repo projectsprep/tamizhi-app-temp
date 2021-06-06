@@ -2,7 +2,10 @@ import React from "react";
 import { StyleSheet, View, Image, TouchableOpacity, Text } from "react-native";
 import api from "../../../config/api";
 
-import Icon from "../../Icon";
+// import Icon from "../../Icon";
+import style from "../../../config/defaultStyles";
+
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 function CategoryHomeItem({ item, backgroundColor, onPress }) {
   return (
@@ -20,7 +23,8 @@ function CategoryHomeItem({ item, backgroundColor, onPress }) {
         {item.catname}
       </Text>
       <View style={styles.icon}>
-        <Icon name="chevron-right" backgroundColor="#eb314d" size={25} />
+        {/* <Icon name="chevron-right" backgroundColor="#333" size={25} /> */}
+        <MaterialCommunityIcons color="#333" name="chevron-right" size={25} />
       </View>
     </TouchableOpacity>
   );
@@ -62,6 +66,8 @@ const styles = StyleSheet.create({
   icon: {
     marginTop: 4,
     alignSelf: "center",
+    backgroundColor: style.colors.btnColor,
+    borderRadius: 20
   },
 });
 

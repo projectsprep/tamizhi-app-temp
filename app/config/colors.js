@@ -17,9 +17,12 @@ const light = Object.freeze({
   success: "#24a629",
   danger: "#bd3131",
   white: "white",
-  textColor: "black",
+  textColor: "#333",
   black: "black",
   transparent: "#AARRGGBB",
+
+  //buttonColor
+  btnColor: "#ffc529",
 
   // Listings
   listItem: "#ebebeb",

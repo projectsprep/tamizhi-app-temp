@@ -10,7 +10,7 @@ function CartListActions({ type, onPress, quantity, setQuantity }) {
         <ItemCounter quantity={quantity} setQuantity={setQuantity} />
       ) : (
         <AppButton
-          color="primaryDark"
+          color="btnColor"
           title={type === "multiple" ? "Add to Cart" : "Book Now"}
           onPress={type === "multiple" ? () => setQuantity("add") : onPress}
           style={styles.remove}
@@ -20,7 +20,7 @@ function CartListActions({ type, onPress, quantity, setQuantity }) {
       <View style={styles.otherActions}>
         {quantity ? (
           <AppButton
-            color="primaryDark"
+            color="btnColor"
             title="remove"
             onPress={() => setQuantity("remove")}
             style={styles.remove}
@@ -28,7 +28,7 @@ function CartListActions({ type, onPress, quantity, setQuantity }) {
           />
         ) : null}
         <AppButton
-          color="primaryDark"
+          color="btnColor"
           title="Save for Later"
           onPress={() => setQuantity("save")}
           style={styles.save}

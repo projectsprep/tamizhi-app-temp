@@ -24,20 +24,24 @@ function CategoryPickerItem({ item, onPress }) {
 
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: 30,
+    paddingHorizontal: 10,
     paddingVertical: 15,
     alignItems: "center",
     borderRadius: 15,
-    width: "33%",
+    width: "31.5%",
+    marginVertical: 5,
+    marginHorizontal: 3,
+    backgroundColor: "#fff"
   },
 
-  image: { width: 100, height: 100, borderRadius: 15 },
+  image: { width: 100, height: 100, borderRadius: 15},
 
   label: {
     marginTop: 5,
     textAlign: "center",
     color: "black",
     fontSize: 12,
+    textTransform: "capitalize"
   },
 });
 

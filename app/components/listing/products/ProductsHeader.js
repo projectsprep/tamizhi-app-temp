@@ -55,14 +55,25 @@ function ProductsHeader({
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: defaultStyles.colors.white,
+    backgroundColor: "#F5F5F8",
+    borderBottomWidth: 1,
+    borderBottomColor: "#333",
   },
 
   picker: {
     height: 40,
     paddingVertical: "2%",
     borderRadius: 10,
+    width: "90%",
+    alignSelf: "center"
   },
+
+  field: {
+    width: "90%",
+    alignSelf: "center",
+    height: 50,
+    marginTop: 15
+  }
 });
 
 export default ProductsHeader;

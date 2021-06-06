@@ -21,6 +21,8 @@ function InfoScreen({
       style={{
         ...styles.container,
         height: height / 1.15,
+        flex: 2,
+        backgroundColor: "#F5F5F8"
       }}
     >
       <View style={styles.info}>
@@ -51,19 +53,24 @@ const styles = StyleSheet.create({
 
   image: {
     position: "absolute",
-    top: "25%",
+    top: "10%",
     width: 113.13,
     height: 99.13,
     alignSelf: "center",
+    resizeMode: "stretch"
   },
 
   title: {
     fontSize: 28,
-    marginTop: 50,
+    marginTop: 10,
+    color: "#333",
+    textAlign: "center"
   },
 
   desc: {
     marginTop: 20,
+    color: "#555",
+    textAlign: "center"
   },
 
   button: {

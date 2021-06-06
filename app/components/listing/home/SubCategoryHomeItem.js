@@ -2,6 +2,10 @@ import React from "react";
 import { StyleSheet, View, Image, TouchableOpacity } from "react-native";
 import api from "../../../config/api";
 import AppText from "./../../AppText";
+import Icon from "../../Icon";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import style from "../../../config/defaultStyles";
+
 
 function SubCategoryHomeItem({ item, onPress }) {
   return (
@@ -16,7 +20,11 @@ function SubCategoryHomeItem({ item, onPress }) {
         <AppText ellipsizeMode="tail" numberOfLines={1} style={styles.title}>
           {item.name}
         </AppText>
-        <AppText style={styles.viewButton}>View products</AppText>
+        {/* <AppText style={styles.viewButton}>View products</AppText> */}
+        <View style={styles.icon}>
+          {/* <Icon name="chevron-right" backgroundColor="#333" size={25} /> */}
+          <MaterialCommunityIcons color="#333" name="chevron-right" size={25} />
+        </View>
       </View>
     </TouchableOpacity>
   );
@@ -61,13 +69,21 @@ const styles = StyleSheet.create({
     height: 30,
     width: "80%",
     textAlign: "center",
-    backgroundColor: "#EFB60E",
+    backgroundColor: "#ffc529",
     marginTop: 5,
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
     color: "#333",
-    paddingTop: 3,
+    paddingHorizontal: 5,
+    paddingVertical: 3,
     fontSize: 12,
+  },
+  icon: {
+    marginVertical: 8,
+    alignSelf: "center",
+    backgroundColor: style.colors.btnColor,
+    borderRadius: 20
+
   },
 });
 

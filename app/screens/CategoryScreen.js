@@ -8,7 +8,7 @@ import categoryApi from "../api/category";
 import useApi from "./../hooks/useApi";
 import Screen from "./../components/Screen";
 import AppText from "./../components/AppText";
-import CategoryListItem from "../components/listing/category/CategoryListItem";
+import CategoryListItem from "../components/listing/Category/CategoryListItem";
 import routes from "../routes/routes";
 
 function CategoryScreen({ navigation, route }) {

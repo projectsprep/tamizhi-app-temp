@@ -38,7 +38,7 @@ function AppTextInput({
         <TextInput
           ref={inputRef}
           placeholderTextColor={style.colors.medium}
-          style={style.text}
+          // style={style.text}
           onSubmitEditing={onSearch}
           {...otherProps}
         />
@@ -49,8 +49,16 @@ function AppTextInput({
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: style.colors.light,
-    borderRadius: 15,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 8,
+    },
+    shadowOpacity: 0.44,
+    shadowRadius: 10.32,
+    elevation: 5,
+    backgroundColor: "#F5F5Fb",
+    borderRadius: 7,
     flexDirection: "row",
     padding: 15,
     marginVertical: 10,

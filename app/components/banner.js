@@ -52,7 +52,7 @@ export default function Banner({ data }) {
 const styles = StyleSheet.create({
   imageContainer: {
     alignItems: "center",
-    marginTop: 20,
+    marginTop: 15,
     padding: 0,
     height: 200,
   },
@@ -63,6 +63,7 @@ const styles = StyleSheet.create({
     height: "100%",
     padding: 0,
     margin: 0,
+    resizeMode: "stretch"
   },
 
   dot: {

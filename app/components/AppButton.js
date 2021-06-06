@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     marginVertical: 10,
   },
   text: {
-    color: defaultStyles.colors.white,
+    color: defaultStyles.colors.textColor,
     fontSize: 18,
     textTransform: "uppercase",
     fontWeight: "bold",

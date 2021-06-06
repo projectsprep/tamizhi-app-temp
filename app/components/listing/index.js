@@ -25,9 +25,9 @@ export { default as ProductsHeader } from "./products/ProductsHeader";
 export { default as ProductsFooter } from "./products/ProductsFooter";
 
 // Address
-export { default as AddressFooter } from "./address/AddressFooter";
-export { default as AddressHeader } from "./address/AddressHeader";
-export { default as AddressItem } from "./address/AddressItem";
+export { default as AddressFooter } from "./Address/AddressFooter";
+export { default as AddressHeader } from "./Address/AddressHeader";
+export { default as AddressItem } from "./Address/AddressItem";
 
 // ! Deprecated
 export { default as ProductListing } from "./products/ProductListing";

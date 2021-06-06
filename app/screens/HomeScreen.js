@@ -17,6 +17,8 @@ import Icon from "./../components/Icon";
 import useHome from "../hooks/useHome";
 import routes from "../routes/routes";
 import SubcategoryHomeList from "./../components/listing/home/SubCategoryHomeList";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+
 
 function HomeScreen({ navigation, route }) {
   const [search, setSearch] = useState("");
@@ -58,6 +60,12 @@ function HomeScreen({ navigation, route }) {
       <View style={styles.container}>
         <View style={styles.topView}>
           <View style={styles.searchRow}>
+              <MaterialCommunityIcons
+                name="magnify"
+                size={25}
+                color="#333"
+                style={styles.icon}
+              />
             <TextInput
               value={search}
               style={styles.searchInput}
@@ -66,9 +74,7 @@ function HomeScreen({ navigation, route }) {
               returnKeyType="search"
               onSubmitEditing={() => handleSearch(search)}
             />
-            <TouchableOpacity onPress={() => handleSearch(search)}>
-              <Icon name="magnify" backgroundColor="#333" size={30} />
-            </TouchableOpacity>
+              {/* <Icon name="magnify" backgroundColor="#333" size={30} /> */}
           </View>
         </View>
         <ScrollView
@@ -107,15 +113,20 @@ const styles = StyleSheet.create({
     backgroundColor: "#F5F5F8",
   },
   topView: {
+    marginTop: 15,
     position: "relative",
     width: "100%",
     alignSelf: "center",
     paddingBottom: 15,
+    borderBottomWidth: 1,
+    borderBottomColor: "#333"
   },
   mainView: {
     position: "relative",
   },
-  profileIcon: {},
+  icon: {
+    alignSelf: 'center'
+  },
   ordersIcon: {
     height: 30,
     width: 30,
@@ -127,18 +138,30 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
   },
   searchRow: {
-    marginTop: 15,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 8,
+    },
+    shadowOpacity: 0.44,
+    shadowRadius: 10.32,
+    elevation: 5,
     flexDirection: "row",
     justifyContent: "center",
     marginHorizontal: 20,
+    backgroundColor: "#F5F5Fb",
+    paddingHorizontal: 4,
+    paddingVertical: 7,
+    borderRadius: 7,
+    height: 50
   },
   searchInput: {
     paddingHorizontal: 10,
     paddingTop: 5,
-    width: "93%",
+    width: "80%",
     alignSelf: "center",
-    borderBottomColor: "#aaa",
-    borderBottomWidth: 2,
+    // borderBottomColor: "#aaa",
+    // borderBottomWidth: 2,
     fontSize: 15,
     marginRight: 4,
   },

@@ -41,8 +41,8 @@ function App() {
           <StatusBar hidden={true} />
           <NoNetwork action={refresh} />
           <NavigationContainer ref={navigationRef} theme={DefaultTheme}>
-            {user ? <AppNavigator /> : <AuthNavigator />}
-            {/* <AppNavigator /> */}
+            {/* {user ? <AppNavigator /> : <AuthNavigator />} */}
+            <AppNavigator />
           </NavigationContainer>
         </CartContext.Provider>
       </AuthContext.Provider>
