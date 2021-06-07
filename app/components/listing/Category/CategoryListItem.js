@@ -7,15 +7,15 @@ function CategoryListItem({ item, onPress }) {
   return (
     <TouchableOpacity style={styles.container} onPress={onPress}>
       <View style={styles.column}>
-        <AppText ellipsizeMode="tail" numberOfLines={2} style={styles.catname}>
-          {item.catname}
-        </AppText>
         <Image
           source={{
             uri: api.baseAssetUrl + item.catimg,
           }}
           style={styles.catimg}
         />
+        <AppText ellipsizeMode="tail" numberOfLines={2} style={styles.catname}>
+          {item.catname}
+        </AppText>
       </View>
     </TouchableOpacity>
   );
@@ -30,26 +30,29 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.44,
     shadowRadius: 10.32,
-    elevation: 8,
+    elevation: 5,
     backgroundColor: "#fff",
-    marginVertical: 5,
+    marginVertical: 2,
     paddingHorizontal: 10,
     paddingVertical: 10,
-    width: "46%",
-    marginHorizontal: 7,
+    width: "49%",
+    marginHorizontal: 2,
     justifyContent: "center",
-    borderRadius: 0,
+    borderRadius: 15,
   },
   catname: {
-    fontSize: 15,
+    textTransform: "capitalize",
+    marginTop: 10,
+    fontSize: 13,
     textAlign: "center",
     fontWeight: "700",
     color: "#444",
   },
   catimg: {
     height: 100,
-    width: "100%",
+    width: "80%",
     resizeMode: "stretch",
+    borderRadius: 30
   },
   column: {
     alignItems: "center",

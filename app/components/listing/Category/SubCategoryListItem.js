@@ -15,7 +15,7 @@ function SubCategoryListItem({ item, onPress }) {
         <AppText ellipsizeMode="tail" numberOfLines={1} style={styles.title}>
           {item.name}
         </AppText>
-        <AppText style={styles.viewButton}>View products</AppText>
+        {/* <AppText style={styles.viewButton}>View products</AppText> */}
       </View>
     </TouchableOpacity>
   );
@@ -31,30 +31,34 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.44,
     shadowRadius: 10.32,
     elevation: 5,
-    width: "45%",
+    width: "49%",
     backgroundColor: "#fff",
-    marginHorizontal: 8,
-    marginVertical: 6,
+    marginHorizontal: 2,
+    marginVertical: 2,
     paddingHorizontal: 10,
-    paddingTop: 10,
-    borderRadius: 20,
+    paddingVertical: 10,
+    borderRadius: 15,
+    justifyContent: "center"
   },
   image: {
     height: 100,
-    width: "100%",
+    width: "80%",
     resizeMode: "stretch",
+    borderRadius: 30
   },
   column: {
     flex: 1,
     flexDirection: "column",
-    alignItems: "center",
+    marginVertical: 10,
+    alignItems: "center"
   },
   title: {
     textTransform: "capitalize",
     fontWeight: "700",
-    width: 100,
+    fontSize: 13,
     textAlign: "center",
-    color: "#222",
+    color: "#444",
+    marginTop: 10
   },
   viewButton: {
     height: 30,

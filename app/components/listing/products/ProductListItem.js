@@ -22,7 +22,7 @@ function ProductListItem({ item, onPress, ActionBar }) {
           </AppText>
           <View style={styles.ratingBox}>
             <Rating
-              tintColor={itemColor}
+              tintColor="#eee"
               type="star"
               ratingCount={5}
               startingValue={item.rating}
@@ -51,22 +51,27 @@ function ProductListItem({ item, onPress, ActionBar }) {
 
 const styles = StyleSheet.create({
   container: {
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 8,
+    },
+    shadowOpacity: 0.44,
+    shadowRadius: 10.32,
+    elevation: 5,
     borderBottomWidth: 1,
     borderColor: "#d1d1d1",
-    backgroundColor: "#fff",
     paddingVertical: 5,
-    borderRadius: 15,
-    backgroundColor: itemColor,
+    borderRadius: 20,
+    backgroundColor: "#fff",
     marginVertical: 5,
   },
 
   item: {
     flexDirection: "row",
-    borderColor: "#d1d1d1",
     backgroundColor: "#fff",
     paddingVertical: 5,
-    borderRadius: 15,
-    backgroundColor: itemColor,
+    borderRadius: 20,
   },
 
   image: {

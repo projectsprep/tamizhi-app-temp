@@ -99,7 +99,9 @@ function ProductsListScreen({ route, navigation }) {
 }
 
 const styles = StyleSheet.create({
-  container: {},
+  container: {
+    paddingHorizontal: 5
+  },
 });
 
 export default ProductsListScreen;

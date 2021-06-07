@@ -125,7 +125,8 @@ const styles = StyleSheet.create({
     position: "relative",
   },
   icon: {
-    alignSelf: 'center'
+    alignSelf: 'center',
+    marginLeft: 10
   },
   ordersIcon: {
     height: 30,
@@ -147,18 +148,18 @@ const styles = StyleSheet.create({
     shadowRadius: 10.32,
     elevation: 5,
     flexDirection: "row",
-    justifyContent: "center",
+    justifyContent: "space-between",
     marginHorizontal: 20,
     backgroundColor: "#F5F5Fb",
     paddingHorizontal: 4,
     paddingVertical: 7,
     borderRadius: 7,
-    height: 50
+    height: 50,
   },
   searchInput: {
     paddingHorizontal: 10,
     paddingTop: 5,
-    width: "80%",
+    width: "100%",
     alignSelf: "center",
     // borderBottomColor: "#aaa",
     // borderBottomWidth: 2,
