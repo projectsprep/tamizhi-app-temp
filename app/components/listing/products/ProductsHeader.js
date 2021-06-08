@@ -56,8 +56,6 @@ function ProductsHeader({
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "#F5F5F8",
-    borderBottomWidth: 1,
-    borderBottomColor: "#333",
   },
 
   picker: {

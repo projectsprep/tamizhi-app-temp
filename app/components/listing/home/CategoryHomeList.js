@@ -53,8 +53,9 @@ export default function CategoryHomeList({ data, showMore, showDetails }) {
 const styles = StyleSheet.create({
   categories: {
     position: "relative",
-    // backgroundColor: "blue",
-    height: 240,
+    backgroundColor: "#fff",
+    height: 260,
+    paddingVertical: 10
   },
   row: {
     flex: 0.5,

@@ -29,9 +29,11 @@ export default function SubcategoryHomeList({ data, showMore, showDetails }) {
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: "#fff",
     flex: 1,
     marginTop: 14,
     marginBottom: 14,
+    paddingVertical: 10
   },
   heading: {
     fontSize: 20,

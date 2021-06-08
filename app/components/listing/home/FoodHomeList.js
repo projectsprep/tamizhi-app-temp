@@ -45,6 +45,8 @@ const styles2 = StyleSheet.create({
     color: "#333",
   },
   products: {
+    backgroundColor: "#fff",
+    paddingVertical: 10,
     position: "relative",
     width: "100%",
   },

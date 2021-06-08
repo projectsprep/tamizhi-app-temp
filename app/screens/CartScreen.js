@@ -30,6 +30,7 @@ function CartScreen({ navigation }) {
 
   const info = () => (
     <InfoScreen
+      buttonColor="btnColor"
       title="Cart is empty"
       description="You don't have any Product here"
       buttonTitle="Let's Shop"

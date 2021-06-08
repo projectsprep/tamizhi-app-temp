@@ -56,14 +56,14 @@ function ProfileScreen({ navigation }) {
       <ScrollView>
         <View style={styles.container}>
           <ListItem
-            title={user.username}
-            subTitle={user.mobile + "\n" + user.email}
+            // title={user.username}
+            // subTitle={user.mobile + "\n" + user.email}
             image={icons.logo}
             style={styles.account}
             onPress={() => navigation.navigate(routes.ACCOUNT)}
           />
-        </View>
-        <View style={styles.container}>
+        {/* </View>
+        <View style={styles.container}> */}
           <View style={styles.container}>
             {menu.map((item, index) => (
               <View key={item.title + index}>
@@ -73,16 +73,17 @@ function ProfileScreen({ navigation }) {
                   IconComponent={
                     <Icon
                       name={item.icon.name}
-                      backgroundColor={item.icon.backgroundColor}
+                      // backgroundColor={item.icon.backgroundColor}
+                      backgroundColor="#333"
                     />
                   }
                   onPress={() => navigation.navigate(item.targetScreen)}
                 />
-                <ListItemSeparator />
+                {/* <ListItemSeparator /> */}
               </View>
             ))}
-          </View>
-          <View style={styles.container}>
+          {/* </View>
+          <View style={styles.container}> */}
             {lines.map((item, index) => (
               <View key={item.title + index}>
                 <ListItem
@@ -91,7 +92,8 @@ function ProfileScreen({ navigation }) {
                   IconComponent={
                     <Icon
                       name={item.icon.name}
-                      backgroundColor={item.icon.backgroundColor}
+                      // backgroundColor={item.icon.backgroundColor}
+                      backgroundColor="#333"
                     />
                   }
                   onPress={() =>
@@ -100,17 +102,17 @@ function ProfileScreen({ navigation }) {
                     })
                   }
                 />
-                <ListItemSeparator />
+                {/* <ListItemSeparator /> */}
               </View>
             ))}
+            <ListItem
+              title="Log Out"
+              style={styles.logout}
+              IconComponent={<Icon name="logout" backgroundColor="#333" />}
+              onPress={logout}
+            />
           </View>
         </View>
-        <ListItem
-          title="Log Out"
-          style={styles.logout}
-          IconComponent={<Icon name="logout" backgroundColor="#ffe66d" />}
-          onPress={logout}
-        />
       </ScrollView>
     </Screen>
   );

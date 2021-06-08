@@ -20,6 +20,7 @@ function ProductListItem({ item, onPress, ActionBar }) {
           <AppText style={styles.title} numberOfLines={3}>
             {`${item.name}-${item.id}`}
           </AppText>
+          <AppText style={styles.seller}>{item.seller}</AppText>
           <View style={styles.ratingBox}>
             <Rating
               tintColor="#eee"
@@ -62,6 +63,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderColor: "#d1d1d1",
     paddingVertical: 5,
+    paddingHorizontal: 10,
     borderRadius: 20,
     backgroundColor: "#fff",
     marginVertical: 5,
@@ -69,15 +71,20 @@ const styles = StyleSheet.create({
 
   item: {
     flexDirection: "row",
-    backgroundColor: "#fff",
-    paddingVertical: 5,
+    paddingTop: 5,
     borderRadius: 20,
+  },
+  seller: {
+    color: "#555",
+    fontSize: 15,
+    textTransform: "lowercase"
   },
 
   image: {
     flex: 2,
     height: 150,
     resizeMode: "contain",
+    borderRadius: 20
   },
 
   details: {
@@ -87,11 +94,14 @@ const styles = StyleSheet.create({
 
   title: {
     fontSize: 18,
+    color: "#222",
+    textTransform: "capitalize"
   },
 
   presentPrice: {
     fontSize: 18,
     fontWeight: "bold",
+    color: "#444"
   },
 
   discount: {
@@ -114,6 +124,8 @@ const styles = StyleSheet.create({
 
   ratingCount: {
     marginStart: 7.5,
+    color: "#666",
+    fontSize: 15
   },
 
   actionBar: {

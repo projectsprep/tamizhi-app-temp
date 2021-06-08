@@ -118,8 +118,9 @@ const styles = StyleSheet.create({
     width: "100%",
     alignSelf: "center",
     paddingBottom: 15,
-    borderBottomWidth: 1,
-    borderBottomColor: "#333"
+    backgroundColor: "#FFF"
+    // borderBottomWidth: 1,
+    // borderBottomColor: "#333"
   },
   mainView: {
     position: "relative",

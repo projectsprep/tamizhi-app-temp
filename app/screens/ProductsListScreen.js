@@ -100,7 +100,8 @@ function ProductsListScreen({ route, navigation }) {
 
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: 5
+    paddingHorizontal: 5,
+    backgroundColor: "#F5F5F8"
   },
 });
 
