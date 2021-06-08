@@ -17,7 +17,8 @@ const Stack = createStackNavigator();
 
 const ProfileNavigator = (props) => (
   <Stack.Navigator screenOptions={{ headerShown: false }}>
-    <Stack.Screen name={routes.PROFILE_OPTIONS} component={ProfileScreen} />
+    <Stack.Screen name={routes.PROFILE_OPTIONS}
+    component={ProfileScreen} />
     <Stack.Screen name={routes.EDIT_USER_DETAILS} component={EditUserDetails} />
     <Stack.Screen name={routes.ORDERS} component={OrdersScreen} />
     <Stack.Screen name={routes.ORDER_DETAILS} component={OrderDetailsScreen} />

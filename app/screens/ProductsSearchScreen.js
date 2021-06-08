@@ -136,6 +136,7 @@ function ProductsSearchScreen({ navigation, route }) {
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: "#F5F5F8",
     paddingHorizontal: 2.5,
   },
 });

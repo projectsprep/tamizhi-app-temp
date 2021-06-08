@@ -11,6 +11,17 @@ const Stack = createStackNavigator();
 const ProductsNavigator = ({ route }) => (
   <Stack.Navigator screenOptions={{ headerShown: false }}>
     <Stack.Screen
+      options={{title: "Search product", 
+        headerTintColor: "#333", 
+        headerTitleAlign: "center",
+        headerStyle: {
+          backgroundColor: "#F5F5F8",
+          elevation: 0
+        },
+        headerTitleStyle: {
+          fontSize: 17
+        }
+      }}
       name={routes.SEARCH}
       component={ProductsSearchScreen}
       initialParams={{ query: route?.params?.query ?? "" }}

@@ -43,9 +43,9 @@ function CategoryScreen({ navigation, route }) {
 
   return (
     <Screen style={styles.container}>
-      <View style={styles.headingTitle}>
+      {/* <View style={styles.headingTitle}>
         <AppText style={styles.heading}>Shops</AppText>
-      </View>
+      </View> */}
       <View style={styles.categoryList}>
         <FlatList
           ListEmptyComponent={info}
@@ -65,8 +65,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#F5F5F8",
-    padding: 5,
-    marginBottom: "5%",
+    paddingHorizontal: 5,
+    // marginBottom: "5%",
   },
   heading: {
     fontSize: 24,

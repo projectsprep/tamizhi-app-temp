@@ -8,6 +8,7 @@ import { CartListActions } from "../components/listing";
 import routes from "../routes/routes";
 import useCartContext from "./../hooks/useCartContext";
 import api from "../config/api";
+import { setNestedObjectValues } from "formik";
 
 function ProductDetailsScreen({ navigation, route }) {
   const { cart, setQuantity } = useCartContext();
@@ -21,13 +22,16 @@ function ProductDetailsScreen({ navigation, route }) {
   return (
     <View style={styles.container}>
       <ScrollView>
-        <ImageSlider images={images} />
+        <View style={styles.imageSlider}>
+          <ImageSlider images={images} />
+        </View>
         <View style={styles.detailsContainer}>
           <AppText style={styles.title}>
             {product.title || product.name}
           </AppText>
+          <AppText style={styles.seller}>{product.seller}</AppText>
           <AppText style={styles.price}>Rs. {product.price}</AppText>
-          <AppText>{product.description}</AppText>
+          <AppText style={styles.desc}>{product.description}</AppText>
         </View>
 
         {!isDisplayOnly && (
@@ -49,13 +53,17 @@ const styles = StyleSheet.create({
   container: {
     // padding: 20,
   },
+  seller: {
+    color: "#444",
+    fontSize: 16
+  },
   detailsContainer: {
     padding: 20,
   },
   actionContainer: {
     padding: 20,
   },
-  image: {
+  imageSlider: {
     width: "100%",
     height: 300,
   },
@@ -67,11 +75,16 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 24,
-    fontWeight: "500",
+    fontWeight: "700",
   },
   userContainer: {
     marginVertical: 40,
   },
+  desc:{
+    fontSize: 18,
+    textTransform: "lowercase",
+    color: "#222",
+  }
 });
 
 export default ProductDetailsScreen;

@@ -58,6 +58,8 @@ function ProfileScreen({ navigation }) {
           <ListItem
             // title={user.username}
             // subTitle={user.mobile + "\n" + user.email}
+            title="user"
+            subTitle="some user"
             image={icons.logo}
             style={styles.account}
             onPress={() => navigation.navigate(routes.ACCOUNT)}
@@ -74,7 +76,7 @@ function ProfileScreen({ navigation }) {
                     <Icon
                       name={item.icon.name}
                       // backgroundColor={item.icon.backgroundColor}
-                      backgroundColor="#333"
+                      backgroundColor="#183e96"
                     />
                   }
                   onPress={() => navigation.navigate(item.targetScreen)}
@@ -93,7 +95,7 @@ function ProfileScreen({ navigation }) {
                     <Icon
                       name={item.icon.name}
                       // backgroundColor={item.icon.backgroundColor}
-                      backgroundColor="#333"
+                      backgroundColor="#183e96"
                     />
                   }
                   onPress={() =>
@@ -108,7 +110,7 @@ function ProfileScreen({ navigation }) {
             <ListItem
               title="Log Out"
               style={styles.logout}
-              IconComponent={<Icon name="logout" backgroundColor="#333" />}
+              IconComponent={<Icon name="logout" backgroundColor="#183e96" />}
               onPress={logout}
             />
           </View>
@@ -128,12 +130,30 @@ const styles = StyleSheet.create({
   },
 
   account: {
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 8,
+    },
+    shadowOpacity: 0.44,
+    shadowRadius: 10.32,
+    elevation: 5,
+
     backgroundColor: defaultStyles.colors.white,
     borderRadius: 20,
     marginVertical: 13,
   },
 
   logout: {
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 8,
+    },
+    shadowOpacity: 0.44,
+    shadowRadius: 10.32,
+    elevation: 5,
+
     backgroundColor: defaultStyles.colors.white,
     borderRadius: 20,
     fontWeight: "600",
@@ -141,6 +161,15 @@ const styles = StyleSheet.create({
   },
 
   item: {
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 8,
+    },
+    shadowOpacity: 0.44,
+    shadowRadius: 10.32,
+    elevation: 5,
+
     backgroundColor: defaultStyles.colors.white,
     borderRadius: 20,
     marginVertical: 13,

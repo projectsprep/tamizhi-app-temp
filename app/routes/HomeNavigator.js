@@ -12,15 +12,80 @@ import ProductsListScreen from "./../screens/ProductsListScreen";
 const Stack = createStackNavigator();
 
 const HomeNavigator = (props) => (
-  <Stack.Navigator screenOptions={{ headerShown: false }}>
-    <Stack.Screen name={routes.HOME_PAGE} component={HomeScreen} />
-    <Stack.Screen name={routes.SUB_CATEGORIES} component={SubCategoryScreen} />
-    <Stack.Screen name={routes.CATEGORIES} component={CategoryScreen} />
-    <Stack.Screen name={routes.HOME_PRODUCTS} component={ProductsListScreen} />
-    <Stack.Screen name={routes.SEARCH} component={ProductsSearchScreen} />
+  <Stack.Navigator screenOptions={{ headerShown: true }}>
+    <Stack.Screen name={routes.HOME_PAGE} component={HomeScreen} options={{headerShown: false}} />
+    <Stack.Screen name={routes.SUB_CATEGORIES}
+    component={SubCategoryScreen}
+    options={{title: "Subcategories", 
+      headerTintColor: "#333", 
+      headerTitleAlign: "center",
+      headerStyle: {
+        backgroundColor: "#F5F5F8",
+        elevation: 0
+      },
+      headerTitleStyle: {
+        fontSize: 22
+      }
+    }} 
+    />
+    <Stack.Screen 
+    name={routes.CATEGORIES} 
+    component={CategoryScreen}
+    options={{title: "Categories", 
+      headerTintColor: "#333", 
+      headerTitleAlign: "center",
+      headerStyle: {
+        backgroundColor: "#F5F5F8",
+        elevation: 0
+      },
+      headerTitleStyle: {
+        fontSize: 22
+      }
+    }}
+     />
+    <Stack.Screen name={routes.HOME_PRODUCTS}
+    component={ProductsListScreen}
+    options={{title: "Products", 
+      headerTintColor: "#333", 
+      headerTitleAlign: "center",
+      headerStyle: {
+        backgroundColor: "#F5F5F8",
+        elevation: 0
+      },
+      headerTitleStyle: {
+        fontSize: 22
+      }
+    }}
+    />
+    <Stack.Screen 
+    name={routes.SEARCH} 
+    component={ProductsSearchScreen} 
+    options={{title: "Search Products", 
+      headerTintColor: "#333", 
+      headerTitleAlign: "center",
+      headerStyle: {
+        backgroundColor: "#F5F5F8",
+        elevation: 0
+      },
+      headerTitleStyle: {
+        fontSize: 22
+      }
+    }}
+    />
     <Stack.Screen
       name={routes.PRODUCT_DETAILS}
       component={ProductDetailsScreen}
+      options={{title: "Product Details", 
+        headerTintColor: "#333", 
+        headerTitleAlign: "center",
+        headerStyle: {
+          backgroundColor: "#F5F5F8",
+          elevation: 0
+        },
+        headerTitleStyle: {
+          fontSize: 22
+        }
+      }}
     />
   </Stack.Navigator>
 );

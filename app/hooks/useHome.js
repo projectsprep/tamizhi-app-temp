@@ -12,7 +12,7 @@ export default function useProductListing() {
     items: categories,
     loading: categoryLoading,
     refresh: refreshCategory,
-  } = useApi(homeApi.getCategories, { rows: 4 });
+  } = useApi(homeApi.getCategories, { rows: 10 });
 
   const {
     items: foodItemsObjs,
